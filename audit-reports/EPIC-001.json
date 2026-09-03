@@ -1,0 +1,786 @@
+{
+  "schemaVersion": "eds-coding-audit/v3",
+  "runId": "eds-code-1788447492096",
+  "generatedAt": "2026-09-03T15:28:04.033Z",
+  "epic": {
+    "id": "EPIC-001",
+    "title": "Page implementation: https://www.disneycampus.com",
+    "scopeUrl": "https://www.disneycampus.com",
+    "storyCount": 5,
+    "branch": "migration-epic-001",
+    "results": [
+      {
+        "epicId": "EPIC-001",
+        "storyId": "EPIC-001-STORY-002",
+        "title": "Develop video-led introductory block for Disney Imagination Campus homepage",
+        "ticketType": "block-development",
+        "blockName": "blocks-hero-video",
+        "implementationMode": "CREATE_NEW_BLOCK",
+        "status": "FAILED_QUALITY_GATE_COMMITTED_FOR_REVIEW",
+        "commitSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4",
+        "expectedHeadSha": "d75bfd2cf0d91284b1e26c65e15cdf46820d6a4b",
+        "actualHeadSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4",
+        "visualEvidenceAvailable": true,
+        "correctionAttempts": 2,
+        "changedFiles": [
+          "blocks/hero-video/hero-video.js",
+          "blocks/hero-video/hero-video.css"
+        ],
+        "quality": {
+          "status": "FAILED_QUALITY_GATE",
+          "failedQualityGate": true,
+          "note": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+        },
+        "reason": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+      },
+      {
+        "epicId": "EPIC-001",
+        "storyId": "EPIC-001-STORY-003",
+        "title": "Develop EDS block for Program categories",
+        "ticketType": "block-development",
+        "blockName": "cards-overlay",
+        "implementationMode": "UPDATE_EXISTING",
+        "status": "FAILED_QUALITY_GATE_COMMITTED_FOR_REVIEW",
+        "commitSha": "c7b81c00f1c9e3d6af96d461925dde9016c55b98",
+        "expectedHeadSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4",
+        "actualHeadSha": "c7b81c00f1c9e3d6af96d461925dde9016c55b98",
+        "visualEvidenceAvailable": true,
+        "correctionAttempts": 2,
+        "changedFiles": [
+          "blocks/cards/cards.js",
+          "blocks/cards/cards.css"
+        ],
+        "quality": {
+          "status": "FAILED_QUALITY_GATE",
+          "failedQualityGate": true,
+          "note": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+        },
+        "reason": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+      },
+      {
+        "epicId": "EPIC-001",
+        "storyId": "EPIC-001-STORY-001",
+        "title": "Develop header contact and primary navigation block",
+        "ticketType": "block-development",
+        "blockName": "header",
+        "implementationMode": "UPDATE_EXISTING",
+        "status": "FAILED_QUALITY_GATE_COMMITTED_FOR_REVIEW",
+        "commitSha": "81283834fbfb9b6b1c874fc514493870f26a9125",
+        "expectedHeadSha": "c7b81c00f1c9e3d6af96d461925dde9016c55b98",
+        "actualHeadSha": "81283834fbfb9b6b1c874fc514493870f26a9125",
+        "visualEvidenceAvailable": true,
+        "correctionAttempts": 2,
+        "changedFiles": [
+          "blocks/header/header.js",
+          "blocks/header/header.css"
+        ],
+        "quality": {
+          "status": "FAILED_QUALITY_GATE",
+          "failedQualityGate": true,
+          "note": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+        },
+        "reason": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+      },
+      {
+        "epicId": "EPIC-001",
+        "storyId": "EPIC-001-STORY-009",
+        "title": "Author page content for https://www.disneycampus.com",
+        "ticketType": "page-authoring",
+        "status": "DELEGATED_CONTENT_AGENT",
+        "reason": "This ticket type is outside the Coding Agent code-generation boundary."
+      },
+      {
+        "epicId": "EPIC-001",
+        "storyId": "EPIC-001-STORY-010",
+        "title": "Accessibility testing for https://www.disneycampus.com",
+        "ticketType": "page-accessibility-testing",
+        "status": "DELEGATED_TESTING_AGENT",
+        "reason": "This ticket type is outside the Coding Agent code-generation boundary."
+      }
+    ],
+    "repositoryChanges": true,
+    "changedFiles": [
+      "blocks/hero-video/hero-video.js",
+      "blocks/hero-video/hero-video.css",
+      "blocks/cards/cards.js",
+      "blocks/cards/cards.css",
+      "blocks/header/header.js",
+      "blocks/header/header.css"
+    ],
+    "commitCount": 3,
+    "failureCount": 3,
+    "expectedHeadSha": "81283834fbfb9b6b1c874fc514493870f26a9125",
+    "draft": true
+  },
+  "repositorySnapshot": {
+    "repo": "ShubhadipChakrabarti/aem-boilerplate",
+    "baseRef": "migration-epic-001",
+    "inspectedHeadSha": "c7b81c00f1c9e3d6af96d461925dde9016c55b98",
+    "deliveryHeadSha": "81283834fbfb9b6b1c874fc514493870f26a9125"
+  },
+  "inputContract": {
+    "version": "eds-coding-input/v3",
+    "issues": []
+  },
+  "adobeSkills": {
+    "repository": "https://github.com/adobe/skills",
+    "requestedRef": "main",
+    "resolvedRef": "ffcb3fc0f041d2103ca5ada67659febc7df17d31",
+    "manifest": [
+      {
+        "path": "content-driven-development/SKILL.md",
+        "bytes": 14625,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "analyze-and-plan/SKILL.md",
+        "bytes": 6121,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "analyze-and-plan/references/task-types.md",
+        "bytes": 2560,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "content-modeling/SKILL.md",
+        "bytes": 9420,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "content-modeling/references/canonical-models.md",
+        "bytes": 15062,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "content-modeling/references/advanced-scenarios.md",
+        "bytes": 11765,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "authoring-analysis/SKILL.md",
+        "bytes": 12778,
+        "version": "1.0.1",
+        "loaded": true
+      },
+      {
+        "path": "scrape-webpage/SKILL.md",
+        "bytes": 5214,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "identify-page-structure/SKILL.md",
+        "bytes": 6719,
+        "version": "1.0.0",
+        "loaded": true
+      },
+      {
+        "path": "block-inventory/SKILL.md",
+        "bytes": 9055,
+        "version": "1.0.1",
+        "loaded": true
+      },
+      {
+        "path": "content-driven-development/references/html-structure.md",
+        "bytes": 14826,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "building-blocks/SKILL.md",
+        "bytes": 9241,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "building-blocks/references/js-guidelines.md",
+        "bytes": 9604,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "building-blocks/references/css-guidelines.md",
+        "bytes": 8018,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "block-collection-and-party/SKILL.md",
+        "bytes": 19379,
+        "version": "1.2.1",
+        "loaded": true
+      },
+      {
+        "path": "testing-blocks/SKILL.md",
+        "bytes": 9794,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "testing-blocks/references/testing-philosophy.md",
+        "bytes": 2201,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "testing-blocks/references/unit-testing.md",
+        "bytes": 7873,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "testing-blocks/references/troubleshooting.md",
+        "bytes": 8763,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "code-review/SKILL.md",
+        "bytes": 41406,
+        "version": "2.0.0",
+        "loaded": true
+      },
+      {
+        "path": "code-review/references/review-checklist.md",
+        "bytes": 11022,
+        "version": null,
+        "loaded": true
+      }
+    ],
+    "failures": [],
+    "ready": true
+  },
+  "counts": {
+    "FAILED_QUALITY_GATE_COMMITTED_FOR_REVIEW": 3,
+    "DELEGATED_CONTENT_AGENT": 1,
+    "DELEGATED_TESTING_AGENT": 1
+  },
+  "results": [
+    {
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-002",
+      "title": "Develop video-led introductory block for Disney Imagination Campus homepage",
+      "ticketType": "block-development",
+      "blockName": "blocks-hero-video",
+      "implementationMode": "CREATE_NEW_BLOCK",
+      "status": "FAILED_QUALITY_GATE_COMMITTED_FOR_REVIEW",
+      "commitSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4",
+      "expectedHeadSha": "d75bfd2cf0d91284b1e26c65e15cdf46820d6a4b",
+      "actualHeadSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4",
+      "visualEvidenceAvailable": true,
+      "correctionAttempts": 2,
+      "changedFiles": [
+        "blocks/hero-video/hero-video.js",
+        "blocks/hero-video/hero-video.css"
+      ],
+      "quality": {
+        "status": "FAILED_QUALITY_GATE",
+        "failedQualityGate": true,
+        "note": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+      },
+      "reason": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+    },
+    {
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-003",
+      "title": "Develop EDS block for Program categories",
+      "ticketType": "block-development",
+      "blockName": "cards-overlay",
+      "implementationMode": "UPDATE_EXISTING",
+      "status": "FAILED_QUALITY_GATE_COMMITTED_FOR_REVIEW",
+      "commitSha": "c7b81c00f1c9e3d6af96d461925dde9016c55b98",
+      "expectedHeadSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4",
+      "actualHeadSha": "c7b81c00f1c9e3d6af96d461925dde9016c55b98",
+      "visualEvidenceAvailable": true,
+      "correctionAttempts": 2,
+      "changedFiles": [
+        "blocks/cards/cards.js",
+        "blocks/cards/cards.css"
+      ],
+      "quality": {
+        "status": "FAILED_QUALITY_GATE",
+        "failedQualityGate": true,
+        "note": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+      },
+      "reason": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+    },
+    {
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-001",
+      "title": "Develop header contact and primary navigation block",
+      "ticketType": "block-development",
+      "blockName": "header",
+      "implementationMode": "UPDATE_EXISTING",
+      "status": "FAILED_QUALITY_GATE_COMMITTED_FOR_REVIEW",
+      "commitSha": "81283834fbfb9b6b1c874fc514493870f26a9125",
+      "expectedHeadSha": "c7b81c00f1c9e3d6af96d461925dde9016c55b98",
+      "actualHeadSha": "81283834fbfb9b6b1c874fc514493870f26a9125",
+      "visualEvidenceAvailable": true,
+      "correctionAttempts": 2,
+      "changedFiles": [
+        "blocks/header/header.js",
+        "blocks/header/header.css"
+      ],
+      "quality": {
+        "status": "FAILED_QUALITY_GATE",
+        "failedQualityGate": true,
+        "note": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+      },
+      "reason": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+    },
+    {
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-009",
+      "title": "Author page content for https://www.disneycampus.com",
+      "ticketType": "page-authoring",
+      "status": "DELEGATED_CONTENT_AGENT",
+      "reason": "This ticket type is outside the Coding Agent code-generation boundary."
+    },
+    {
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-010",
+      "title": "Accessibility testing for https://www.disneycampus.com",
+      "ticketType": "page-accessibility-testing",
+      "status": "DELEGATED_TESTING_AGENT",
+      "reason": "This ticket type is outside the Coding Agent code-generation boundary."
+    }
+  ],
+  "implementationAnalyses": [
+    {
+      "runId": "eds-code-1788447492096",
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-002",
+      "recordedAt": "2026-09-03T14:59:17.181Z",
+      "implementationMode": "CREATE_NEW_BLOCK",
+      "canonicalBlockName": "blocks-hero-video",
+      "canonicalScopeName": "blocks-hero-video",
+      "scopeType": "BLOCK",
+      "repositoryHeadSha": "d75bfd2cf0d91284b1e26c65e15cdf46820d6a4b",
+      "conciseReason": "The Content Agent document (finalAuthoringContract) explicitly authors a 'Hero Video' block (canonicalBlockName: hero-video, selector: div.herovideo) with a four-cell single-row table structure. The block is a new addition to the repository — no blocks/hero-video directory exists in the repository inventory. The authored table has one row with four cells: [video asset], [heading text], [primary CTA link], [secondary CTA link]. Section metadata (style: full-width, video-container; subtitles; poster; transcript) is authored separately in the section-metadata block and must be preserved as-is per policy preservePageAndSectionMetadataBehavior. The block must render: (1) a configurable video element driven by the authored video asset cell, (2) the playback helper text 'Press Enter or Space to play or pause the video.' as a visually-present but screen-reader-accessible caption, (3) the heading 'DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED', and (4) two CTA links with labels 'PLAY FULL VIDEO' and 'LEARN MORE'. The live page evidence confirms the block occupies a full-width 1440×630px container (position: relative) with an absolutely-positioned .video-information overlay (x:216, y:373, w:1008, h:205) containing the heading and CTAs in white text (rgb(255,255,255)) centered over the video. The PLAY FULL VIDEO link carries aria-label 'PLAY FULL VIDEO about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED' and href '#fullscreen-cta'; LEARN MORE carries aria-label 'LEARN MORE about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED' and href '/about'. Both links use font-weight 900 at 24px. The video element must support keyboard play/pause via Enter or Space per the acceptance criteria and the captured helper text. Exact typography, color values, pixel spacing, hover/animation behavior, video source, poster, transcript, and duration are uncaptured and must remain configurable — not hardcoded. The section-metadata block (subtitles, poster, transcript, style) is already authored and will be processed by the EDS section-metadata pipeline; the block JS must read these values from the section's dataset or from the section-metadata rows to configure the video element at runtime. The repository uses standard EDS boilerplate (aem.js, scripts.js) with no existing hero-video block, so two new files are required: blocks/hero-video/hero-video.js and blocks/hero-video/hero-video.css.",
+      "requirementTraceability": [
+        {
+          "requirementId": "EPIC-001-STORY-002-R1",
+          "description": "The block renders the captured text content exactly: Video, Press Enter or Space to play or pause the video., and DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R2",
+          "description": "The block includes one configurable video media area and does not hardcode unavailable video source, poster, duration, transcript, spacing, typography, color, hover, or animation values.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R3",
+          "description": "The block renders exactly two primary interactive controls using the captured labels PLAY FULL VIDEO and LEARN MORE.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R4",
+          "description": "The content sequence follows the captured flow of video affordance, playback helper text, heading, and calls to action.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R5",
+          "description": "The call-to-action destinations are configurable because destination URLs were not included in the supplied evidence.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R6",
+          "description": "The video interaction supports keyboard operation using Enter or Space, matching the captured playback instruction.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R7",
+          "description": "Both calls to action expose clear accessible names matching their visible labels: PLAY FULL VIDEO and LEARN MORE.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        }
+      ],
+      "visualSummary": {
+        "blockDimensions": "1440×630px at desktop (1440px viewport); position: relative on .herovideo.block",
+        "videoContainer": "Video fills full block width and height; no explicit padding on .herovideo.block (all zeros)",
+        "overlayPanel": ".video-information: position absolute, x:216 y:373 w:1008 h:205, text-align:center, color:rgb(255,255,255), transform: matrix(1,0,0,1,-504,-102.273) — centered horizontally over the video in the lower portion",
+        "ctaLinks": "Both 'PLAY FULL VIDEO' (x:460 y:542 w:206 h:29) and 'LEARN MORE' (x:782 y:542 w:158 h:29) are inline anchors, font-weight:900, font-size:24px, line-height:32px, color:rgb(255,255,255), background transparent, no border — rendered as text links not pill buttons",
+        "playFullVideoHref": "#fullscreen-cta (configurable per acceptance criteria — destination not captured)",
+        "learnMoreHref": "/about (configurable per acceptance criteria)",
+        "ariaLabels": "PLAY FULL VIDEO: aria-label='PLAY FULL VIDEO about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED'; LEARN MORE: aria-label='LEARN MORE about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED'",
+        "helperText": "'Press Enter or Space to play or pause the video.' present in DOM text of .herovideo.block — rendered as visible/accessible caption element",
+        "sectionContainer": "div.section.full-width.video-container.herovideo-container.cards-container — 1440×830px (630px height + 200px padding-bottom), position:relative, margin-bottom:40px",
+        "uncapturedDetails": "Exact font-size of heading, letter-spacing, hover states, animation/transition on video or overlay, video autoplay/loop/muted attributes, poster image dimensions, subtitle track format — all uncaptured and must remain configurable"
+      },
+      "normalization": {
+        "status": "MODEL_JSON_NORMALIZED",
+        "issue": null,
+        "modelOutputAccepted": true
+      },
+      "adobeSkillsRef": "ffcb3fc0f041d2103ca5ada67659febc7df17d31"
+    },
+    {
+      "runId": "eds-code-1788447492096",
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-003",
+      "recordedAt": "2026-09-03T15:05:53.296Z",
+      "implementationMode": "UPDATE_EXISTING",
+      "canonicalBlockName": "cards-overlay",
+      "canonicalScopeName": "cards-overlay",
+      "scopeType": "BLOCK",
+      "repositoryHeadSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4",
+      "conciseReason": "The Content Agent document (finalAuthoringContract) contains a grounded block entry for 'Cards (overlay)' with canonicalBlockName 'cards' and selector 'div.cards.overlay'. The authored table has two captured rows — PERFORMING ARTS and ARTS & HUMANITIES — each with three cells: [image-cell][label-cell][link-cell]. The live source text confirms all four category labels (PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, LEADERSHIP & INNOVATION) and their destination URLs (https://main--disneycampus--twdc-minnie.aem.live/programs/performing-arts and https://main--disneycampus--twdc-minnie.aem.live/programs/arts-humanities are captured; the other two are structurally identical and configurable). The block renders as a <ul> grid absolutely positioned at the bottom of the hero-video section, overlapping it (hence 'overlay' variant). The repository already has blocks/cards/cards.js and blocks/cards/cards.css (boilerplate implementation). This story requires adding an 'overlay' variant to the existing cards block — a new CSS variant class — plus a minimal JS extension to handle the overlay positioning and the label-only (no image body) card structure. No new block folder is created; the variant is added to the existing cards block files. The four items are interactive links (keyboard reachable, accessible name = visible label text including & characters). Destination URLs are configurable via authored link cells. No media, buttons, or descriptive copy are introduced beyond what the Content Agent document captures.",
+      "requirementTraceability": [
+        {
+          "requirementId": "EPIC-001-STORY-003-R1",
+          "description": "Render exactly four category items using the captured labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-003-R2",
+          "description": "Expose each captured category item as an interactive link-like item with its destination configurable because captured link targets were not provided.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-003-R3",
+          "description": "Preserve the captured content order of the four category labels.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-003-R4",
+          "description": "Do not introduce additional category labels, media, buttons, descriptive copy, or external data behavior not present in the provided evidence.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-003-R5",
+          "description": "Each category item must be keyboard reachable and activate through standard keyboard interaction.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-003-R6",
+          "description": "Each interactive item must expose an accessible name matching its visible category label, including correct handling of ampersands in ARTS & HUMANITIES and SCIENCE & TECHNOLOGY.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        }
+      ],
+      "visualSummary": {
+        "layout": "The overlay cards sit in a 4-column CSS grid (grid-template-columns: 267.5px × 4, gap: 20px) absolutely positioned at the bottom of the hero-video section. The section has padding-bottom: 200px which creates the visual overlap zone. The <ul> is 1130px wide, centered (x: 155px on a 1440px viewport). Each tile is approximately 267.5px × 267.5px square.",
+        "typography": "Category labels are uppercase text. The live heading samples show InspireTWDCBlack / Arial, font-weight 900, letter-spacing 3px at 28px for similar headings. The overlay tiles use the same heavy weight treatment. Text is white (rgb(255,255,255)) on a dark/semi-transparent tile background.",
+        "interactivity": "Each tile is an interactive link. The live source text confirms anchor hrefs (e.g. /programs/performing-arts). Keyboard focus must be reachable via Tab; Enter/Space activates. Focus style should use a visible outline consistent with the project's existing focus patterns.",
+        "responsive": "Desktop: 4-column grid, 267.5px columns. Tablet/mobile: grid must reflow — 2 columns at medium breakpoints, 1 column at small. The absolute positioning within the hero section must be reconsidered at mobile (likely static flow or adjusted bottom offset).",
+        "colors": "Tile background: captured page colors include rgb(207,16,45) (Disney red) and dark overlays. The exact tile background is not captured in computed styles for the overlay cards specifically; it is expressed as a CSS custom property to remain configurable.",
+        "ampersandHandling": "The HTML source uses &#x26; for & in 'ARTS & HUMANITIES' and 'SCIENCE & TECHNOLOGY'. The authored link text and aria-label must decode to the literal & character so screen readers announce the correct name."
+      },
+      "normalization": {
+        "status": "MODEL_JSON_NORMALIZED",
+        "issue": null,
+        "modelOutputAccepted": true
+      },
+      "adobeSkillsRef": "ffcb3fc0f041d2103ca5ada67659febc7df17d31"
+    },
+    {
+      "runId": "eds-code-1788447492096",
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-001",
+      "recordedAt": "2026-09-03T15:18:04.307Z",
+      "implementationMode": "UPDATE_EXISTING",
+      "canonicalBlockName": "header",
+      "canonicalScopeName": "header",
+      "scopeType": "BLOCK",
+      "repositoryHeadSha": "c7b81c00f1c9e3d6af96d461925dde9016c55b98",
+      "conciseReason": "The story requires a reusable header block that renders the captured contact content (Questions?, Call (321) 939 7560, Contact Us) and primary navigation labels (ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, CONNECT WITH US) with configurable link destinations. The repository already contains blocks/header/header.js and blocks/header/header.css at the expected paths. The existing header.js follows the canonical EDS pattern: it loads a /nav fragment document, reads three sections (brand, sections, tools) from that fragment, and decorates them into a nav element with hamburger, brand, nav-sections, and nav-tools areas. The existing header.css provides the full nav layout including hamburger, brand, sections, and tools grid areas with responsive behaviour. The Content Agent document does NOT include a header block table — the header is a global shared component loaded via fragment convention (/nav document), not an inline page block. This is confirmed by: (1) scripts.js calls loadHeader(doc.querySelector('body > header')) in loadLazy, (2) header.js uses loadFragment(navPath) where navPath defaults to '/nav', (3) the repository inventory shows fragmentSupport.conventions.navigation = '/nav'. Therefore the header is NOT a content-gap block requiring a new table structure — it is a GLOBAL fragment-driven pattern. The implementation work is: modify blocks/header/header.js to support a contact bar row (row index 0 of the /nav fragment) containing the Questions? prompt, phone number, and Contact Us link, in addition to the existing brand/sections/tools rows; modify blocks/header/header.css to style the contact bar and nav-sections bar to match the captured evidence (contact bar above brand/nav, nav-sections bar with black background at y:131, height:50px, flex justify-content:center); and update styles/styles.css --nav-height to reflect the observed two-row header height (~160px desktop). The captured evidence shows: header-wrapper rect height 160px, nav element height 181px, nav-sections div at y:131 height:50px with background-color rgb(0,0,0) and justify-content:center, nav ul (menubar) max-width:1080px with justify-content:space-between. The contact bar content (Questions?, Call (321) 939 7560, Contact Us) is observed in the header region text. The logo/brand and search control are referenced in acceptance criteria as 'where available from rendered evidence' — the brand area is already handled by the existing nav-brand section; a search control is not present in the captured computed-style evidence for the header region and must be flagged as a content gap. The /nav fragment document must be authored by the Content Agent with four sections: (0) contact bar, (1) brand/logo, (2) nav sections list, (3) tools/search — but since the Content Agent document does not include this fragment, it is flagged as a content gap. The JS and CSS changes are scoped entirely to blocks/header/ and a --nav-height token update in styles/styles.css.",
+      "requirementTraceability": [
+        {
+          "requirementId": "EPIC-001-STORY-001-R1",
+          "description": "The header renders the captured contact content exactly as observed: Questions?, Call (321) 939 7560, and Contact Us.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R2",
+          "description": "The primary navigation renders the captured labels exactly as observed: ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, and CONNECT WITH US.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R3",
+          "description": "The block supports configurable link destinations for Contact Us and each primary navigation item because most destination URLs were not captured.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R4",
+          "description": "The block supports the observed Disney Imagination Campus logo/link and search control from rendered evidence without requiring uncaptured styling or behavior assumptions.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R5",
+          "description": "The implementation does not hardcode uncaptured typography, spacing, colors, hover states, motion, or link destinations.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R6",
+          "description": "The header is exposed as a page header landmark and all interactive header items are reachable by keyboard in a logical order.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R7",
+          "description": "All interactive controls and links have accessible names matching or clearly representing their visible labels, including Contact Us and the primary navigation labels.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        }
+      ],
+      "visualSummary": {
+        "headerWrapper": {
+          "tag": "header.header-wrapper",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 160
+          },
+          "position": "relative",
+          "zIndex": 1000,
+          "backgroundColor": "rgb(255, 255, 255)"
+        },
+        "navElement": {
+          "tag": "nav#nav",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 181
+          },
+          "display": "flex",
+          "flexDirection": "column",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "maxWidth": "100%"
+        },
+        "navSectionsBar": {
+          "tag": "div.section.nav-sections",
+          "rect": {
+            "x": 0,
+            "y": 131,
+            "width": 1440,
+            "height": 50
+          },
+          "display": "flex",
+          "backgroundColor": "rgb(0, 0, 0)",
+          "justifyContent": "center",
+          "position": "relative",
+          "zIndex": "auto",
+          "transform": "matrix(1,0,0,1,-720,0) — NOTE: this transform is a capture artefact from a translated element, not a real offset"
+        },
+        "navMenubar": {
+          "tag": "ul[role=menubar]",
+          "rect": {
+            "x": 180,
+            "y": 124,
+            "width": 1080,
+            "height": 66
+          },
+          "display": "flex",
+          "maxWidth": "1080px",
+          "justifyContent": "space-between",
+          "paddingTop": "17.3px",
+          "paddingBottom": "18px"
+        },
+        "contactBarContent": {
+          "observedText": "Questions? Call (321) 939 7560 Contact Us",
+          "source": "header region text capture",
+          "position": "above nav-sections bar (y < 131)",
+          "backgroundColor": "rgb(255, 255, 255) (inherited from nav)"
+        },
+        "uncapturedDetails": [
+          "Exact font size and weight of contact bar text not captured",
+          "Exact colour of phone number and Contact Us link not captured",
+          "Hover states for contact bar links not captured",
+          "Logo image asset URL not captured in header evidence",
+          "Search control presence not confirmed in header computed-style evidence",
+          "Exact padding/spacing of contact bar not captured",
+          "Letter-spacing of nav labels not captured from nav-sections bar"
+        ]
+      },
+      "normalization": {
+        "status": "MODEL_JSON_NORMALIZED",
+        "issue": null,
+        "modelOutputAccepted": true
+      },
+      "adobeSkillsRef": "ffcb3fc0f041d2103ca5ada67659febc7df17d31"
+    }
+  ],
+  "conflicts": [],
+  "validationRequests": [
+    {
+      "contractVersion": "eds-testing-request/v1",
+      "runId": "eds-code-1788447492096",
+      "repo": "ShubhadipChakrabarti/aem-boilerplate",
+      "baseBranch": "main",
+      "branch": "migration-epic-001",
+      "commitSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4",
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-002",
+      "blockName": "blocks-hero-video",
+      "changedFiles": [
+        "blocks/hero-video/hero-video.js",
+        "blocks/hero-video/hero-video.css"
+      ],
+      "requiredChecks": [
+        "repository-lint",
+        "unit-tests",
+        "sonarqube-quality-gate",
+        "sonarqube-vulnerabilities",
+        "sonarqube-security-hotspots",
+        "codeql-sast",
+        "dependency-review",
+        "secret-scan",
+        "eds-browser-validation",
+        "accessibility",
+        "seo-performance"
+      ],
+      "githubWorkflowId": "Arpd6CQzjtAd9LOU",
+      "callbackPath": "/webhook/eds-coding-quality-result",
+      "correctionAttempt": 0,
+      "status": "PENDING_EXTERNAL_TESTING"
+    },
+    {
+      "contractVersion": "eds-testing-request/v1",
+      "runId": "eds-code-1788447492096",
+      "repo": "ShubhadipChakrabarti/aem-boilerplate",
+      "baseBranch": "main",
+      "branch": "migration-epic-001",
+      "commitSha": "c7b81c00f1c9e3d6af96d461925dde9016c55b98",
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-003",
+      "blockName": "cards-overlay",
+      "changedFiles": [
+        "blocks/cards/cards.js",
+        "blocks/cards/cards.css"
+      ],
+      "requiredChecks": [
+        "repository-lint",
+        "unit-tests",
+        "sonarqube-quality-gate",
+        "sonarqube-vulnerabilities",
+        "sonarqube-security-hotspots",
+        "codeql-sast",
+        "dependency-review",
+        "secret-scan",
+        "eds-browser-validation",
+        "accessibility",
+        "seo-performance"
+      ],
+      "githubWorkflowId": "Arpd6CQzjtAd9LOU",
+      "callbackPath": "/webhook/eds-coding-quality-result",
+      "correctionAttempt": 0,
+      "status": "PENDING_EXTERNAL_TESTING"
+    },
+    {
+      "contractVersion": "eds-testing-request/v1",
+      "runId": "eds-code-1788447492096",
+      "repo": "ShubhadipChakrabarti/aem-boilerplate",
+      "baseBranch": "main",
+      "branch": "migration-epic-001",
+      "commitSha": "81283834fbfb9b6b1c874fc514493870f26a9125",
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-001",
+      "blockName": "header",
+      "changedFiles": [
+        "blocks/header/header.js",
+        "blocks/header/header.css"
+      ],
+      "requiredChecks": [
+        "repository-lint",
+        "unit-tests",
+        "sonarqube-quality-gate",
+        "sonarqube-vulnerabilities",
+        "sonarqube-security-hotspots",
+        "codeql-sast",
+        "dependency-review",
+        "secret-scan",
+        "eds-browser-validation",
+        "accessibility",
+        "seo-performance"
+      ],
+      "githubWorkflowId": "Arpd6CQzjtAd9LOU",
+      "callbackPath": "/webhook/eds-coding-quality-result",
+      "correctionAttempt": 0,
+      "status": "PENDING_EXTERNAL_TESTING"
+    }
+  ],
+  "qualityDisclosure": {
+    "browserComputedStyleResearchExecuted": true,
+    "deterministicPolicyScanExecuted": true,
+    "independentAiCodeQualityReviewExecuted": true,
+    "independentAiSecurityAndHotspotReviewExecuted": true,
+    "independentAiAccessibilityAndSeoReviewExecuted": true,
+    "repositoryLintExecuted": false,
+    "unitTestsExecuted": false,
+    "browserValidationExecuted": false,
+    "sonarQualityGateExecuted": false,
+    "sonarVulnerabilitiesExecuted": false,
+    "sonarSecurityHotspotsExecuted": false,
+    "codeqlExecuted": false,
+    "dependencyReviewExecuted": false,
+    "secretScanExecuted": false,
+    "hotspotFormalApproval": "PENDING_HUMAN_OR_SECURITY_REVIEWER",
+    "status": "PROVISIONAL_PENDING_EXTERNAL_TESTING"
+  },
+  "resume": {
+    "checkpoints": [
+      {
+        "runId": "eds-code-1788447492096",
+        "epicId": "EPIC-001",
+        "storyId": "EPIC-001-STORY-002",
+        "status": "FAILED_QUALITY_GATE_COMMITTED_FOR_REVIEW",
+        "branch": "migration-epic-001",
+        "headSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4",
+        "recordedAt": "2026-09-03T15:04:55.015Z",
+        "resumeToken": "eds-code-1788447492096:EPIC-001-STORY-002"
+      },
+      {
+        "runId": "eds-code-1788447492096",
+        "epicId": "EPIC-001",
+        "storyId": "EPIC-001-STORY-003",
+        "status": "FAILED_QUALITY_GATE_COMMITTED_FOR_REVIEW",
+        "branch": "migration-epic-001",
+        "headSha": "c7b81c00f1c9e3d6af96d461925dde9016c55b98",
+        "recordedAt": "2026-09-03T15:16:39.512Z",
+        "resumeToken": "eds-code-1788447492096:EPIC-001-STORY-003"
+      },
+      {
+        "runId": "eds-code-1788447492096",
+        "epicId": "EPIC-001",
+        "storyId": "EPIC-001-STORY-001",
+        "status": "FAILED_QUALITY_GATE_COMMITTED_FOR_REVIEW",
+        "branch": "migration-epic-001",
+        "headSha": "81283834fbfb9b6b1c874fc514493870f26a9125",
+        "recordedAt": "2026-09-03T15:28:02.893Z",
+        "resumeToken": "eds-code-1788447492096:EPIC-001-STORY-001"
+      },
+      {
+        "runId": "eds-code-1788447492096",
+        "epicId": "EPIC-001",
+        "storyId": "EPIC-001-STORY-009",
+        "status": "DELEGATED_CONTENT_AGENT",
+        "branch": "migration-epic-001",
+        "headSha": "81283834fbfb9b6b1c874fc514493870f26a9125",
+        "recordedAt": "2026-09-03T15:28:03.254Z",
+        "resumeToken": "eds-code-1788447492096:EPIC-001-STORY-009"
+      },
+      {
+        "runId": "eds-code-1788447492096",
+        "epicId": "EPIC-001",
+        "storyId": "EPIC-001-STORY-010",
+        "status": "DELEGATED_TESTING_AGENT",
+        "branch": "migration-epic-001",
+        "headSha": "81283834fbfb9b6b1c874fc514493870f26a9125",
+        "recordedAt": "2026-09-03T15:28:03.526Z",
+        "resumeToken": "eds-code-1788447492096:EPIC-001-STORY-010"
+      }
+    ],
+    "incompleteStoryIds": [
+      "EPIC-001-STORY-002",
+      "EPIC-001-STORY-003",
+      "EPIC-001-STORY-001"
+    ]
+  }
+}
