@@ -1,0 +1,152 @@
+/*
+ * Hero Video block styles
+ *
+ * Structural layout only. Uncaptured values (brand colors, exact font sizes,
+ * letter-spacing, hover/animation behavior, font families) are expressed as
+ * CSS custom properties scoped to main .hero-video so they can be overridden
+ * in a project-specific theme without touching this file.
+ *
+ * Captured visual evidence:
+ *   - Block container: full-width, position relative, ~630px desktop height
+ *   - Video fills container (object-fit: cover)
+ *   - .hero-video-info: absolutely positioned, centered horizontally,
+ *     lower portion of the block, white text, text-align center
+ *   - CTA links: inline, font-weight 900, ~24px, white, no background/border
+ */
+
+/* ── Configurable custom properties (override in :root or theme CSS) ──────── */
+main .hero-video {
+  --hero-video-min-height: 400px;
+  --hero-video-desktop-height: 630px;
+  --hero-video-info-bottom: var(--spacing-xl, 2.5rem);
+  --hero-video-info-max-width: 70%;
+  --hero-video-text-color: #fff;
+  --hero-video-cta-font-weight: 900;
+  --hero-video-cta-font-size: var(--body-font-size-l, 1.5rem);
+  --hero-video-cta-gap: var(--spacing-m, 2rem);
+  --hero-video-heading-font-size: var(--heading-font-size-l, 2rem);
+  --hero-video-heading-font-family: var(--heading-font-family, sans-serif);
+}
+
+/* ── Block container ─────────────────────────────────────────────────────── */
+main .hero-video {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: var(--hero-video-min-height);
+  overflow: hidden;
+  padding: 0;
+}
+
+/* ── Video element ───────────────────────────────────────────────────────── */
+main .hero-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: var(--hero-video-min-height);
+  object-fit: cover;
+  position: relative;
+  z-index: 0;
+}
+
+main .hero-video video:focus {
+  outline: 2px solid var(--hero-video-text-color);
+  outline-offset: -4px;
+}
+
+/* ── Playback helper text ────────────────────────────────────────────────── */
+main .hero-video .hero-video-helper {
+  position: absolute;
+  bottom: calc(var(--hero-video-info-bottom) + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--hero-video-text-color);
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--body-font-size-s, 0.875rem);
+  text-align: center;
+  white-space: nowrap;
+  z-index: 2;
+  margin: 0;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 60%);
+}
+
+/* ── Info overlay panel (heading + CTAs) ─────────────────────────────────── */
+main .hero-video .hero-video-info {
+  position: absolute;
+  bottom: var(--hero-video-info-bottom);
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--hero-video-info-max-width);
+  text-align: center;
+  color: var(--hero-video-text-color);
+  z-index: 2;
+}
+
+/* ── Heading ─────────────────────────────────────────────────────────────── */
+main .hero-video .hero-video-heading {
+  font-family: var(--hero-video-heading-font-family);
+  font-size: var(--hero-video-heading-font-size);
+  color: var(--hero-video-text-color);
+  margin: 0 0 var(--spacing-m, 1.5rem);
+  text-shadow: 0 1px 4px rgb(0 0 0 / 50%);
+}
+
+/* ── CTA wrapper ─────────────────────────────────────────────────────────── */
+main .hero-video .hero-video-cta-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--hero-video-cta-gap);
+}
+
+/* ── CTA links ───────────────────────────────────────────────────────────── */
+main .hero-video .hero-video-cta {
+  display: inline-block;
+  color: var(--hero-video-text-color);
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--hero-video-cta-font-size);
+  font-weight: var(--hero-video-cta-font-weight);
+  line-height: 1.33;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+}
+
+main .hero-video .hero-video-cta:hover,
+main .hero-video .hero-video-cta:focus {
+  text-decoration: underline;
+  outline: 2px solid var(--hero-video-text-color);
+  outline-offset: 2px;
+}
+
+/* ── Responsive: tablet (600px+) ─────────────────────────────────────────── */
+@media (width >= 600px) {
+  main .hero-video {
+    --hero-video-heading-font-size: var(--heading-font-size-xl, 2.5rem);
+    --hero-video-info-max-width: 75%;
+  }
+
+  main .hero-video video {
+    min-height: 480px;
+  }
+}
+
+/* ── Responsive: desktop (900px+) ────────────────────────────────────────── */
+@media (width >= 900px) {
+  main .hero-video {
+    --hero-video-heading-font-size: var(--heading-font-size-xxl, 3rem);
+    --hero-video-info-max-width: 70%;
+  }
+
+  main .hero-video video {
+    min-height: var(--hero-video-desktop-height);
+  }
+}
+
+/* ── Reduced-motion: suppress CSS-driven animation on the block ──────────── */
+@media (prefers-reduced-motion: reduce) {
+  main .hero-video video {
+    animation: none;
+    transition: none;
+  }
+}
