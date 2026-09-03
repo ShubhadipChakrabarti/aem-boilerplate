@@ -1,27 +1,158 @@
-.cards > ul {
+/* ==========================================================================
+   Default cards variant
+   ========================================================================== */
+main .cards-wrapper {
+  max-width: var(--max-content-width, 1200px);
+  margin-inline: auto;
+  padding-inline: var(--inline-section-padding, 1rem);
+}
+
+main .cards ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
 }
 
-.cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+main .cards li {
+  border: 1px solid var(--clr-border, #e0e0e0);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
-.cards .cards-card-body {
-  margin: 16px;
-}
-
-.cards .cards-card-image {
+main .cards .cards-card-image {
   line-height: 0;
 }
 
-.cards > ul > li img {
+main .cards .cards-card-image picture {
+  display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+}
+
+main .cards .cards-card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
   object-fit: cover;
+}
+
+main .cards .cards-card-body {
+  padding: 1rem;
+}
+
+/* ==========================================================================
+   Overlay variant  (.cards.overlay)
+   All rules are scoped to .cards.overlay to avoid touching the default variant.
+   ========================================================================== */
+
+/*
+ * The overlay list is absolutely positioned at the bottom of its nearest
+ * positioned ancestor (the hero-video section, which already carries
+ * position: relative and padding-bottom: 200px to create the overlap zone).
+ */
+main .cards.overlay {
+  /* Reset default cards padding/margin so the absolute child can bleed. */
+  padding: 0;
+  margin: 0;
+}
+
+main .cards.overlay .cards-overlay-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* Desktop: 4-column grid matching the captured 267.5 px × 4 + 20 px gaps. */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  /* Overlay positioning — sits at the bottom of the hero section. */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1130px, calc(100% - 2 * var(--inline-section-padding, 1rem)));
+  z-index: 2;
+}
+
+main .cards.overlay .cards-overlay-item {
+  /* Square tile proportions. */
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Tile background — expressed as a custom property so authors can
+     override it via section metadata without touching this file. */
+  background-color: var(--overlay-tile-bg, rgb(0 0 0 / 60%));
+  border-radius: 2px;
+  overflow: hidden;
+  transition: background-color 0.2s ease;
+}
+
+main .cards.overlay .cards-overlay-item:hover,
+main .cards.overlay .cards-overlay-item:focus-within {
+  background-color: var(--overlay-tile-bg-hover, rgb(207 16 45 / 90%));
+}
+
+main .cards.overlay .cards-overlay-item a {
+  /* Fill the entire tile so the whole surface is clickable. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+
+  /* Typography — uppercase heavy treatment matching captured heading samples. */
+  font-family: var(--heading-font-family, 'Arial Black', Arial, sans-serif);
+  font-weight: 900;
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: var(--clr-white, #fff);
+  line-height: 1.2;
+
+  /* Visible focus ring for keyboard users. */
+  outline-offset: -3px;
+}
+
+main .cards.overlay .cards-overlay-item a:focus-visible {
+  outline: 3px solid var(--clr-white, #fff);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — tablet: 2-column grid
+   -------------------------------------------------------------------------- */
+@media (width < 900px) {
+  main .cards.overlay .cards-overlay-list {
+    grid-template-columns: repeat(2, 1fr);
+    /* Shift from absolute to static flow on smaller viewports so the
+       tiles do not overlap the hero image awkwardly. */
+    position: static;
+    transform: none;
+    width: 100%;
+    padding-inline: var(--inline-section-padding, 1rem);
+    margin-block-start: 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — mobile: single-column stack
+   -------------------------------------------------------------------------- */
+@media (width < 600px) {
+  main .cards.overlay .cards-overlay-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  main .cards.overlay .cards-overlay-item {
+    /* Relax the square constraint on narrow screens. */
+    aspect-ratio: auto;
+    min-height: 72px;
+  }
 }

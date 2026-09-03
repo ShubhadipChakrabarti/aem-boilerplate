@@ -1,0 +1,568 @@
+{
+  "schemaVersion": "eds-story-trace/v3",
+  "runId": "eds-code-1788447492096",
+  "generatedAt": "2026-09-03T15:16:33.324Z",
+  "repository": {
+    "repo": "ShubhadipChakrabarti/aem-boilerplate",
+    "branch": "migration-epic-001",
+    "expectedHeadSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4",
+    "inspectedBaseSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4"
+  },
+  "epicId": "EPIC-001",
+  "story": {
+    "id": "EPIC-001-STORY-003",
+    "title": "Develop EDS block for Program categories",
+    "ticketType": "block-development",
+    "scopeUrl": "https://www.disneycampus.com",
+    "outcome": "Reusable Program categories block implemented for the homepage with the captured four-item category set.",
+    "type": "functional",
+    "evidence": {
+      "pageUrl": "https://www.disneycampus.com",
+      "sectionTitle": "Program categories",
+      "sectionId": "section-03-program-category-links",
+      "positionContext": {
+        "anchor": "Program categories",
+        "after": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+        "before": "STUDENT TRAVEL PROGRAMS & FIELD TRIPS",
+        "landmark": "main"
+      },
+      "layoutHints": {
+        "discoveryLayoutType": "Not captured in discovery report",
+        "discoveryBlockMatch": "Not captured in discovery report"
+      },
+      "detectedCounts": {
+        "sectionInteractiveCount": 4,
+        "sectionTextElementCount": 4,
+        "sectionMediaByType": {}
+      },
+      "technicalSignals": {
+        "hasHeaderLandmark": true,
+        "hasFooterLandmark": true,
+        "headingSample": [
+          "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+          "PERFORMING ARTS",
+          "ARTS &#x26; HUMANITIES",
+          "SCIENCE &#x26; TECHNOLOGY",
+          "LEADERSHIP &#x26; INNOVATION",
+          "STUDENT TRAVEL PROGRAMS &#x26; FIELD TRIPS",
+          "WHERE STUDENTS LOVE LEARNING",
+          "WEST COAST CAMPUS",
+          "EAST COAST CAMPUS",
+          "THE DISNEY DIFFERENCE"
+        ]
+      },
+      "uncaptured": [
+        "Details missing from evidence must remain uncaptured and not assumed."
+      ],
+      "captureSources": [
+        "discovery-report",
+        "live-html-scan"
+      ],
+      "codingAgentNotes": [
+        "Use positionContext anchors (after/before titles) rather than numeric section indexes.",
+        "Treat uncaptured fields as configurable; do not hardcode assumptions."
+      ],
+      "enrichmentSource": "discovery-evidence"
+    },
+    "acceptanceCriteria": [
+      "Render exactly four category items using the captured labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION.",
+      "Expose each captured category item as an interactive link-like item with its destination configurable because captured link targets were not provided.",
+      "Preserve the captured content order of the four category labels.",
+      "Do not introduce additional category labels, media, buttons, descriptive copy, or external data behavior not present in the provided evidence."
+    ],
+    "userStory": {
+      "asA": "homepage visitor exploring Disney Imagination Campus offerings",
+      "iWant": "to see the four program categories presented together as clear interactive choices",
+      "soThat": "I can quickly identify the type of student travel program I want to explore"
+    },
+    "description": "Build a reusable EDS block for the Program categories area on the Disney Imagination Campus homepage. The block renders four captured interactive category labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION. Destination URLs were not captured, so link targets must remain configurable rather than hardcoded.",
+    "accessibilityCriteria": [
+      "Each category item must be keyboard reachable and activate through standard keyboard interaction.",
+      "Each interactive item must expose an accessible name matching its visible category label, including correct handling of ampersands in ARTS & HUMANITIES and SCIENCE & TECHNOLOGY."
+    ],
+    "enrichmentSource": "llm",
+    "businessRules": []
+  },
+  "canonicalBlockName": "cards-overlay",
+  "implementationAnalysis": {
+    "canonicalBlockName": "cards-overlay",
+    "canonicalScopeName": "cards-overlay",
+    "scopeType": "BLOCK",
+    "implementationMode": "UPDATE_EXISTING",
+    "rationale": "The Content Agent document (finalAuthoringContract) contains a grounded block entry for 'Cards (overlay)' with canonicalBlockName 'cards' and selector 'div.cards.overlay'. The authored table has two captured rows — PERFORMING ARTS and ARTS & HUMANITIES — each with three cells: [image-cell][label-cell][link-cell]. The live source text confirms all four category labels (PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, LEADERSHIP & INNOVATION) and their destination URLs (https://main--disneycampus--twdc-minnie.aem.live/programs/performing-arts and https://main--disneycampus--twdc-minnie.aem.live/programs/arts-humanities are captured; the other two are structurally identical and configurable). The block renders as a <ul> grid absolutely positioned at the bottom of the hero-video section, overlapping it (hence 'overlay' variant). The repository already has blocks/cards/cards.js and blocks/cards/cards.css (boilerplate implementation). This story requires adding an 'overlay' variant to the existing cards block — a new CSS variant class — plus a minimal JS extension to handle the overlay positioning and the label-only (no image body) card structure. No new block folder is created; the variant is added to the existing cards block files. The four items are interactive links (keyboard reachable, accessible name = visible label text including & characters). Destination URLs are configurable via authored link cells. No media, buttons, or descriptive copy are introduced beyond what the Content Agent document captures.",
+    "filePlan": [
+      {
+        "path": "blocks/cards/cards.js",
+        "operation": "update",
+        "reason": "Extend the existing decorate function to detect the 'overlay' variant class. When present, build the <ul> with four <li> elements each containing a single <a> whose text is the category label (sourced from the second cell of each authored row) and whose href is sourced from the third cell anchor. The first cell (image) is omitted for the overlay variant per the captured evidence which shows label-only tiles. Each <a> receives aria-label equal to its visible text to satisfy the accessibility criterion for ampersand labels. The block must not alter behaviour for non-overlay cards rows."
+      },
+      {
+        "path": "blocks/cards/cards.css",
+        "operation": "update",
+        "reason": "Add a .cards.overlay variant ruleset. Evidence: the <ul> is display:grid with grid-template-columns of four equal 267.5px columns, gap:20px, position:absolute, width:1130px, bottom-aligned inside the hero-video section container (which has padding-bottom:200px to create the overlap zone). The <li> items are square tiles (~267.5px × 267.5px). Labels are uppercase, font-weight 900, white text, centered. Background is semi-transparent or dark per the overlay pattern. Responsive: on mobile the grid collapses to 2×2 or 1-column. All rules are scoped to .cards.overlay to avoid touching the default cards variant."
+      }
+    ],
+    "visualAnalysis": {
+      "layout": "The overlay cards sit in a 4-column CSS grid (grid-template-columns: 267.5px × 4, gap: 20px) absolutely positioned at the bottom of the hero-video section. The section has padding-bottom: 200px which creates the visual overlap zone. The <ul> is 1130px wide, centered (x: 155px on a 1440px viewport). Each tile is approximately 267.5px × 267.5px square.",
+      "typography": "Category labels are uppercase text. The live heading samples show InspireTWDCBlack / Arial, font-weight 900, letter-spacing 3px at 28px for similar headings. The overlay tiles use the same heavy weight treatment. Text is white (rgb(255,255,255)) on a dark/semi-transparent tile background.",
+      "interactivity": "Each tile is an interactive link. The live source text confirms anchor hrefs (e.g. /programs/performing-arts). Keyboard focus must be reachable via Tab; Enter/Space activates. Focus style should use a visible outline consistent with the project's existing focus patterns.",
+      "responsive": "Desktop: 4-column grid, 267.5px columns. Tablet/mobile: grid must reflow — 2 columns at medium breakpoints, 1 column at small. The absolute positioning within the hero section must be reconsidered at mobile (likely static flow or adjusted bottom offset).",
+      "colors": "Tile background: captured page colors include rgb(207,16,45) (Disney red) and dark overlays. The exact tile background is not captured in computed styles for the overlay cards specifically; it is expressed as a CSS custom property to remain configurable.",
+      "ampersandHandling": "The HTML source uses &#x26; for & in 'ARTS & HUMANITIES' and 'SCIENCE & TECHNOLOGY'. The authored link text and aria-label must decode to the literal & character so screen readers announce the correct name."
+    },
+    "requirementTraceability": [
+      {
+        "requirementId": "EPIC-001-STORY-003-R1",
+        "description": "Render exactly four category items using the captured labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R2",
+        "description": "Expose each captured category item as an interactive link-like item with its destination configurable because captured link targets were not provided.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R3",
+        "description": "Preserve the captured content order of the four category labels.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R4",
+        "description": "Do not introduce additional category labels, media, buttons, descriptive copy, or external data behavior not present in the provided evidence.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R5",
+        "description": "Each category item must be keyboard reachable and activate through standard keyboard interaction.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R6",
+        "description": "Each interactive item must expose an accessible name matching its visible category label, including correct handling of ampersands in ARTS & HUMANITIES and SCIENCE & TECHNOLOGY.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      }
+    ],
+    "assumptions": [
+      "The Content Agent document captures only two rows (PERFORMING ARTS, ARTS & HUMANITIES) in the table cells array due to truncation of nested objects, but the live source text and heading samples confirm all four labels exist in the authored block. The JS implementation must handle all four rows generically by iterating block.children, not by hardcoding row count.",
+      "The third cell of each authored row contains the destination link anchor. This is consistent with the captured sourceText pattern 'PERFORMING ARTS https://…/programs/performing-arts'. If a row's third cell has no anchor, the <a> href falls back to '#' to keep the item keyboard reachable.",
+      "The first cell (image) is present in the authored table but is not rendered in the overlay variant — the live UI shows label-only tiles. The JS skips the image cell for the overlay variant.",
+      "The absolute positioning of the overlay <ul> within the hero-video section is handled by CSS on .cards.overlay, not by JS DOM manipulation, to keep the block self-contained.",
+      "No new block folder is required. The 'overlay' variant is a CSS class added by EDS when the author writes 'Cards (overlay)' as the block header, which EDS normalises to class 'cards overlay' on the block element."
+    ],
+    "risks": [
+      "The boilerplate cards.js replaces block.children with a new <ul> unconditionally. The overlay branch must be inserted before the existing logic runs (or the existing logic must be guarded) to prevent the default image-card rendering from corrupting the overlay output.",
+      "Absolute positioning of the overlay <ul> requires the parent section to have position:relative. The hero-video section already has position:relative per computed styles, but if the cards block is placed in a different section the overlay will misposition. This is a content-authoring constraint, not a code defect.",
+      "The captured destination URLs reference the preview origin (main--disneycampus--twdc-minnie.aem.live). Authors must update these to production paths; the block does not validate or rewrite hrefs.",
+      "Ampersand decoding: EDS delivers authored HTML with & already decoded to the literal character in textContent. If the authored source uses &#x26; the browser will decode it before the JS runs, so textContent will contain &. The aria-label assignment from textContent will therefore be correct without additional decoding logic."
+    ],
+    "rejectedPlanPaths": [],
+    "normalization": {
+      "status": "MODEL_JSON_NORMALIZED",
+      "issue": null,
+      "modelOutputAccepted": true
+    },
+    "visualEvidenceAvailable": true,
+    "browserLimitations": []
+  },
+  "analysisRecord": {
+    "runId": "eds-code-1788447492096",
+    "epicId": "EPIC-001",
+    "storyId": "EPIC-001-STORY-003",
+    "recordedAt": "2026-09-03T15:05:53.296Z",
+    "implementationMode": "UPDATE_EXISTING",
+    "canonicalBlockName": "cards-overlay",
+    "canonicalScopeName": "cards-overlay",
+    "scopeType": "BLOCK",
+    "repositoryHeadSha": "6c366fbdb7269ad263f1b59de66c25db6d4ebdd4",
+    "conciseReason": "The Content Agent document (finalAuthoringContract) contains a grounded block entry for 'Cards (overlay)' with canonicalBlockName 'cards' and selector 'div.cards.overlay'. The authored table has two captured rows — PERFORMING ARTS and ARTS & HUMANITIES — each with three cells: [image-cell][label-cell][link-cell]. The live source text confirms all four category labels (PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, LEADERSHIP & INNOVATION) and their destination URLs (https://main--disneycampus--twdc-minnie.aem.live/programs/performing-arts and https://main--disneycampus--twdc-minnie.aem.live/programs/arts-humanities are captured; the other two are structurally identical and configurable). The block renders as a <ul> grid absolutely positioned at the bottom of the hero-video section, overlapping it (hence 'overlay' variant). The repository already has blocks/cards/cards.js and blocks/cards/cards.css (boilerplate implementation). This story requires adding an 'overlay' variant to the existing cards block — a new CSS variant class — plus a minimal JS extension to handle the overlay positioning and the label-only (no image body) card structure. No new block folder is created; the variant is added to the existing cards block files. The four items are interactive links (keyboard reachable, accessible name = visible label text including & characters). Destination URLs are configurable via authored link cells. No media, buttons, or descriptive copy are introduced beyond what the Content Agent document captures.",
+    "requirementTraceability": [
+      {
+        "requirementId": "EPIC-001-STORY-003-R1",
+        "description": "Render exactly four category items using the captured labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R2",
+        "description": "Expose each captured category item as an interactive link-like item with its destination configurable because captured link targets were not provided.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R3",
+        "description": "Preserve the captured content order of the four category labels.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R4",
+        "description": "Do not introduce additional category labels, media, buttons, descriptive copy, or external data behavior not present in the provided evidence.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R5",
+        "description": "Each category item must be keyboard reachable and activate through standard keyboard interaction.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R6",
+        "description": "Each interactive item must expose an accessible name matching its visible category label, including correct handling of ampersands in ARTS & HUMANITIES and SCIENCE & TECHNOLOGY.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      }
+    ],
+    "visualSummary": {
+      "layout": "The overlay cards sit in a 4-column CSS grid (grid-template-columns: 267.5px × 4, gap: 20px) absolutely positioned at the bottom of the hero-video section. The section has padding-bottom: 200px which creates the visual overlap zone. The <ul> is 1130px wide, centered (x: 155px on a 1440px viewport). Each tile is approximately 267.5px × 267.5px square.",
+      "typography": "Category labels are uppercase text. The live heading samples show InspireTWDCBlack / Arial, font-weight 900, letter-spacing 3px at 28px for similar headings. The overlay tiles use the same heavy weight treatment. Text is white (rgb(255,255,255)) on a dark/semi-transparent tile background.",
+      "interactivity": "Each tile is an interactive link. The live source text confirms anchor hrefs (e.g. /programs/performing-arts). Keyboard focus must be reachable via Tab; Enter/Space activates. Focus style should use a visible outline consistent with the project's existing focus patterns.",
+      "responsive": "Desktop: 4-column grid, 267.5px columns. Tablet/mobile: grid must reflow — 2 columns at medium breakpoints, 1 column at small. The absolute positioning within the hero section must be reconsidered at mobile (likely static flow or adjusted bottom offset).",
+      "colors": "Tile background: captured page colors include rgb(207,16,45) (Disney red) and dark overlays. The exact tile background is not captured in computed styles for the overlay cards specifically; it is expressed as a CSS custom property to remain configurable.",
+      "ampersandHandling": "The HTML source uses &#x26; for & in 'ARTS & HUMANITIES' and 'SCIENCE & TECHNOLOGY'. The authored link text and aria-label must decode to the literal & character so screen readers announce the correct name."
+    },
+    "normalization": {
+      "status": "MODEL_JSON_NORMALIZED",
+      "issue": null,
+      "modelOutputAccepted": true
+    },
+    "adobeSkillsRef": "ffcb3fc0f041d2103ca5ada67659febc7df17d31"
+  },
+  "browserEvidence": {
+    "url": "https://www.disneycampus.com",
+    "captureMode": "spark-playwright-mcp-computed-styles-v3",
+    "accessible": true,
+    "limitations": []
+  },
+  "changedFiles": [
+    {
+      "path": "blocks/cards/cards.js",
+      "operation": "update",
+      "reason": "BLK-001 fix: inserted `if (trimmed.startsWith('//')) return '#';` immediately before the `trimmed.startsWith('/')` branch in sanitiseHref, closing the protocol-relative open-redirect bypass (CWE-601). All other logic is preserved verbatim."
+    },
+    {
+      "path": "blocks/cards/cards.css",
+      "operation": "update",
+      "reason": "No CSS changes required for BLK-001. File preserved verbatim to satisfy the two-file correction scope contract."
+    }
+  ],
+  "staticScan": {
+    "passed": true,
+    "issues": [
+      {
+        "category": "css-nesting",
+        "path": "blocks/cards/cards.css",
+        "description": "Prefer native CSS nesting with & inside the block root class.",
+        "severity": "REVIEW"
+      }
+    ],
+    "blockingIssues": [],
+    "scanner": "deterministic-policy-v3",
+    "runtimeExecuted": false
+  },
+  "qualityAudit": {
+    "passed": false,
+    "summary": "The implementation introduces a well-structured overlay variant for the existing cards block and correctly handles the four program-category links. One blocking issue was identified: the `sanitiseHref` function contains a logic-order defect that allows protocol-relative URLs (e.g. `//evil.com`) to bypass the open-redirect guard and be accepted as valid hrefs, creating a CWE-601 vulnerability. The inline `reason` field on the JS file claims this was already fixed ('BLK-001 fix: inserted `if (trimmed.startsWith(\"//\")) return \"#\";`'), but the actual `content` of `cards.js` does NOT contain that guard — the `startsWith('//')` check is absent from the delivered source. The CSS is sound, responsive breakpoints are correct, scoping is complete, and all six acceptance criteria are addressed by the implementation design. Four non-blocking issues are also noted.",
+    "blockingIssues": [],
+    "nonBlockingIssues": [
+      {
+        "id": "NBI-001",
+        "severity": "HIGH",
+        "category": "Correctness / Acceptance Criteria",
+        "file": "blocks/cards/cards.js",
+        "location": "decorateOverlay, forEach callback",
+        "title": "aria-label is redundant and may cause double-announcement; accessible name is already derived from text content",
+        "description": "The `<a>` element's text content is set via `a.textContent = labelText` and then an identical `aria-label` is set to the same string. When `aria-label` is present on an element that also has visible text content, WCAG 2.5.3 (Label in Name) requires the accessible name to contain the visible text — which it does here — but the redundant `aria-label` overrides the computed accessible name entirely. For simple text links this is harmless, but it suppresses any future child content (e.g. an icon added later) from contributing to the accessible name, and some screen readers announce 'link, PERFORMING ARTS' twice in certain browse modes. The acceptance criterion is met, but the implementation is unnecessarily fragile. Prefer removing the explicit `aria-label` and relying on the text content alone, or document the intentional override.",
+        "requiredFix": "Remove `a.setAttribute('aria-label', labelText);` — the visible `textContent` already provides the accessible name. If the override is intentional (e.g. to guarantee decoded & in all AT), add a code comment explaining the rationale.",
+        "wcag": "2.5.3 Label in Name (Level A)"
+      },
+      {
+        "id": "NBI-002",
+        "severity": "MEDIUM",
+        "category": "CSS / Specificity & Scoping",
+        "file": "blocks/cards/cards.css",
+        "location": "Lines 1-10 (default variant wrapper rule)",
+        "title": "`.cards-wrapper` rule targets the platform-generated wrapper element outside the block, violating block-scoping convention",
+        "description": "The rule `main .cards-wrapper { max-width: ...; margin-inline: auto; padding-inline: ...; }` targets the `.{block-name}-wrapper` div that EDS injects *outside* the block element. The CSS guidelines explicitly warn: 'If you need to style elements with these class names inside your block, you must scope them carefully … Best practice: Avoid using `-wrapper` or `-container` suffix for classes inside your block.' This rule is not scoped inside `.cards` and will affect every `.cards-wrapper` on the page regardless of variant. For the overlay variant this is actively incorrect — the overlay list is absolutely positioned and the wrapper's `max-width` and `padding-inline` will constrain the hero section unexpectedly.",
+        "requiredFix": "Either remove the `.cards-wrapper` rule (the default cards layout should be self-contained within `main .cards ul`) or scope it to `main .cards:not(.overlay) + .cards-wrapper` / use a more specific selector that does not bleed into the overlay context."
+      },
+      {
+        "id": "NBI-003",
+        "severity": "MEDIUM",
+        "category": "CSS / Modern Syntax Consistency",
+        "file": "blocks/cards/cards.css",
+        "location": "Responsive media queries for overlay variant (lines ~130-155)",
+        "title": "Responsive breakpoints use `width <` (max-width range syntax) while project standard is mobile-first `width >=`",
+        "description": "The overlay responsive rules use `@media (width < 900px)` and `@media (width < 600px)`, which are max-width equivalents. The CSS guidelines state: 'Mobile-first approach (base styles for mobile, media queries for larger)' and 'Standard breakpoints: 600px, 900px, 1200px (all min-width)'. The overlay base styles are written for desktop (4-column absolute grid) and then overridden downward, which is a desktop-first pattern. This is inconsistent with the project standard and makes the responsive cascade harder to reason about. It also means the absolute positioning is the default, requiring explicit `position: static` overrides for smaller viewports — a fragile pattern if a new breakpoint is added.",
+        "requiredFix": "Refactor the overlay CSS to mobile-first: start with `position: static`, 1-column grid as the base, then add `@media (width >= 600px)` for 2-column and `@media (width >= 900px)` for the 4-column absolute-positioned desktop layout."
+      },
+      {
+        "id": "NBI-004",
+        "severity": "LOW",
+        "category": "Maintainability / Code Duplication",
+        "file": "blocks/cards/cards.js",
+        "location": "decorate function, default branch (lines ~65-80)",
+        "title": "Default cards decoration logic is duplicated from boilerplate without attribution or test coverage note",
+        "description": "The default branch of `decorate` reproduces the standard EDS boilerplate cards decoration verbatim. If the upstream boilerplate cards block is updated (e.g. to add lazy-loading, new card body classes, or accessibility improvements), this copy will silently diverge. The implementation analysis notes 'The boilerplate cards.js replaces block.children with a new <ul> unconditionally' as a risk, but the mitigation chosen (early return for overlay) is correct. The concern is that the default branch is now a maintained copy rather than a thin wrapper. A comment referencing the boilerplate origin and a note in the PR description would reduce future maintenance risk.",
+        "requiredFix": "Add a comment above the default branch: `// Default decoration — keep in sync with boilerplate blocks/cards/cards.js` and note in the PR description that this file now owns the default cards logic."
+      }
+    ],
+    "acceptanceCoverage": [
+      {
+        "requirementId": "EPIC-001-STORY-003-R1",
+        "criterion": "Render exactly four category items using the captured labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION.",
+        "status": "CONDITIONALLY_MET",
+        "notes": "The JS iterates `block.children` generically — it does not hardcode four rows. The four labels are delivered by the authored content table. The implementation correctly avoids hardcoding the count. However, there is no guard against an authored table with fewer or more than four rows; the block will silently render whatever rows are present. This is acceptable per EDS conventions (content drives structure) but should be noted in authoring documentation."
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R2",
+        "criterion": "Expose each captured category item as an interactive link-like item with its destination configurable.",
+        "status": "MET",
+        "notes": "Each row's third cell anchor href is used as the tile destination. The `sanitiseHref` fallback to `#` keeps items keyboard-reachable even when no href is authored. Note: BLK-001 (blocking) means the href sanitisation is currently incomplete."
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R3",
+        "criterion": "Preserve the captured content order of the four category labels.",
+        "status": "MET",
+        "notes": "The `forEach` over `block.children` preserves DOM order, which reflects authored row order. No sorting or reordering is applied."
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R4",
+        "criterion": "Do not introduce additional category labels, media, buttons, descriptive copy, or external data behavior.",
+        "status": "MET",
+        "notes": "The overlay branch skips the image cell (cell[0]) and link cell (cell[2]) body content, rendering only the label text as the anchor text. No fetch calls, no injected copy, no extra elements beyond `<ul>/<li>/<a>`."
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R5",
+        "criterion": "Each category item must be keyboard reachable and activate through standard keyboard interaction.",
+        "status": "MET",
+        "notes": "Native `<a>` elements are used. Tab navigation and Enter activation are provided by the browser without additional JS. The `href='#'` fallback keeps items in the tab order even when no destination is authored."
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R6",
+        "criterion": "Each interactive item must expose an accessible name matching its visible category label, including correct handling of ampersands.",
+        "status": "MET_WITH_CONCERN",
+        "notes": "The accessible name is correctly derived from `textContent` (which the browser decodes from `&#x26;` to `&` before JS runs). The explicit `aria-label` set to the same string is redundant and flagged as NBI-001 (non-blocking). The criterion is technically satisfied but the implementation approach is unnecessarily fragile."
+      }
+    ],
+    "maintainabilityAssessment": {
+      "overallRating": "ACCEPTABLE_WITH_REMEDIATION",
+      "complexity": "Low — the overlay branch is a straightforward DOM construction loop with no branching beyond the href fallback. Cyclomatic complexity is 3 (sanitiseHref) + 2 (decorateOverlay forEach) + 2 (decorate if/return) = manageable.",
+      "separation": "Good — overlay and default paths are cleanly separated by an early return. CSS is fully scoped to `.cards.overlay` with no bleed into the default variant (except the `.cards-wrapper` issue noted in NBI-002).",
+      "testability": "The `sanitiseHref` function is a pure function and is directly unit-testable. The `decorateOverlay` function depends on DOM structure but is straightforward to test with jsdom. No unit tests are included; per the testing philosophy this is acceptable for DOM-manipulation code, but `sanitiseHref` is logic-heavy enough to warrant a keeper unit test.",
+      "duplication": "The default cards branch duplicates boilerplate (NBI-004). Otherwise no significant duplication.",
+      "cssNesting": "The deterministic scan flagged a REVIEW-level note about native CSS nesting. The current flat-selector approach is valid and consistent with the project's existing CSS patterns; native nesting is a style preference, not a defect.",
+      "conventionAdherence": "JS follows airbnb-base style (const/let, arrow functions, template literals avoided in favour of string concatenation, .js imports not applicable here). CSS uses `var()` custom properties, logical properties (`padding-inline`), and `clamp()` — all consistent with guidelines. The desktop-first responsive pattern in the overlay CSS (NBI-003) is the main convention deviation."
+    },
+    "runtimeValidationStatus": "NOT_EXECUTED_IN_CODING_AGENT"
+  },
+  "securityAudit": {
+    "provisionalPassed": false,
+    "summary": "The diff introduces a `sanitiseHref` guard in `blocks/cards/cards.js` intended to block open-redirect and protocol-relative URL attacks (CWE-601). However, the quality audit and a direct read of the delivered `content` field confirm the `startsWith('//')` protocol-relative check is present in the submitted source. After careful re-reading, the check IS present in the code at line 7 (`if (trimmed.startsWith('//')) return '#';`). The quality audit's blocking issue claim appears to be a false positive from the audit agent misreading the diff. Despite that, two genuine security concerns remain: (1) the `sanitiseHref` function accepts any root-relative path starting with `/` without further validation, which is correct for same-origin links but could be abused if the authored content is ever sourced from untrusted input; (2) the `aria-label` override pattern is not a security issue but the redundant attribute could mask future XSS vectors if the label source ever changes to innerHTML. The most significant confirmed finding is that `decorateOverlay` reads `labelCell.textContent` (safe) and `anchor.getAttribute('href')` (sanitised), so no direct XSS sink exists. The `.cards-wrapper` CSS rule targets a platform-injected element outside the block scope, which is a scoping defect but not a security issue. No secrets, no `eval`, no `document.write`, no `innerHTML` with untrusted data, no third-party script injection, and no fetch calls are present. The implementation provisionally fails due to the unresolved question about the blocking issue claim and the medium-severity open-redirect residual risk from the `/`-prefix branch accepting any path (including paths that could be manipulated in a compromised CMS context). Formal hotspot approval is deferred to a human security reviewer.",
+    "vulnerabilities": [
+      {
+        "id": "SEC-001",
+        "severity": "HIGH",
+        "cwe": "CWE-601",
+        "title": "Protocol-relative URL bypass in sanitiseHref (claimed fix — verification required)",
+        "file": "blocks/cards/cards.js",
+        "location": "sanitiseHref, lines 1-18",
+        "description": "The quality audit's blocking issue (BLK-001) asserts that the `startsWith('//')` guard is absent from the delivered source. A direct read of the `content` field shows the guard IS present at line 7. This discrepancy must be resolved by a human reviewer inspecting the actual committed file. If the guard is absent in the repository, protocol-relative URLs such as `//evil.com/path` would pass the `startsWith('/')` check and be returned as-is, enabling an open-redirect attack (CWE-601) where an authored link cell containing `//attacker.com` would redirect users off-site.",
+        "evidence": "sanitiseHref source in content field: `if (trimmed.startsWith('//')) return '#';` appears at line 7, before the `startsWith('/')` branch. The quality audit claims it is absent. Human verification of the committed file is required.",
+        "recommendedFix": "Verify the committed `cards.js` contains `if (trimmed.startsWith('//')) return '#';` immediately before the `trimmed.startsWith('/')` branch. If absent, add it. Add a unit test: `expect(sanitiseHref('//evil.com')).toBe('#');`.",
+        "status": "REQUIRES_HUMAN_VERIFICATION"
+      },
+      {
+        "id": "SEC-002",
+        "severity": "MEDIUM",
+        "cwe": "CWE-601",
+        "title": "Root-relative path acceptance allows same-origin redirect to any path including sensitive admin routes",
+        "file": "blocks/cards/cards.js",
+        "location": "sanitiseHref, root-relative branch",
+        "description": "The function accepts any string beginning with `/` as a valid href. In a compromised or misconfigured CMS authoring environment, an attacker with content-authoring access could set a link cell to `/admin/reset-password?token=...` or similar sensitive paths. While this is not a cross-origin redirect, it is a same-origin open-redirect that could be used in phishing flows. The risk is low in a well-governed CMS but should be documented as an authoring trust boundary.",
+        "evidence": "sanitiseHref returns `trimmed` unchanged for any `trimmed.startsWith('/')` value with no path allowlist.",
+        "recommendedFix": "Document the authoring trust boundary in a code comment. If the block is ever used in a context where link cell content is sourced from user-generated or untrusted input (not just CMS authors), add a path allowlist or restrict to known path prefixes (e.g. `/programs/`).",
+        "status": "INFORMATIONAL"
+      },
+      {
+        "id": "SEC-003",
+        "severity": "LOW",
+        "cwe": "CWE-79",
+        "title": "textContent used correctly — no XSS sink — but future maintainers may introduce innerHTML",
+        "file": "blocks/cards/cards.js",
+        "location": "decorateOverlay, a.textContent and a.setAttribute",
+        "description": "The current implementation correctly uses `a.textContent = labelText` (safe) and `a.setAttribute('aria-label', labelText)` (safe). No `innerHTML` is used with untrusted data. However, the redundant `aria-label` pattern (NBI-001) means the accessible name source is the `aria-label` attribute, not the text node. If a future maintainer changes `a.textContent` to `a.innerHTML` for rich-text support without updating the `aria-label` logic, the accessible name would remain safe while the DOM would be vulnerable. This is a latent risk, not a current vulnerability.",
+        "evidence": "a.textContent = labelText (line ~47); a.setAttribute('aria-label', labelText) (line ~50). No innerHTML present.",
+        "recommendedFix": "Remove the redundant `aria-label` (per NBI-001) and add a comment: `// textContent is XSS-safe; do not replace with innerHTML`. This eliminates the latent risk and simplifies the accessible name computation.",
+        "status": "LATENT"
+      }
+    ],
+    "securityHotspots": [
+      {
+        "id": "HOTSPOT-001",
+        "category": "Open Redirect / URL Validation",
+        "file": "blocks/cards/cards.js",
+        "location": "sanitiseHref function (lines 1-18)",
+        "description": "The `sanitiseHref` function is the sole URL validation boundary for all authored hrefs in the overlay variant. It is a security-critical pure function. The protocol-relative bypass fix (SEC-001) must be confirmed present. The function does not validate `javascript:` URIs — however, `javascript:` does not start with `//`, `/`, or `https?://`, so it correctly falls through to `return '#'`. The `data:` URI scheme is similarly rejected. The function appears sound for its stated purpose once the `//` guard is confirmed.",
+        "reviewRequired": true,
+        "reviewNote": "Human reviewer must confirm the `startsWith('//')` guard exists in the committed file. Run: `grep -n \"startsWith('//')\" blocks/cards/cards.js`. Expected output: a line containing `if (trimmed.startsWith('//')) return '#';`. Also verify `javascript:` and `data:` URIs are rejected by running the unit test suite.",
+        "formalApprovalDeferred": true
+      },
+      {
+        "id": "HOTSPOT-002",
+        "category": "DOM Sink — anchor href assignment",
+        "file": "blocks/cards/cards.js",
+        "location": "decorateOverlay, `a.href = href` (line ~44)",
+        "description": "The `a.href` property is set from `sanitiseHref(rawHref)`. The sanitiseHref function is the trust boundary. If sanitiseHref is bypassed or incorrectly implemented, this assignment becomes an open-redirect or XSS sink. The current implementation routes all href values through sanitiseHref before assignment, which is the correct pattern. No direct assignment from untrusted input occurs.",
+        "reviewRequired": true,
+        "reviewNote": "Confirm that no code path sets `a.href` without first passing through `sanitiseHref`. Confirm `sanitiseHref` rejects `javascript:`, `data:`, `vbscript:`, and `//` prefixes.",
+        "formalApprovalDeferred": true
+      },
+      {
+        "id": "HOTSPOT-003",
+        "category": "CSS Absolute Positioning — UI Redress",
+        "file": "blocks/cards/cards.css",
+        "location": ".cards.overlay .cards-overlay-list (position: absolute, z-index: 2)",
+        "description": "The overlay list uses `position: absolute; z-index: 2` to overlap the hero section. This is a UI pattern, not a clickjacking vector in itself, but if the block is ever embedded in an iframe context or if the z-index is raised significantly, it could contribute to UI redress attacks. The current z-index of 2 is low and the block is a first-party EDS block, so the risk is negligible. Noted for completeness.",
+        "reviewRequired": false,
+        "reviewNote": "No action required unless the block is used in iframe-embedded contexts.",
+        "formalApprovalDeferred": true
+      }
+    ],
+    "blockingFindings": [
+      {
+        "id": "BF-001",
+        "severity": "BLOCKING",
+        "title": "Unresolved discrepancy: quality audit claims protocol-relative URL guard is absent; source code shows it present",
+        "description": "The quality audit's blocking issue (BLK-001) states the `startsWith('//')` guard is absent from the delivered `cards.js` content. A direct read of the `content` field in the diff shows the guard IS present at line 7. This contradiction cannot be resolved by automated review alone. If the quality audit is correct and the committed file lacks the guard, a CWE-601 open-redirect vulnerability exists. A human reviewer must inspect the actual committed file before this PR is merged.",
+        "file": "blocks/cards/cards.js",
+        "requiredAction": "Run `grep -n \"startsWith('//')\" blocks/cards/cards.js` on the committed branch. If the line is absent, add `if (trimmed.startsWith('//')) return '#';` immediately before the `trimmed.startsWith('/')` branch and add a unit test asserting `sanitiseHref('//evil.com') === '#'`.",
+        "canMerge": false
+      },
+      {
+        "id": "BF-002",
+        "severity": "BLOCKING",
+        "title": "No unit test for sanitiseHref — security-critical pure function lacks regression coverage",
+        "description": "The `sanitiseHref` function is the sole URL validation boundary for all authored hrefs. It is a pure function with clear inputs and outputs, making it directly unit-testable per the testing philosophy ('Write unit tests for logic-heavy utility functions'). The absence of a unit test means future modifications to the function (e.g. adding new allowed schemes, changing the `//` guard) have no automated regression safety net. Given the security-critical nature of the function, a keeper unit test is required before merge.",
+        "file": "blocks/cards/cards.js",
+        "requiredAction": "Add `test/blocks/cards/sanitiseHref.test.js` with cases covering: `'#'` passthrough, `/path` passthrough, `https://example.com` passthrough, `http://example.com` passthrough, `//evil.com` → `'#'`, `javascript:alert(1)` → `'#'`, `data:text/html,...` → `'#'`, `null` → `'#'`, `undefined` → `'#'`, empty string → `'#'`, relative path `foo/bar` → `'#'`.",
+        "canMerge": false
+      }
+    ],
+    "formalHotspotApproval": "PENDING_HUMAN_OR_SECURITY_REVIEWER",
+    "runtimeScannersExecuted": false
+  },
+  "accessibilityAudit": {
+    "passed": false,
+    "summary": "The implementation satisfies most functional acceptance criteria and applies correct EDS patterns, but two blocking issues prevent a passing verdict: (1) the `aria-label` on each tile link is redundant-but-harmless in isolation, yet the link's `textContent` already provides the accessible name — the real blocker is that all four card images carry empty `alt=\"\"` attributes in the live source, and the overlay variant intentionally omits images, so no image-alt issue is introduced by this code; however (2) the CSS uses a `(width < 900px)` media-query syntax that is not universally supported in older evergreen browsers and deviates from the project's documented `(width >= N)` mobile-first convention, which is a code-quality blocking issue per the review checklist. Additionally, the `aria-label` duplicates `textContent` exactly, which is harmless but adds maintenance noise. No browser interaction, axe, or Lighthouse tests were executed; findings are based solely on static code and evidence analysis.",
+    "blockingIssues": [],
+    "criteriaCoverage": [
+      {
+        "criterionId": "EPIC-001-STORY-003-R1",
+        "description": "Render exactly four category items using the captured labels.",
+        "status": "PARTIAL",
+        "evidence": "The JS iterates `block.children` generically — it does not hardcode four rows. If the authored document contains exactly four rows the output will be four tiles. However, there is no guard that enforces exactly four items; extra or missing rows will silently produce the wrong count. The acceptance criterion says 'exactly four', so a defensive assertion or early-exit when `rows.length !== 4` would make the contract explicit. This is a low-severity gap, not a blocker, but coverage is not fully provable without browser execution.",
+        "risk": "LOW"
+      },
+      {
+        "criterionId": "EPIC-001-STORY-003-R2",
+        "description": "Each item is an interactive link with configurable destination.",
+        "status": "MET",
+        "evidence": "Each `<li>` contains a native `<a href>` element. The href is sourced from the authored link cell anchor via `sanitiseHref`. Fallback to `#` keeps the element interactive even when no URL is authored. Native `<a>` elements are keyboard reachable by default (Tab focus, Enter activation)."
+      },
+      {
+        "criterionId": "EPIC-001-STORY-003-R3",
+        "description": "Preserve captured content order.",
+        "status": "MET",
+        "evidence": "`[...block.children].forEach` iterates DOM children in document order, which reflects authored row order. No sorting or reordering is applied."
+      },
+      {
+        "criterionId": "EPIC-001-STORY-003-R4",
+        "description": "Do not introduce additional labels, media, buttons, descriptive copy, or external data.",
+        "status": "MET",
+        "evidence": "The overlay branch skips the image cell (cells[0]) and the link cell body text; only `labelCell.textContent` is used. No fetch calls, no extra DOM nodes beyond `<ul>/<li>/<a>`. The default cards branch is unchanged."
+      },
+      {
+        "criterionId": "EPIC-001-STORY-003-R5",
+        "description": "Each item keyboard reachable and activatable.",
+        "status": "MET — not browser-verified",
+        "evidence": "Native `<a>` elements with valid `href` values are in the natural tab order and activate on Enter. `focus-visible` outline is defined in CSS. Cannot confirm without browser execution."
+      },
+      {
+        "criterionId": "EPIC-001-STORY-003-R6",
+        "description": "Accessible name matches visible label including & characters.",
+        "status": "MET — with minor redundancy note",
+        "evidence": "The `aria-label` is set to `labelCell.textContent.trim()`. Because the browser decodes `&#x26;` to `&` before JS runs, `textContent` will contain the literal `&` character. The `aria-label` therefore correctly exposes `ARTS & HUMANITIES` to assistive technology. The `aria-label` is redundant with `textContent` (both are identical), which is harmless per ARIA spec but adds noise. No blocking issue."
+      }
+    ],
+    "wcagRisks": [
+      {
+        "wcagCriterion": "1.4.3 Contrast (Minimum) — AA",
+        "severity": "RISK — cannot verify without browser",
+        "description": "The tile link text is `var(--clr-white, #fff)` on `var(--overlay-tile-bg, rgb(0 0 0 / 60%))`. A 60% opaque black overlay on the hero video frame produces a computed background that depends on the underlying video frame colour at the moment of measurement. Static analysis cannot confirm a 4.5:1 ratio. The hover/focus state uses `rgb(207 16 45 / 90%)` (Disney red) — white text on this red at 90% opacity over an unknown background also cannot be confirmed without rendering. Authors should verify contrast with the actual hero image.",
+        "recommendation": "Increase `--overlay-tile-bg` opacity to at least 70–75% black, or add a solid dark fallback. Test with the actual hero video poster frame."
+      },
+      {
+        "wcagCriterion": "2.4.7 Focus Visible — AA",
+        "severity": "LOW RISK",
+        "description": "`a:focus-visible` applies a 3px white outline with `-3px` offset (inset). An inset outline on a white-text-on-dark tile is visible, but the outline colour (`--clr-white`) matches the text colour, which may reduce perceptibility against the tile background. WCAG 2.2 SC 2.4.11 (Focus Appearance, AA) requires a minimum 3:1 contrast ratio for the focus indicator against adjacent colours.",
+        "recommendation": "Consider a contrasting outline colour (e.g. Disney red `#cf102d`) or a dual-colour outline (white + dark border) to ensure the focus ring is distinguishable from both the tile background and the white text."
+      },
+      {
+        "wcagCriterion": "1.3.1 Info and Relationships — A",
+        "severity": "LOW RISK",
+        "description": "The overlay list is a `<ul>` of `<li>` elements, which correctly conveys list semantics. No heading is associated with the category group. The surrounding page context (hero section) provides implicit grouping, but a visually hidden heading or `aria-label` on the `<ul>` (e.g. `aria-label=\"Program categories\"`) would make the group's purpose explicit to screen reader users navigating by landmark or list.",
+        "recommendation": "Add `aria-label=\"Program categories\"` to the `<ul class=\"cards-overlay-list\">` element."
+      },
+      {
+        "wcagCriterion": "2.1.1 Keyboard — A",
+        "severity": "NOTE — not browser-verified",
+        "description": "Native `<a>` elements satisfy keyboard operability. The absolute positioning does not affect tab order (DOM order is preserved). Cannot confirm without browser execution that no z-index or overflow issue traps focus."
+      }
+    ],
+    "seoFindings": [
+      {
+        "id": "SEO-001",
+        "severity": "LOW",
+        "description": "The four category tiles are rendered as `<a>` elements with `textContent` labels. These are crawlable internal links. The hrefs sourced from the authored link cells point to `/programs/performing-arts` etc., which are valid root-relative paths. No `rel` attributes are added, which is correct for internal links.",
+        "status": "No action required"
+      },
+      {
+        "id": "SEO-002",
+        "severity": "LOW",
+        "description": "The overlay variant omits the card images that are present in the authored document. The live source confirms images exist in the `cards.overlay` block (e.g. `media_1788c8ed…avif`). By skipping `cells[0]` the implementation intentionally excludes these images from the rendered output. This means the images are not indexed as part of the category tiles. If image SEO for program categories is a requirement, the images should be included (even if visually hidden behind the label overlay).",
+        "recommendation": "Confirm with content owners whether program category images should be included as background images or hidden `<img>` elements for SEO purposes. The current implementation matches the visual evidence (label-only tiles) but discards authored image assets."
+      },
+      {
+        "id": "SEO-003",
+        "severity": "INFO",
+        "description": "The category labels (`PERFORMING ARTS`, `ARTS & HUMANITIES`, etc.) are the link text. These are descriptive and keyword-relevant. No duplicate or generic link text (e.g. 'click here') is present. Accessible names match link text, which is consistent with SEO best practice for anchor text."
+      }
+    ],
+    "metadataAssessment": {
+      "blockName": "cards-overlay",
+      "authoringContract": "The block is authored as 'Cards (overlay)' which EDS normalises to class `cards overlay`. The JS correctly guards on `block.classList.contains('overlay')`. The authored table structure (3 cells per row: image, label, link) is correctly parsed.",
+      "backwardCompatibility": "The default cards decoration path is unchanged. The `overlay` branch returns early, preventing any interference with existing cards usage. PASS.",
+      "contentGap": "The authored document captures only two rows (PERFORMING ARTS, ARTS & HUMANITIES) due to evidence truncation. The implementation handles all rows generically. The live source confirms all four labels exist. No hardcoded row count. PASS.",
+      "sectionMetadata": "No section metadata is consumed or modified by this block. The hero-video section's `position: relative` and `padding-bottom: 200px` (required for the absolute overlay) are set by the hero-video block's CSS, not by this block. This is an implicit dependency that is noted in the implementation risks but not mitigated in code.",
+      "hlxignore": "No test files are introduced. No `.hlxignore` changes are required.",
+      "aemjsModification": "aem.js is not modified. PASS."
+    },
+    "executableAccessibilityScan": "PENDING_POST_COMMIT",
+    "executableSeoPerformanceScan": "PENDING_POST_COMMIT"
+  },
+  "correctionAttempts": 2,
+  "disposition": {
+    "status": "FAILED_QUALITY_GATE",
+    "failedQualityGate": true,
+    "note": "Maximum correction attempts reached. The latest scoped code is committed to the feature branch for human review; it must not be merged until findings are resolved or formally accepted."
+  },
+  "adobeSkillsRef": "ffcb3fc0f041d2103ca5ada67659febc7df17d31",
+  "runtimeChecks": {
+    "repository-lint": "PENDING_POST_COMMIT",
+    "unit-tests": "PENDING_POST_COMMIT",
+    "sonarqube-quality-gate": "PENDING_POST_COMMIT",
+    "sonarqube-vulnerabilities": "PENDING_POST_COMMIT",
+    "sonarqube-security-hotspots": "PENDING_POST_COMMIT",
+    "codeql-sast": "PENDING_POST_COMMIT",
+    "dependency-review": "PENDING_POST_COMMIT",
+    "secret-scan": "PENDING_POST_COMMIT",
+    "eds-browser-validation": "PENDING_POST_COMMIT",
+    "accessibility": "PENDING_POST_COMMIT",
+    "seo-performance": "PENDING_POST_COMMIT"
+  }
+}
