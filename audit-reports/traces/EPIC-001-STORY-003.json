@@ -1,0 +1,286 @@
+{
+  "schemaVersion": "eds-story-trace/v3",
+  "runId": "eds-code-1788724516563",
+  "generatedAt": "2026-09-06T19:58:25.024Z",
+  "repository": {
+    "repo": "ShubhadipChakrabarti/aem-boilerplate",
+    "branch": "migration-epic-001",
+    "expectedHeadSha": "1d8226b8658a3c59858ea3173f26e3e88082854f",
+    "inspectedBaseSha": "1d8226b8658a3c59858ea3173f26e3e88082854f"
+  },
+  "epicId": "EPIC-001",
+  "story": {
+    "id": "EPIC-001-STORY-003",
+    "title": "Develop EDS block for Program categories",
+    "ticketType": "block-development",
+    "scopeUrl": "https://www.disneycampus.com",
+    "outcome": "Reusable Program categories block implemented for the homepage with the captured four-item category set.",
+    "type": "functional",
+    "evidence": {
+      "pageUrl": "https://www.disneycampus.com",
+      "sectionTitle": "Program categories",
+      "sectionId": "section-03-program-category-links",
+      "positionContext": {
+        "anchor": "Program categories",
+        "after": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+        "before": "STUDENT TRAVEL PROGRAMS & FIELD TRIPS",
+        "landmark": "main"
+      },
+      "layoutHints": {
+        "discoveryLayoutType": "Not captured in discovery report",
+        "discoveryBlockMatch": "Not captured in discovery report"
+      },
+      "detectedCounts": {
+        "sectionInteractiveCount": 4,
+        "sectionTextElementCount": 4,
+        "sectionMediaByType": {}
+      },
+      "technicalSignals": {
+        "hasHeaderLandmark": true,
+        "hasFooterLandmark": true,
+        "headingSample": [
+          "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+          "PERFORMING ARTS",
+          "ARTS &#x26; HUMANITIES",
+          "SCIENCE &#x26; TECHNOLOGY",
+          "LEADERSHIP &#x26; INNOVATION",
+          "STUDENT TRAVEL PROGRAMS &#x26; FIELD TRIPS",
+          "WHERE STUDENTS LOVE LEARNING",
+          "WEST COAST CAMPUS",
+          "EAST COAST CAMPUS",
+          "THE DISNEY DIFFERENCE"
+        ]
+      },
+      "uncaptured": [
+        "Details missing from evidence must remain uncaptured and not assumed."
+      ],
+      "captureSources": [
+        "discovery-report",
+        "live-html-scan"
+      ],
+      "codingAgentNotes": [
+        "Use positionContext anchors (after/before titles) rather than numeric section indexes.",
+        "Treat uncaptured fields as configurable; do not hardcode assumptions."
+      ],
+      "enrichmentSource": "discovery-evidence"
+    },
+    "acceptanceCriteria": [
+      "Render exactly four category items using the captured labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION.",
+      "Expose each captured category item as an interactive link-like item with its destination configurable because captured link targets were not provided.",
+      "Preserve the captured content order of the four category labels.",
+      "Do not introduce additional category labels, media, buttons, descriptive copy, or external data behavior not present in the provided evidence."
+    ],
+    "userStory": {
+      "asA": "homepage visitor exploring Disney Imagination Campus offerings",
+      "iWant": "to see the four program categories presented together as clear interactive choices",
+      "soThat": "I can quickly identify the type of student travel program I want to explore"
+    },
+    "description": "Build a reusable EDS block for the Program categories area on the Disney Imagination Campus homepage. The block renders four captured interactive category labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION. Destination URLs were not captured, so link targets must remain configurable rather than hardcoded.",
+    "accessibilityCriteria": [
+      "Each category item must be keyboard reachable and activate through standard keyboard interaction.",
+      "Each interactive item must expose an accessible name matching its visible category label, including correct handling of ampersands in ARTS & HUMANITIES and SCIENCE & TECHNOLOGY."
+    ],
+    "enrichmentSource": "llm",
+    "businessRules": []
+  },
+  "canonicalBlockName": "cards-overlay",
+  "implementationAnalysis": {
+    "canonicalBlockName": "cards-overlay",
+    "canonicalScopeName": "cards-overlay",
+    "scopeType": "BLOCK",
+    "implementationMode": "UPDATE_EXISTING",
+    "rationale": "The Content Agent document (finalAuthoringContract) contains a grounded block entry for 'Cards (overlay)' with canonicalBlockName 'cards' and selector 'div.cards.overlay'. The authored table has two visible rows (PERFORMING ARTS and ARTS & HUMANITIES) but the live-page evidence confirms all four items (PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, LEADERSHIP & INNOVATION) are rendered by this same block instance (className 'cards overlay block size-4 clickable overlay-animation'). The story requires exactly those four items as interactive link-like items with configurable destinations. The repository already contains blocks/cards/cards.js and blocks/cards/cards.css (boilerplate implementation). The live site uses an 'overlay' variant class that the boilerplate cards block does not implement. The correct approach is to extend the existing cards block with an 'overlay' variant: add variant-specific CSS rules inside blocks/cards/cards.css and, if needed, minimal variant-aware JS logic inside blocks/cards/cards.js. No new block folder is created; the canonical EDS pattern for variants is a CSS class on the block header row (e.g. 'Cards (overlay)'). The authored table structure from the Content Agent is the authoritative HTML model: each row has three cells — [image/picture], [heading text], [link anchor] — matching the sourceText pattern 'PERFORMING ARTS https://...programs/performing-arts'. Because link targets were not captured for all four items, the JS decorator must read the href from the authored anchor in each row's third cell and fall back to '#' when absent, keeping destinations fully configurable by authors. Accessibility: each card item must be keyboard-reachable; the overlay variant renders items as full-card anchor elements so the <a> wrapping the card satisfies keyboard reachability and exposes the visible label as the accessible name. Ampersands in 'ARTS & HUMANITIES' and 'SCIENCE & TECHNOLOGY' are HTML-entity-encoded in the source (&#x26;) and must be decoded to their text equivalent in the accessible name — standard textContent retrieval handles this automatically.",
+    "filePlan": [
+      {
+        "path": "blocks/cards/cards.js",
+        "operation": "update",
+        "reason": "Extend the existing decorate function to detect the 'overlay' variant class on the block element. When present, transform each authored row (three cells: picture, heading, link) into a full-card anchor <li> element. Read the href from the third cell's <a> element (falling back to '#' when absent) and set it as the card link wrapping the entire card. Set the accessible name from the heading cell's textContent so screen readers announce the visible label including decoded ampersands. Preserve the existing non-overlay code path unchanged so other cards usages are unaffected."
+      },
+      {
+        "path": "blocks/cards/cards.css",
+        "operation": "update",
+        "reason": "Add CSS rules scoped to '.cards.overlay' for the overlay variant. Style the four-item grid of category label cards: full-width stacked layout on mobile (single column), transitioning to a 2×2 or 4-column row on wider viewports matching the live-page evidence (grid-template-columns: 780px single column at 780px viewport, implying stacked). Each card item is a block-level anchor with the category label text visible. Include :focus-visible outline for keyboard accessibility. Do not alter existing .cards rules that govern the non-overlay boilerplate behaviour."
+      }
+    ],
+    "visualAnalysis": {
+      "blockLocation": "Overlaid below the hero video within the same section (div.section.full-width.video-container.herovideo-container.cards-container). The cards block sits at y=543, height=2244px at 780px viewport width, meaning each of the four stacked cards is approximately 546px tall (grid-template-rows: 546px 546px 546px 546px confirmed in computed styles on the <ul>).",
+      "layout": "At 780px viewport: single-column grid (grid-template-columns: 780px), four rows each 546px tall, gap 20px, margin-top 40px. Each card is a full-bleed tall panel. Desktop layout not captured but the 'overlay' class and 'size-4' modifier on the live block suggest a 4-up horizontal layout at wider breakpoints.",
+      "typography": "Category labels rendered as headings. Live page h4 computed style: font-family InspireTWDCMedium, font-size 24px, font-weight 500, line-height 32px, text-transform uppercase. The boilerplate repo uses InspireTWDC font family via styles/styles.css; the exact InspireTWDCMedium sub-family is a live-site detail not present in the repo's fonts.css — this is an uncaptured visual detail that must be reported, not invented.",
+      "interactivity": "Block has class 'clickable overlay-animation' on the live site indicating JS-driven click and animation behaviour. The story requires items to be interactive link-like elements; implementing each card as an <a> element satisfies this without replicating uncaptured animation logic.",
+      "accessibility": "Each card must be keyboard reachable (Tab key) and activate via Enter/Space. Wrapping the card content in an <a> with href satisfies both. The accessible name is derived from the visible heading text; textContent automatically decodes HTML entities so '&#x26;' becomes '&' in the accessible name.",
+      "uncapturedDetails": [
+        "Background images per card (each 546px-tall card likely has a full-bleed background image — not captured in evidence; must not be invented).",
+        "Overlay animation class behaviour (CSS animation/transition on hover — not captured).",
+        "InspireTWDCMedium font sub-family not present in repo fonts.css.",
+        "Exact desktop/wide-viewport column layout not captured (mobile-first single-column is safe default).",
+        "Destination URLs for SCIENCE & TECHNOLOGY and LEADERSHIP & INNOVATION not captured in Content Agent rows."
+      ]
+    },
+    "requirementTraceability": [
+      {
+        "requirementId": "EPIC-001-STORY-003-R1",
+        "description": "Render exactly four category items using the captured labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R2",
+        "description": "Expose each captured category item as an interactive link-like item with its destination configurable because captured link targets were not provided.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R3",
+        "description": "Preserve the captured content order of the four category labels.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R4",
+        "description": "Do not introduce additional category labels, media, buttons, descriptive copy, or external data behavior not present in the provided evidence.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R5",
+        "description": "Each category item must be keyboard reachable and activate through standard keyboard interaction.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R6",
+        "description": "Each interactive item must expose an accessible name matching its visible category label, including correct handling of ampersands in ARTS & HUMANITIES and SCIENCE & TECHNOLOGY.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      }
+    ],
+    "assumptions": [
+      "The Content Agent table for 'Cards (overlay)' shows only two rows (PERFORMING ARTS, ARTS & HUMANITIES) but the live-page evidence and story acceptance criteria confirm four items. The two missing rows (SCIENCE & TECHNOLOGY, LEADERSHIP & INNOVATION) are a Content Agent authoring omission — the block implementation must support N rows generically so all four authored rows render correctly when the author completes the document.",
+      "Each authored row has three cells: [picture/image], [heading text], [link anchor]. The JS reads these positionally. If a row has fewer cells the decorator degrades gracefully.",
+      "The 'overlay' variant is activated by the block header text 'Cards (overlay)' which EDS converts to the CSS class 'overlay' on the block element alongside 'cards'.",
+      "No background images are authored in the Content Agent table rows; the live-site per-card background images are a visual detail not present in the evidence and must not be hardcoded.",
+      "The boilerplate cards.js and cards.css are safe to modify because no other story in this epic has claimed them, and the overlay variant code is strictly additive (guarded by an .overlay class check)."
+    ],
+    "risks": [
+      "Content Agent omission: only two of four rows are present in the authored table. The workflow should flag this to the Content Agent so all four rows are authored before the page is published.",
+      "Uncaptured per-card background images: the live site shows tall full-bleed image cards; without captured image assets the overlay variant will render as text-only cards. This is a known gap and must not be filled with invented assets.",
+      "The live site uses 'clickable overlay-animation' classes that imply additional JS/CSS animation behaviour not present in the repository and not captured in evidence. Implementing animation is out of scope for this story; the risk is a visual difference from the live site.",
+      "InspireTWDCMedium font sub-family is used for category label headings on the live site but is absent from the repo's fonts.css. The rendered font will fall back to InspireTWDC/arial. This is a font-loading gap outside this story's scope.",
+      "The existing boilerplate cards.js uses a simple pattern (picture-only cell → cards-card-image class, else → cards-card-body class). Adding overlay logic must not break this existing classification for non-overlay usages."
+    ],
+    "rejectedPlanPaths": [],
+    "normalization": {
+      "status": "MODEL_JSON_NORMALIZED",
+      "issue": null,
+      "modelOutputAccepted": true
+    },
+    "visualEvidenceAvailable": true,
+    "browserLimitations": []
+  },
+  "analysisRecord": {
+    "runId": "eds-code-1788724516563",
+    "epicId": "EPIC-001",
+    "storyId": "EPIC-001-STORY-003",
+    "recordedAt": "2026-09-06T19:57:58.422Z",
+    "implementationMode": "UPDATE_EXISTING",
+    "canonicalBlockName": "cards-overlay",
+    "canonicalScopeName": "cards-overlay",
+    "scopeType": "BLOCK",
+    "repositoryHeadSha": "1d8226b8658a3c59858ea3173f26e3e88082854f",
+    "conciseReason": "The Content Agent document (finalAuthoringContract) contains a grounded block entry for 'Cards (overlay)' with canonicalBlockName 'cards' and selector 'div.cards.overlay'. The authored table has two visible rows (PERFORMING ARTS and ARTS & HUMANITIES) but the live-page evidence confirms all four items (PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, LEADERSHIP & INNOVATION) are rendered by this same block instance (className 'cards overlay block size-4 clickable overlay-animation'). The story requires exactly those four items as interactive link-like items with configurable destinations. The repository already contains blocks/cards/cards.js and blocks/cards/cards.css (boilerplate implementation). The live site uses an 'overlay' variant class that the boilerplate cards block does not implement. The correct approach is to extend the existing cards block with an 'overlay' variant: add variant-specific CSS rules inside blocks/cards/cards.css and, if needed, minimal variant-aware JS logic inside blocks/cards/cards.js. No new block folder is created; the canonical EDS pattern for variants is a CSS class on the block header row (e.g. 'Cards (overlay)'). The authored table structure from the Content Agent is the authoritative HTML model: each row has three cells — [image/picture], [heading text], [link anchor] — matching the sourceText pattern 'PERFORMING ARTS https://...programs/performing-arts'. Because link targets were not captured for all four items, the JS decorator must read the href from the authored anchor in each row's third cell and fall back to '#' when absent, keeping destinations fully configurable by authors. Accessibility: each card item must be keyboard-reachable; the overlay variant renders items as full-card anchor elements so the <a> wrapping the card satisfies keyboard reachability and exposes the visible label as the accessible name. Ampersands in 'ARTS & HUMANITIES' and 'SCIENCE & TECHNOLOGY' are HTML-entity-encoded in the source (&#x26;) and must be decoded to their text equivalent in the accessible name — standard textContent retrieval handles this automatically.",
+    "requirementTraceability": [
+      {
+        "requirementId": "EPIC-001-STORY-003-R1",
+        "description": "Render exactly four category items using the captured labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R2",
+        "description": "Expose each captured category item as an interactive link-like item with its destination configurable because captured link targets were not provided.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R3",
+        "description": "Preserve the captured content order of the four category labels.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R4",
+        "description": "Do not introduce additional category labels, media, buttons, descriptive copy, or external data behavior not present in the provided evidence.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R5",
+        "description": "Each category item must be keyboard reachable and activate through standard keyboard interaction.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-003-R6",
+        "description": "Each interactive item must expose an accessible name matching its visible category label, including correct handling of ampersands in ARTS & HUMANITIES and SCIENCE & TECHNOLOGY.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      }
+    ],
+    "visualSummary": {
+      "blockLocation": "Overlaid below the hero video within the same section (div.section.full-width.video-container.herovideo-container.cards-container). The cards block sits at y=543, height=2244px at 780px viewport width, meaning each of the four stacked cards is approximately 546px tall (grid-template-rows: 546px 546px 546px 546px confirmed in computed styles on the <ul>).",
+      "layout": "At 780px viewport: single-column grid (grid-template-columns: 780px), four rows each 546px tall, gap 20px, margin-top 40px. Each card is a full-bleed tall panel. Desktop layout not captured but the 'overlay' class and 'size-4' modifier on the live block suggest a 4-up horizontal layout at wider breakpoints.",
+      "typography": "Category labels rendered as headings. Live page h4 computed style: font-family InspireTWDCMedium, font-size 24px, font-weight 500, line-height 32px, text-transform uppercase. The boilerplate repo uses InspireTWDC font family via styles/styles.css; the exact InspireTWDCMedium sub-family is a live-site detail not present in the repo's fonts.css — this is an uncaptured visual detail that must be reported, not invented.",
+      "interactivity": "Block has class 'clickable overlay-animation' on the live site indicating JS-driven click and animation behaviour. The story requires items to be interactive link-like elements; implementing each card as an <a> element satisfies this without replicating uncaptured animation logic.",
+      "accessibility": "Each card must be keyboard reachable (Tab key) and activate via Enter/Space. Wrapping the card content in an <a> with href satisfies both. The accessible name is derived from the visible heading text; textContent automatically decodes HTML entities so '&#x26;' becomes '&' in the accessible name.",
+      "uncapturedDetails": [
+        "Background images per card (each 546px-tall card likely has a full-bleed background image — not captured in evidence; must not be invented).",
+        "Overlay animation class behaviour (CSS animation/transition on hover — not captured).",
+        "InspireTWDCMedium font sub-family not present in repo fonts.css.",
+        "Exact desktop/wide-viewport column layout not captured (mobile-first single-column is safe default).",
+        "Destination URLs for SCIENCE & TECHNOLOGY and LEADERSHIP & INNOVATION not captured in Content Agent rows."
+      ]
+    },
+    "normalization": {
+      "status": "MODEL_JSON_NORMALIZED",
+      "issue": null,
+      "modelOutputAccepted": true
+    },
+    "adobeSkillsRef": "32b0bb2c01157ad7c7e69575069a6b421f72beeb"
+  },
+  "browserEvidence": {
+    "url": "https://www.disneycampus.com",
+    "captureMode": "spark-playwright-mcp-computed-styles-v3",
+    "accessible": true,
+    "limitations": []
+  },
+  "changedFiles": [
+    {
+      "path": "blocks/cards/cards.js",
+      "operation": "update",
+      "reason": null
+    },
+    {
+      "path": "blocks/cards/cards.css",
+      "operation": "update",
+      "reason": null
+    }
+  ],
+  "staticScan": {
+    "passed": true,
+    "issues": [],
+    "blockingIssues": [],
+    "scanner": "deterministic-policy-v3",
+    "runtimeExecuted": false
+  },
+  "qualityAudit": null,
+  "securityAudit": null,
+  "accessibilityAudit": null,
+  "correctionAttempts": 0,
+  "disposition": {
+    "status": "PROVISIONAL_GATE_PASSED",
+    "failedQualityGate": false,
+    "note": "Deterministic static scan and contract validation passed. Streamlined direct implementation mode (Sonar/Security/A11y LLM review stage bypassed for speed)."
+  },
+  "adobeSkillsRef": "32b0bb2c01157ad7c7e69575069a6b421f72beeb",
+  "runtimeChecks": {
+    "repository-lint": "PENDING_POST_COMMIT",
+    "unit-tests": "PENDING_POST_COMMIT",
+    "sonarqube-quality-gate": "PENDING_POST_COMMIT",
+    "sonarqube-vulnerabilities": "PENDING_POST_COMMIT",
+    "sonarqube-security-hotspots": "PENDING_POST_COMMIT",
+    "codeql-sast": "PENDING_POST_COMMIT",
+    "dependency-review": "PENDING_POST_COMMIT",
+    "secret-scan": "PENDING_POST_COMMIT",
+    "eds-browser-validation": "PENDING_POST_COMMIT",
+    "accessibility": "PENDING_POST_COMMIT",
+    "seo-performance": "PENDING_POST_COMMIT"
+  }
+}

@@ -25,3 +25,69 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+.cards {
+  &.overlay > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-block-start: 40px;
+  }
+
+  &.overlay > ul > li {
+    border: none;
+    background-color: transparent;
+  }
+
+  &.overlay > ul > li > a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    min-block-size: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &.overlay > ul > li > a:focus-visible {
+    outline: 3px solid var(--link-color, #0070f3);
+    outline-offset: 2px;
+  }
+
+  &.overlay > ul > li > a .cards-overlay-image {
+    line-height: 0;
+    flex: 1;
+  }
+
+  &.overlay > ul > li > a .cards-overlay-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: unset;
+  }
+
+  &.overlay > ul > li > a .cards-overlay-label {
+    padding: 16px;
+    font-family: InspireTWDCMedium, InspireTWDC, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    text-transform: uppercase;
+  }
+
+  @media (width >= 600px) {
+    &.overlay > ul {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (width >= 900px) {
+    &.overlay > ul {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
