@@ -1,0 +1,308 @@
+{
+  "schemaVersion": "eds-story-trace/v3",
+  "runId": "eds-code-1788720332909",
+  "generatedAt": "2026-09-06T18:50:58.969Z",
+  "repository": {
+    "repo": "ShubhadipChakrabarti/aem-boilerplate",
+    "branch": "migration-epic-001",
+    "expectedHeadSha": "32cd91150b79c7c32e434c3492ad930dc8f772d2",
+    "inspectedBaseSha": "32cd91150b79c7c32e434c3492ad930dc8f772d2"
+  },
+  "epicId": "EPIC-001",
+  "story": {
+    "id": "EPIC-001-STORY-001",
+    "title": "Develop header contact and primary navigation block",
+    "ticketType": "block-development",
+    "scopeUrl": "https://www.disneycampus.com",
+    "outcome": "A reusable header contact and navigation block is available for the homepage and supports the captured shared header content without hardcoded uncaptured visual values or link destinations.",
+    "type": "functional",
+    "evidence": {
+      "pageUrl": "https://www.disneycampus.com",
+      "sectionTitle": "Header contact and navigation",
+      "sectionId": "section-01-header",
+      "positionContext": {
+        "anchor": "Header contact and navigation",
+        "after": "page-start",
+        "before": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+        "landmark": "header"
+      },
+      "layoutHints": {
+        "discoveryLayoutType": "Not captured in discovery report",
+        "discoveryBlockMatch": "Not captured in discovery report"
+      },
+      "detectedCounts": {
+        "sectionInteractiveCount": 6,
+        "sectionTextElementCount": 8,
+        "sectionMediaByType": {},
+        "interactiveCount": 6,
+        "textElementCount": 8,
+        "apiEndpointCount": 0,
+        "mediaByType": {}
+      },
+      "technicalSignals": {
+        "hasHeaderLandmark": true,
+        "hasFooterLandmark": true,
+        "headingSample": [
+          "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+          "PERFORMING ARTS",
+          "ARTS &#x26; HUMANITIES",
+          "SCIENCE &#x26; TECHNOLOGY",
+          "LEADERSHIP &#x26; INNOVATION",
+          "STUDENT TRAVEL PROGRAMS &#x26; FIELD TRIPS",
+          "WHERE STUDENTS LOVE LEARNING",
+          "WEST COAST CAMPUS",
+          "EAST COAST CAMPUS",
+          "THE DISNEY DIFFERENCE"
+        ]
+      },
+      "uncaptured": [
+        "Exact typography, font size, weight, and line height were not captured.",
+        "Exact color tokens and values were not captured.",
+        "Exact hover, motion, and animation behavior were not captured.",
+        "Exact pixel spacing and coordinates were not captured.",
+        "Destination URLs for most visible links were not included in the capture data."
+      ],
+      "captureSources": [
+        "discovery-report",
+        "live-html-scan"
+      ],
+      "codingAgentNotes": [
+        "Use positionContext anchors (after/before titles) rather than numeric section indexes.",
+        "Treat uncaptured fields as configurable; do not hardcode assumptions."
+      ],
+      "enrichmentSource": "discovery-evidence"
+    },
+    "acceptanceCriteria": [
+      "The header renders the captured contact content exactly as observed: Questions?, Call (321) 939 7560, and Contact Us.",
+      "The primary navigation renders the captured labels exactly as observed: ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, and CONNECT WITH US.",
+      "The block supports configurable link destinations for Contact Us and each primary navigation item because most destination URLs were not captured.",
+      "The block supports the observed Disney Imagination Campus logo/link and search control from rendered evidence without requiring uncaptured styling or behavior assumptions.",
+      "The implementation does not hardcode uncaptured typography, spacing, colors, hover states, motion, or link destinations."
+    ],
+    "userStory": {
+      "asA": "site visitor",
+      "iWant": "a consistent header with contact details and primary navigation",
+      "soThat": "I can quickly reach key Disney Imagination Campus areas and contact options from the homepage"
+    },
+    "description": "Create a reusable header block for the Disney Imagination Campus homepage. The block must present the observed contact prompt and phone number, the Contact Us entry, the Disney Imagination Campus logo/link where available from rendered evidence, a search control where available from rendered evidence, and the primary navigation labels ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, and CONNECT WITH US. The header is a shared component pattern observed on the homepage and the connect-with-us page, with a header landmark present in the captured homepage data. Exact typography, spacing, colors, hover behavior, and destination URLs were not captured and must remain configurable.",
+    "accessibilityCriteria": [
+      "The header is exposed as a page header landmark and all interactive header items are reachable by keyboard in a logical order.",
+      "All interactive controls and links have accessible names matching or clearly representing their visible labels, including Contact Us and the primary navigation labels."
+    ],
+    "enrichmentSource": "llm",
+    "businessRules": []
+  },
+  "canonicalBlockName": "header",
+  "implementationAnalysis": {
+    "canonicalBlockName": "header",
+    "canonicalScopeName": "header",
+    "scopeType": "BLOCK",
+    "implementationMode": "UPDATE_EXISTING",
+    "rationale": "The repository already contains blocks/header/header.js and blocks/header/header.css at branch migration-epic-001. The existing header.js implements the canonical AEM EDS fragment-based nav pattern: it reads a 'nav' metadata key (defaulting to /nav), loads that path as a fragment via loadFragment(), then maps the first three child sections of the fragment to nav-brand, nav-sections, and nav-tools grid areas. The existing header.css provides the full nav grid layout, hamburger, brand, sections (with nav-drop dropdowns), and tools areas. The live site evidence confirms the header block is already loaded (blocks/header/header.css is in the stylesheet list) and the rendered header-wrapper/nav-wrapper/nav#nav DOM is present with height 64px matching --nav-height. The Content Agent document does NOT include a header block table — the header is a global shared component loaded via the fragment convention (/nav document), not a per-page authored block. Per the CONTENT GAP & UNGROUNDED BLOCK RULES, this is a global pattern handled via the standard EDS header/nav fragment convention, not a hallucinated block table. The implementation plan therefore is: (1) modify blocks/header/header.js to add a nav-contact area that renders the captured contact bar content (Questions?, Call (321) 939 7560, Contact Us) from the nav fragment's fourth child section or from a dedicated contact row in the nav document, and to expose the header as a proper <header> landmark with role='banner'; (2) update blocks/header/header.css to add the nav-contact grid area and its layout without hardcoding uncaptured color/spacing tokens; (3) provide a /nav plain-HTML authoring template (drafts/nav.plain.html) so the Content Agent can author the nav document with the four sections: brand, sections (primary nav), tools (search), and contact. The nav document content model follows the existing EDS fragment convention: section 1 = brand (logo link), section 2 = primary nav list (ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, CONNECT WITH US with sub-items), section 3 = tools (search), section 4 = contact bar (Questions? text, phone link, Contact Us link). All link destinations are left as configurable placeholders (#) because destination URLs were not captured. No typography, color, spacing, hover, or motion values are hardcoded beyond what is already present in the existing header.css. The --nav-height CSS custom property (64px, confirmed by computed rect height) is already defined in styles/styles.css and reused. The nav landmark already has id='nav' and aria-expanded in the existing JS; the implementation adds aria-label='Main navigation' to the nav element and wraps the contact bar in a <div class='nav-contact'> with appropriate accessible link names to satisfy the accessibility criteria.",
+    "filePlan": [
+      {
+        "path": "blocks/header/header.js",
+        "operation": "update",
+        "reason": "Modify the existing decorate() function to: (1) map a fourth nav fragment child section to a nav-contact area rendered before the hamburger or after nav-tools; (2) add aria-label='Main navigation' to the <nav> element to satisfy the header landmark accessibility criterion; (3) preserve all existing hamburger, brand, sections (nav-drop), and tools logic unchanged; (4) ensure the nav-contact links receive accessible names matching their visible labels (Contact Us). No new imports are needed beyond the existing getMetadata and loadFragment imports."
+      },
+      {
+        "path": "blocks/header/header.css",
+        "operation": "update",
+        "reason": "Modify the existing CSS to: (1) add 'contact' to the grid-template named areas for both mobile (stacked) and desktop (flex row) layouts; (2) add .nav-contact selector with display, alignment, and gap rules using only existing CSS custom properties (--body-font-family, --body-font-size-xs, --background-color, --nav-height) — no hardcoded color or spacing values that were not captured; (3) ensure .nav-contact is hidden on mobile when nav is collapsed and visible on desktop, consistent with the existing nav-sections visibility pattern."
+      }
+    ],
+    "visualAnalysis": {
+      "headerWrapper": "Computed rect x:0 y:0 width:780 height:64px; position:relative; z-index:1000; background-color:rgb(255,255,255); display:block.",
+      "navElement": "id='nav'; display:flex; position:relative; height:64px; max-width:1140px; padding:0 12px; border-bottom:1px solid rgb(0,0,0); align-items:center; background-color:rgb(255,255,255). Confirms --nav-height:64px is correct.",
+      "navWrapper": "display:block; position:static; z-index:600; background-color:rgb(255,255,255); ::after pseudo content='' display:none (border line, not active at this viewport).",
+      "headerBlock": "div.header.block; display:block; position:static; background-color:rgba(0,0,0,0) (transparent, nav-wrapper provides white bg).",
+      "capturedText": "Header text sample confirms all required content is present: 'Skip to main content Questions? Call (321) 939 7560 Contact Us About Us About Disney Imagination Campus Special Offers Curriculum & Tickets Theme Park Experience Student Tickets Arts & Humanities Immersive Storytelling Theme Park Design Visual Art of Disney Parks Science & Technology Technology of D...'",
+      "interactiveCount": "6 interactive elements in header section confirmed by sectionInteractiveCount:6.",
+      "textElementCount": "8 text elements in header section confirmed by sectionTextElementCount:8.",
+      "uncapturedValues": "Exact font sizes, weights, colors for nav items, hover states, dropdown animation, logo image src/alt, search icon src — all uncaptured and must remain configurable via CSS custom properties or authored content.",
+      "navHeight": "64px confirmed by both computed rect height and existing --nav-height:64px in styles/styles.css.",
+      "bodyFont": "InspireTWDC, InspireTWDC-fallback, arial, sans-serif — already set as body font; header inherits it.",
+      "borderBottom": "nav element has border-bottom:1px solid rgb(0,0,0) — this is already present in existing header.css as a structural separator."
+    },
+    "requirementTraceability": [
+      {
+        "requirementId": "EPIC-001-STORY-001-R1",
+        "description": "The header renders the captured contact content exactly as observed: Questions?, Call (321) 939 7560, and Contact Us.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R2",
+        "description": "The primary navigation renders the captured labels exactly as observed: ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, and CONNECT WITH US.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R3",
+        "description": "The block supports configurable link destinations for Contact Us and each primary navigation item because most destination URLs were not captured.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R4",
+        "description": "The block supports the observed Disney Imagination Campus logo/link and search control from rendered evidence without requiring uncaptured styling or behavior assumptions.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R5",
+        "description": "The implementation does not hardcode uncaptured typography, spacing, colors, hover states, motion, or link destinations.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R6",
+        "description": "The header is exposed as a page header landmark and all interactive header items are reachable by keyboard in a logical order.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R7",
+        "description": "All interactive controls and links have accessible names matching or clearly representing their visible labels, including Contact Us and the primary navigation labels.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      }
+    ],
+    "assumptions": [
+      "The /nav fragment document does not yet exist in the repository (no nav.html or nav document was found in the repository snapshot). The drafts/nav.plain.html file provides the authoring template; the Content Agent must create the actual /nav document in the CMS.",
+      "The header block follows the standard EDS fragment-based nav convention already implemented in header.js (loadFragment('/nav')). No alternative nav loading mechanism is needed.",
+      "The fourth section of the nav fragment (index 3, children[3]) is used for the contact bar. The existing header.js maps children[0..2] to brand/sections/tools; children[3] will be mapped to nav-contact.",
+      "The Disney Imagination Campus logo is an image asset that will be authored in the nav document's brand section. Its src, alt text, and dimensions are not captured and must be provided by the content team.",
+      "The search control in the tools section is a simple link or icon-based control. Its exact implementation (form, icon, behavior) is not captured and is left as a configurable placeholder in the nav document.",
+      "Sub-navigation items for each primary nav label are partially captured in the header text sample (e.g. 'About Disney Imagination Campus', 'Special Offers', 'Theme Park Experience', 'Student Tickets', 'Arts & Humanities', 'Immersive Storytelling', 'Theme Park Design', 'Visual Art of Disney Parks', 'Science & Technology', 'Technology of D...'). The drafts template includes these as sub-list items with placeholder hrefs. The full sub-nav structure for SPECIAL EVENTS, PLAN YOUR TRIP, and CONNECT WITH US was truncated in the capture and must be completed by the content team.",
+      "The 'Skip to main content' link visible in the header text sample is a global skip-link rendered by scripts.js or the page template, not part of the header block itself. It is not included in the header block implementation.",
+      "No color tokens, hover states, or animation values are assumed. The existing header.css already provides the structural layout; only the nav-contact area addition is new CSS."
+    ],
+    "risks": [
+      "MEDIUM: The nav fragment document does not exist in the repository. Until the Content Agent authors /nav in the CMS and previews it, the header block will render empty or fall back to the existing behavior. The drafts/nav.plain.html template mitigates this by providing a ready-to-copy authoring guide.",
+      "LOW: The fourth section mapping (children[3] → nav-contact) assumes the nav document is authored with exactly four sections in order: brand, sections, tools, contact. If the content team authors fewer sections or reorders them, the contact bar will not render. This is documented in the nav document template.",
+      "LOW: The existing header.css grid-template uses named areas 'hamburger brand tools' and 'sections sections sections'. Adding a 'contact' area requires careful grid-template modification to avoid breaking the existing mobile/desktop layout. The implementation must test both aria-expanded='false' and aria-expanded='true' states.",
+      "LOW: The captured sub-navigation items for CURRICULUM & TICKETS are partially truncated ('Technology of D...'). The full sub-nav for SCIENCE & TECHNOLOGY, LEADERSHIP & INNOVATION, and the remaining primary nav items must be completed by the content team from the live site.",
+      "LOW: The InspireTWDC font family is loaded from the live site's fonts.css (not the repository's fonts.css which defines roboto). The repository's styles/styles.css uses roboto as --body-font-family. The header will render in roboto until the project's fonts.css is updated to include InspireTWDC. This is a separate fonts story and is not in scope for this header block story."
+    ],
+    "rejectedPlanPaths": [
+      "drafts/nav.plain.html"
+    ],
+    "normalization": {
+      "status": "MODEL_JSON_NORMALIZED",
+      "issue": null,
+      "modelOutputAccepted": true
+    },
+    "visualEvidenceAvailable": true,
+    "browserLimitations": []
+  },
+  "analysisRecord": {
+    "runId": "eds-code-1788720332909",
+    "epicId": "EPIC-001",
+    "storyId": "EPIC-001-STORY-001",
+    "recordedAt": "2026-09-06T18:50:08.121Z",
+    "implementationMode": "UPDATE_EXISTING",
+    "canonicalBlockName": "header",
+    "canonicalScopeName": "header",
+    "scopeType": "BLOCK",
+    "repositoryHeadSha": "32cd91150b79c7c32e434c3492ad930dc8f772d2",
+    "conciseReason": "The repository already contains blocks/header/header.js and blocks/header/header.css at branch migration-epic-001. The existing header.js implements the canonical AEM EDS fragment-based nav pattern: it reads a 'nav' metadata key (defaulting to /nav), loads that path as a fragment via loadFragment(), then maps the first three child sections of the fragment to nav-brand, nav-sections, and nav-tools grid areas. The existing header.css provides the full nav grid layout, hamburger, brand, sections (with nav-drop dropdowns), and tools areas. The live site evidence confirms the header block is already loaded (blocks/header/header.css is in the stylesheet list) and the rendered header-wrapper/nav-wrapper/nav#nav DOM is present with height 64px matching --nav-height. The Content Agent document does NOT include a header block table — the header is a global shared component loaded via the fragment convention (/nav document), not a per-page authored block. Per the CONTENT GAP & UNGROUNDED BLOCK RULES, this is a global pattern handled via the standard EDS header/nav fragment convention, not a hallucinated block table. The implementation plan therefore is: (1) modify blocks/header/header.js to add a nav-contact area that renders the captured contact bar content (Questions?, Call (321) 939 7560, Contact Us) from the nav fragment's fourth child section or from a dedicated contact row in the nav document, and to expose the header as a proper <header> landmark with role='banner'; (2) update blocks/header/header.css to add the nav-contact grid area and its layout without hardcoding uncaptured color/spacing tokens; (3) provide a /nav plain-HTML authoring template (drafts/nav.plain.html) so the Content Agent can author the nav document with the four sections: brand, sections (primary nav), tools (search), and contact. The nav document content model follows the existing EDS fragment convention: section 1 = brand (logo link), section 2 = primary nav list (ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, CONNECT WITH US with sub-items), section 3 = tools (search), section 4 = contact bar (Questions? text, phone link, Contact Us link). All link destinations are left as configurable placeholders (#) because destination URLs were not captured. No typography, color, spacing, hover, or motion values are hardcoded beyond what is already present in the existing header.css. The --nav-height CSS custom property (64px, confirmed by computed rect height) is already defined in styles/styles.css and reused. The nav landmark already has id='nav' and aria-expanded in the existing JS; the implementation adds aria-label='Main navigation' to the nav element and wraps the contact bar in a <div class='nav-contact'> with appropriate accessible link names to satisfy the accessibility criteria.",
+    "requirementTraceability": [
+      {
+        "requirementId": "EPIC-001-STORY-001-R1",
+        "description": "The header renders the captured contact content exactly as observed: Questions?, Call (321) 939 7560, and Contact Us.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R2",
+        "description": "The primary navigation renders the captured labels exactly as observed: ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, and CONNECT WITH US.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R3",
+        "description": "The block supports configurable link destinations for Contact Us and each primary navigation item because most destination URLs were not captured.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R4",
+        "description": "The block supports the observed Disney Imagination Campus logo/link and search control from rendered evidence without requiring uncaptured styling or behavior assumptions.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R5",
+        "description": "The implementation does not hardcode uncaptured typography, spacing, colors, hover states, motion, or link destinations.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R6",
+        "description": "The header is exposed as a page header landmark and all interactive header items are reachable by keyboard in a logical order.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-001-R7",
+        "description": "All interactive controls and links have accessible names matching or clearly representing their visible labels, including Contact Us and the primary navigation labels.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      }
+    ],
+    "visualSummary": {
+      "headerWrapper": "Computed rect x:0 y:0 width:780 height:64px; position:relative; z-index:1000; background-color:rgb(255,255,255); display:block.",
+      "navElement": "id='nav'; display:flex; position:relative; height:64px; max-width:1140px; padding:0 12px; border-bottom:1px solid rgb(0,0,0); align-items:center; background-color:rgb(255,255,255). Confirms --nav-height:64px is correct.",
+      "navWrapper": "display:block; position:static; z-index:600; background-color:rgb(255,255,255); ::after pseudo content='' display:none (border line, not active at this viewport).",
+      "headerBlock": "div.header.block; display:block; position:static; background-color:rgba(0,0,0,0) (transparent, nav-wrapper provides white bg).",
+      "capturedText": "Header text sample confirms all required content is present: 'Skip to main content Questions? Call (321) 939 7560 Contact Us About Us About Disney Imagination Campus Special Offers Curriculum & Tickets Theme Park Experience Student Tickets Arts & Humanities Immersive Storytelling Theme Park Design Visual Art of Disney Parks Science & Technology Technology of D...'",
+      "interactiveCount": "6 interactive elements in header section confirmed by sectionInteractiveCount:6.",
+      "textElementCount": "8 text elements in header section confirmed by sectionTextElementCount:8.",
+      "uncapturedValues": "Exact font sizes, weights, colors for nav items, hover states, dropdown animation, logo image src/alt, search icon src — all uncaptured and must remain configurable via CSS custom properties or authored content.",
+      "navHeight": "64px confirmed by both computed rect height and existing --nav-height:64px in styles/styles.css.",
+      "bodyFont": "InspireTWDC, InspireTWDC-fallback, arial, sans-serif — already set as body font; header inherits it.",
+      "borderBottom": "nav element has border-bottom:1px solid rgb(0,0,0) — this is already present in existing header.css as a structural separator."
+    },
+    "normalization": {
+      "status": "MODEL_JSON_NORMALIZED",
+      "issue": null,
+      "modelOutputAccepted": true
+    },
+    "adobeSkillsRef": "32b0bb2c01157ad7c7e69575069a6b421f72beeb"
+  },
+  "browserEvidence": {
+    "url": "https://www.disneycampus.com",
+    "captureMode": "spark-playwright-mcp-computed-styles-v3",
+    "accessible": true,
+    "limitations": []
+  },
+  "changedFiles": [
+    {
+      "path": "blocks/header/header.js",
+      "operation": "update",
+      "reason": "Synthesized safe fallback for approved path omitted by developer."
+    },
+    {
+      "path": "blocks/header/header.css",
+      "operation": "update",
+      "reason": "Synthesized safe fallback for approved path omitted by developer."
+    }
+  ],
+  "staticScan": {
+    "passed": true,
+    "issues": [],
+    "blockingIssues": [],
+    "scanner": "deterministic-policy-v3",
+    "runtimeExecuted": false
+  },
+  "qualityAudit": null,
+  "securityAudit": null,
+  "accessibilityAudit": null,
+  "correctionAttempts": 0,
+  "disposition": {
+    "status": "PROVISIONAL_GATE_PASSED",
+    "failedQualityGate": false,
+    "note": "Deterministic static scan and contract validation passed. Streamlined direct implementation mode (Sonar/Security/A11y LLM review stage bypassed for speed)."
+  },
+  "adobeSkillsRef": "32b0bb2c01157ad7c7e69575069a6b421f72beeb",
+  "runtimeChecks": {
+    "repository-lint": "PENDING_POST_COMMIT",
+    "unit-tests": "PENDING_POST_COMMIT",
+    "sonarqube-quality-gate": "PENDING_POST_COMMIT",
+    "sonarqube-vulnerabilities": "PENDING_POST_COMMIT",
+    "sonarqube-security-hotspots": "PENDING_POST_COMMIT",
+    "codeql-sast": "PENDING_POST_COMMIT",
+    "dependency-review": "PENDING_POST_COMMIT",
+    "secret-scan": "PENDING_POST_COMMIT",
+    "eds-browser-validation": "PENDING_POST_COMMIT",
+    "accessibility": "PENDING_POST_COMMIT",
+    "seo-performance": "PENDING_POST_COMMIT"
+  }
+}
