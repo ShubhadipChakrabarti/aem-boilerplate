@@ -270,3 +270,54 @@ header nav .nav-sections ul > li > ul > li {
 header nav .nav-tools {
   grid-area: tools;
 }
+
+/* nav-contact — contact bar (Questions?, phone, Contact Us) */
+header nav .nav-contact {
+  display: none;
+  visibility: hidden;
+  grid-area: contact;
+  align-items: center;
+  gap: 16px;
+  font-size: var(--body-font-size-s);
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+
+  & p {
+    margin: 0;
+    line-height: 1;
+  }
+
+  & a:any-link {
+    color: var(--link-color);
+  }
+}
+
+header nav[aria-expanded='true'] .nav-contact {
+  display: flex;
+  visibility: visible;
+  align-self: start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding-block: 8px;
+}
+
+@media (width >= 900px) {
+  header nav .nav-contact {
+    display: flex;
+    visibility: visible;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    order: -1;
+    flex: 0 0 auto;
+  }
+
+  header nav[aria-expanded='true'] .nav-contact {
+    flex-direction: row;
+    align-items: center;
+    align-self: unset;
+    padding-block: 0;
+    gap: 16px;
+  }
+}

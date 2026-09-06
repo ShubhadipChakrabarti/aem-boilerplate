@@ -130,6 +130,25 @@ export default async function decorate(block) {
     if (section) section.classList.add(`nav-${c}`);
   });
 
+  // When the /nav fragment has four children the first child is the contact bar.
+  // Re-map classes: contact=0, brand=1, sections=2, tools=3.
+  // This is additive and degrades gracefully when only three children are present.
+  if (nav.children.length >= 4) {
+    const contactEl = nav.children[0];
+    contactEl.classList.remove('nav-brand', 'nav-sections', 'nav-tools');
+    contactEl.classList.add('nav-contact');
+    contactEl.setAttribute('aria-label', 'Contact information');
+
+    const fourClasses = ['brand', 'sections', 'tools'];
+    fourClasses.forEach((c, i) => {
+      const section = nav.children[i + 1];
+      if (section) {
+        section.classList.remove('nav-brand', 'nav-sections', 'nav-tools');
+        section.classList.add(`nav-${c}`);
+      }
+    });
+  }
+
   const navBrand = nav.querySelector('.nav-brand');
   const brandLink = navBrand.querySelector('.button');
   if (brandLink) {
@@ -149,6 +168,19 @@ export default async function decorate(block) {
         }
       });
     });
+  }
+
+  // Ensure search control in nav-tools has an accessible name.
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    const searchInput = navTools.querySelector('input[type="search"], input:not([type])') ;
+    if (searchInput && !searchInput.getAttribute('aria-label') && !searchInput.id) {
+      searchInput.setAttribute('aria-label', 'Search');
+    }
+    const searchButton = navTools.querySelector('button:not([aria-label])');
+    if (searchButton && !searchButton.textContent.trim()) {
+      searchButton.setAttribute('aria-label', 'Search');
+    }
   }
 
   // hamburger for mobile
