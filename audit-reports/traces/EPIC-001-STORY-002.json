@@ -1,0 +1,297 @@
+{
+  "schemaVersion": "eds-story-trace/v3",
+  "runId": "eds-code-1788720050574",
+  "generatedAt": "2026-09-06T18:42:33.058Z",
+  "repository": {
+    "repo": "ShubhadipChakrabarti/aem-boilerplate",
+    "branch": "migration-epic-001",
+    "expectedHeadSha": "d75bfd2cf0d91284b1e26c65e15cdf46820d6a4b",
+    "inspectedBaseSha": "d75bfd2cf0d91284b1e26c65e15cdf46820d6a4b"
+  },
+  "epicId": "EPIC-001",
+  "story": {
+    "id": "EPIC-001-STORY-002",
+    "title": "Develop video-led introductory block for Disney Imagination Campus homepage",
+    "ticketType": "block-development",
+    "scopeUrl": "https://www.disneycampus.com",
+    "outcome": "A reusable video-led introductory block renders the captured heading, playback guidance, video affordance, and two calls to action for the Disney Imagination Campus homepage.",
+    "type": "functional",
+    "evidence": {
+      "pageUrl": "https://www.disneycampus.com",
+      "sectionTitle": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+      "sectionId": "section-02-video-hero",
+      "positionContext": {
+        "anchor": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+        "after": "Header contact and navigation",
+        "before": "Program categories",
+        "landmark": "main"
+      },
+      "layoutHints": {
+        "discoveryLayoutType": "Not captured in discovery report",
+        "discoveryBlockMatch": "Not captured in discovery report"
+      },
+      "detectedCounts": {
+        "sectionInteractiveCount": 2,
+        "sectionTextElementCount": 3,
+        "sectionMediaByType": {
+          "video": 1
+        },
+        "interactiveCount": 2,
+        "textElementCount": 3,
+        "videoCount": 1
+      },
+      "technicalSignals": {
+        "hasHeaderLandmark": true,
+        "hasFooterLandmark": true,
+        "headingSample": [
+          "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+          "PERFORMING ARTS",
+          "ARTS &#x26; HUMANITIES",
+          "SCIENCE &#x26; TECHNOLOGY",
+          "LEADERSHIP &#x26; INNOVATION",
+          "STUDENT TRAVEL PROGRAMS &#x26; FIELD TRIPS",
+          "WHERE STUDENTS LOVE LEARNING",
+          "WEST COAST CAMPUS",
+          "EAST COAST CAMPUS",
+          "THE DISNEY DIFFERENCE"
+        ]
+      },
+      "uncaptured": [
+        "Exact typography, font sizing, font weight, and line height were not captured.",
+        "Exact color values were not captured.",
+        "Exact hover, motion, and animation behavior were not captured.",
+        "Exact pixel spacing and coordinates were not captured.",
+        "Video source, thumbnail, transcript, and duration were not captured."
+      ],
+      "captureSources": [
+        "discovery-report",
+        "live-html-scan"
+      ],
+      "codingAgentNotes": [
+        "Use positionContext anchors (after/before titles) rather than numeric section indexes.",
+        "Treat uncaptured fields as configurable; do not hardcode assumptions."
+      ],
+      "enrichmentSource": "discovery-evidence"
+    },
+    "acceptanceCriteria": [
+      "The block renders the captured text content exactly: Video, Press Enter or Space to play or pause the video., and DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED.",
+      "The block includes one configurable video media area and does not hardcode unavailable video source, poster, duration, transcript, spacing, typography, color, hover, or animation values.",
+      "The block renders exactly two primary interactive controls using the captured labels PLAY FULL VIDEO and LEARN MORE.",
+      "The content sequence follows the captured flow of video affordance, playback helper text, heading, and calls to action.",
+      "The call-to-action destinations are configurable because destination URLs were not included in the supplied evidence."
+    ],
+    "userStory": {
+      "asA": "prospective educator or student travel planner",
+      "iWant": "a video-led introduction to Disney Imagination Campus with clear calls to action",
+      "soThat": "I can quickly understand the page theme and choose whether to watch the full video or learn more"
+    },
+    "description": "Build a reusable, authorable introductory content block for the homepage area titled DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED. The captured content includes a video area, playback helper text, the page theme heading, and two interactive calls to action: PLAY FULL VIDEO and LEARN MORE. Detailed typography, color values, pixel spacing, hover behavior, video source, poster image, transcript, and duration were not captured and must remain configurable rather than hardcoded.",
+    "accessibilityCriteria": [
+      "The video interaction supports keyboard operation using Enter or Space, matching the captured playback instruction.",
+      "Both calls to action expose clear accessible names matching their visible labels: PLAY FULL VIDEO and LEARN MORE."
+    ],
+    "enrichmentSource": "llm",
+    "businessRules": []
+  },
+  "canonicalBlockName": "blocks-herovideo",
+  "implementationAnalysis": {
+    "canonicalBlockName": "blocks-herovideo",
+    "canonicalScopeName": "blocks-herovideo",
+    "scopeType": "BLOCK",
+    "implementationMode": "CREATE_NEW_BLOCK",
+    "rationale": "The Content Agent document (finalAuthoringContract) contains a grounded 'Hero Video' block (componentId: component-001, canonicalBlockName: hero-video, selector: div.herovideo) with a four-cell single-row table structure. The authored table header is 'Hero Video' and the single row contains four cells: [video asset], [heading text], [primary CTA link], [secondary CTA link]. This maps directly to the live-site evidence: div.herovideo renders /assets/media_1d23079eb9b89c419b9e761a06135ae666a271db9.mp4, heading 'DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED', link 'PLAY FULL VIDEO' (href #fullscreen-cta, aria-label 'PLAY FULL VIDEO about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED'), and link 'LEARN MORE' (href /about, aria-label 'LEARN MORE about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED'). The section-metadata block in the same section-001 provides subtitles, poster, and transcript as section-level configuration — these are NOT cells inside the hero-video block table but are authored separately in section-metadata rows. The repository has no blocks/herovideo directory; this is a net-new block. The block must: (1) render a native HTML5 video element using the authored video asset link from cell 0; (2) render the heading from cell 1 as an h1 or h2; (3) render exactly two CTAs from cells 2 and 3 with their authored link text and hrefs; (4) support keyboard play/pause via Enter and Space matching the captured helper text 'Press Enter or Space to play or pause the video.'; (5) expose accessible names on both CTAs matching their visible labels. Video source, poster, subtitles, transcript, typography, color, spacing, hover, and animation values are NOT hardcoded — they are read from authored content or left to CSS custom properties. The section-metadata poster and subtitles URLs are available to the block via the section element's dataset if needed, but the block JS must not hardcode those URLs. The block CSS must not hardcode pixel spacing, color values, font sizes, or animation values that were not captured.",
+    "filePlan": [
+      {
+        "path": "blocks/herovideo/herovideo.js",
+        "operation": "create",
+        "reason": "New block decorator. Reads the four authored cells: cell[0] contains the video link (an anchor or paragraph with a link to the .mp4 asset); cell[1] contains the heading text; cell[2] contains the primary CTA link (PLAY FULL VIDEO); cell[3] contains the secondary CTA link (LEARN MORE). Builds a semantic DOM: a <video> element (or a <button>-triggered video) using the asset URL from cell[0], an <h1> or <h2> from cell[1] text, a visually-hidden helper paragraph 'Press Enter or Space to play or pause the video.' for screen readers, and two <a> elements from cells[2] and cells[3] preserving their authored href and text. Attaches keydown listener for Enter/Space to toggle play/pause on the video element, satisfying the keyboard accessibility acceptance criterion. Reads poster from the nearest section's dataset-poster attribute (populated by section-metadata decoration) if present, but does not hardcode any URL. Does not hardcode video src, poster, subtitles, transcript, color, spacing, or animation."
+      },
+      {
+        "path": "blocks/herovideo/herovideo.css",
+        "operation": "create",
+        "reason": "New block stylesheet. Provides structural layout rules only: positions the video as a full-width background-like element, overlays the heading and CTA group, and styles the two CTA anchors as visually distinct interactive controls. Uses CSS custom properties (--herovideo-*) for any configurable values so authors and theme CSS can override them. Does not hardcode color values, exact pixel spacing, font sizes, font weights, or animation/transition values that were not captured in evidence. Includes focus-visible styles on the video container and both CTAs to satisfy keyboard accessibility. Mobile-first with a min-width breakpoint for wider viewports."
+      }
+    ],
+    "visualAnalysis": {
+      "blockDimensions": "div.herovideo rendered at 780×439px at viewport 780px wide, positioned at y:64 (immediately below the 64px header). Full-width (width:780px, no horizontal margin or padding on the block itself).",
+      "contentFlow": "Captured text order in div.herovideo: 'Video' (likely the video element's accessible label or a visually-hidden label), 'Press Enter or Space to play or pause the video.' (helper/instruction text), 'PLAY FULL VIDEO' (primary CTA link, x:130 y:273, 206×29px), 'LEARN MORE' (secondary CTA link, x:452 y:273, 158×29px). Both CTAs are at the same y:273, indicating a horizontal row of CTAs overlaid on the video area.",
+      "ctaStyles": "Both CTA anchors: font-family InspireTWDCBlack/InspireTWDC/Arial/sans-serif, font-size 24px, font-weight 900, line-height 32px, color rgb(255,255,255), background-color rgba(0,0,0,0), text-align center, display inline. aria-label patterns: '[LABEL] about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED'.",
+      "sectionContainer": "Parent section div.section.full-width.video-container.herovideo-container.cards-container at y:64, height 2722.75px (includes the cards overlay below). Section has position:relative, margin-bottom:40px.",
+      "uncapturedDetails": "Exact video poster image visible in section-metadata (media_12724f42ba32b1d7f11fb547bbbb6eaa79bb26742.png) but not captured as a computed style. Exact overlay gradient/color behind CTAs and heading not captured. Exact heading font-size, weight, and position within the video area not captured. Animation/transition on play/pause not captured.",
+      "accessibilitySignals": "PLAY FULL VIDEO aria-label includes context phrase 'about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED'. LEARN MORE aria-label similarly includes context. Keyboard instruction 'Press Enter or Space to play or pause the video.' is present in the rendered text of the block."
+    },
+    "requirementTraceability": [
+      {
+        "requirementId": "EPIC-001-STORY-002-R1",
+        "description": "The block renders the captured text content exactly: Video, Press Enter or Space to play or pause the video., and DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R2",
+        "description": "The block includes one configurable video media area and does not hardcode unavailable video source, poster, duration, transcript, spacing, typography, color, hover, or animation values.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R3",
+        "description": "The block renders exactly two primary interactive controls using the captured labels PLAY FULL VIDEO and LEARN MORE.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R4",
+        "description": "The content sequence follows the captured flow of video affordance, playback helper text, heading, and calls to action.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R5",
+        "description": "The call-to-action destinations are configurable because destination URLs were not included in the supplied evidence.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R6",
+        "description": "The video interaction supports keyboard operation using Enter or Space, matching the captured playback instruction.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R7",
+        "description": "Both calls to action expose clear accessible names matching their visible labels: PLAY FULL VIDEO and LEARN MORE.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      }
+    ],
+    "assumptions": [
+      "The authored table structure for hero-video is a single row with four cells: [video asset link], [heading], [primary CTA link], [secondary CTA link], as indicated by the Content Agent table rows entry (four cells, one row). The '[nested object omitted]' placeholders in cells 0, 2, and 3 represent rich content objects (picture/link elements) that EDS decoration will have already converted to DOM nodes by the time the block decorator runs.",
+      "Cell[0] will contain either a paragraph with an anchor whose href is the .mp4 URL, or a direct anchor element, following standard EDS authoring conventions for asset links.",
+      "The section-metadata block in the same section provides poster, subtitles, and transcript as dataset attributes on the section element after EDS section decoration runs. The block JS will read these via block.closest('.section').dataset if present.",
+      "The 'Video' text visible in the block's rendered text is the accessible label for the video element, not a visible heading — it will be rendered as aria-label='Video' on the <video> element and visually hidden.",
+      "The helper text 'Press Enter or Space to play or pause the video.' is authored content in the block (likely in a paragraph within one of the cells or as a visually-hidden element generated by JS) and must be present in the DOM for screen readers.",
+      "The PLAY FULL VIDEO link href '#fullscreen-cta' captured in evidence is the live-site value; the authored document will provide a configurable href in cell[2]. The block must not hardcode '#fullscreen-cta'.",
+      "No existing blocks/herovideo directory exists in the repository snapshot; this is a fully new block requiring both .js and .css files.",
+      "The Cards (overlay) block that appears in the same section-001 is a separate block (component-002) and is out of scope for this story."
+    ],
+    "risks": [
+      "The '[nested object omitted]' cell content in the Content Agent table means the exact DOM structure of cells 0, 2, and 3 is inferred from live-site evidence and EDS conventions. If the authored document uses a different structure (e.g., a picture element instead of a plain link for the video asset), the JS selector logic must be robust enough to handle both.",
+      "The section-metadata poster and subtitles URLs are authored in a separate section-metadata block. If the EDS section decoration does not expose these as dataset attributes on the section element by the time herovideo.js runs, the block will render without a poster image and without subtitles — this is acceptable per the story's configurable-not-hardcoded requirement but should be documented.",
+      "The 'PLAY FULL VIDEO' CTA in the live site links to '#fullscreen-cta', suggesting it may trigger a fullscreen video modal rather than a standard navigation. The block JS should not implement fullscreen modal logic (not in scope); it should render the link as authored and let the href drive behavior.",
+      "Keyboard play/pause (Enter/Space) applies to the inline video element. If the authored content does not include a video element (e.g., only a poster image is provided without a video src), the keydown handler must degrade gracefully without throwing errors.",
+      "The repository's styles/styles.css uses Roboto fonts; the live site uses InspireTWDC. Font family is not in scope for this block story and must not be hardcoded in herovideo.css — it will inherit from the global body font-family once the project's fonts.css is updated in a separate story."
+    ],
+    "rejectedPlanPaths": [],
+    "normalization": {
+      "status": "MODEL_JSON_NORMALIZED",
+      "issue": null,
+      "modelOutputAccepted": true
+    },
+    "visualEvidenceAvailable": true,
+    "browserLimitations": []
+  },
+  "analysisRecord": {
+    "runId": "eds-code-1788720050574",
+    "epicId": "EPIC-001",
+    "storyId": "EPIC-001-STORY-002",
+    "recordedAt": "2026-09-06T18:42:02.438Z",
+    "implementationMode": "CREATE_NEW_BLOCK",
+    "canonicalBlockName": "blocks-herovideo",
+    "canonicalScopeName": "blocks-herovideo",
+    "scopeType": "BLOCK",
+    "repositoryHeadSha": "d75bfd2cf0d91284b1e26c65e15cdf46820d6a4b",
+    "conciseReason": "The Content Agent document (finalAuthoringContract) contains a grounded 'Hero Video' block (componentId: component-001, canonicalBlockName: hero-video, selector: div.herovideo) with a four-cell single-row table structure. The authored table header is 'Hero Video' and the single row contains four cells: [video asset], [heading text], [primary CTA link], [secondary CTA link]. This maps directly to the live-site evidence: div.herovideo renders /assets/media_1d23079eb9b89c419b9e761a06135ae666a271db9.mp4, heading 'DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED', link 'PLAY FULL VIDEO' (href #fullscreen-cta, aria-label 'PLAY FULL VIDEO about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED'), and link 'LEARN MORE' (href /about, aria-label 'LEARN MORE about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED'). The section-metadata block in the same section-001 provides subtitles, poster, and transcript as section-level configuration — these are NOT cells inside the hero-video block table but are authored separately in section-metadata rows. The repository has no blocks/herovideo directory; this is a net-new block. The block must: (1) render a native HTML5 video element using the authored video asset link from cell 0; (2) render the heading from cell 1 as an h1 or h2; (3) render exactly two CTAs from cells 2 and 3 with their authored link text and hrefs; (4) support keyboard play/pause via Enter and Space matching the captured helper text 'Press Enter or Space to play or pause the video.'; (5) expose accessible names on both CTAs matching their visible labels. Video source, poster, subtitles, transcript, typography, color, spacing, hover, and animation values are NOT hardcoded — they are read from authored content or left to CSS custom properties. The section-metadata poster and subtitles URLs are available to the block via the section element's dataset if needed, but the block JS must not hardcode those URLs. The block CSS must not hardcode pixel spacing, color values, font sizes, or animation values that were not captured.",
+    "requirementTraceability": [
+      {
+        "requirementId": "EPIC-001-STORY-002-R1",
+        "description": "The block renders the captured text content exactly: Video, Press Enter or Space to play or pause the video., and DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R2",
+        "description": "The block includes one configurable video media area and does not hardcode unavailable video source, poster, duration, transcript, spacing, typography, color, hover, or animation values.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R3",
+        "description": "The block renders exactly two primary interactive controls using the captured labels PLAY FULL VIDEO and LEARN MORE.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R4",
+        "description": "The content sequence follows the captured flow of video affordance, playback helper text, heading, and calls to action.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R5",
+        "description": "The call-to-action destinations are configurable because destination URLs were not included in the supplied evidence.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R6",
+        "description": "The video interaction supports keyboard operation using Enter or Space, matching the captured playback instruction.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      },
+      {
+        "requirementId": "EPIC-001-STORY-002-R7",
+        "description": "Both calls to action expose clear accessible names matching their visible labels: PLAY FULL VIDEO and LEARN MORE.",
+        "status": "IMPLEMENTATION_REQUIRED"
+      }
+    ],
+    "visualSummary": {
+      "blockDimensions": "div.herovideo rendered at 780×439px at viewport 780px wide, positioned at y:64 (immediately below the 64px header). Full-width (width:780px, no horizontal margin or padding on the block itself).",
+      "contentFlow": "Captured text order in div.herovideo: 'Video' (likely the video element's accessible label or a visually-hidden label), 'Press Enter or Space to play or pause the video.' (helper/instruction text), 'PLAY FULL VIDEO' (primary CTA link, x:130 y:273, 206×29px), 'LEARN MORE' (secondary CTA link, x:452 y:273, 158×29px). Both CTAs are at the same y:273, indicating a horizontal row of CTAs overlaid on the video area.",
+      "ctaStyles": "Both CTA anchors: font-family InspireTWDCBlack/InspireTWDC/Arial/sans-serif, font-size 24px, font-weight 900, line-height 32px, color rgb(255,255,255), background-color rgba(0,0,0,0), text-align center, display inline. aria-label patterns: '[LABEL] about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED'.",
+      "sectionContainer": "Parent section div.section.full-width.video-container.herovideo-container.cards-container at y:64, height 2722.75px (includes the cards overlay below). Section has position:relative, margin-bottom:40px.",
+      "uncapturedDetails": "Exact video poster image visible in section-metadata (media_12724f42ba32b1d7f11fb547bbbb6eaa79bb26742.png) but not captured as a computed style. Exact overlay gradient/color behind CTAs and heading not captured. Exact heading font-size, weight, and position within the video area not captured. Animation/transition on play/pause not captured.",
+      "accessibilitySignals": "PLAY FULL VIDEO aria-label includes context phrase 'about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED'. LEARN MORE aria-label similarly includes context. Keyboard instruction 'Press Enter or Space to play or pause the video.' is present in the rendered text of the block."
+    },
+    "normalization": {
+      "status": "MODEL_JSON_NORMALIZED",
+      "issue": null,
+      "modelOutputAccepted": true
+    },
+    "adobeSkillsRef": "32b0bb2c01157ad7c7e69575069a6b421f72beeb"
+  },
+  "browserEvidence": {
+    "url": "https://www.disneycampus.com",
+    "captureMode": "spark-playwright-mcp-computed-styles-v3",
+    "accessible": true,
+    "limitations": []
+  },
+  "changedFiles": [
+    {
+      "path": "blocks/herovideo/herovideo.js",
+      "operation": "create",
+      "reason": "Synthesized safe fallback for approved path omitted by developer."
+    },
+    {
+      "path": "blocks/herovideo/herovideo.css",
+      "operation": "create",
+      "reason": "Synthesized safe fallback for approved path omitted by developer."
+    }
+  ],
+  "staticScan": {
+    "passed": true,
+    "issues": [],
+    "blockingIssues": [],
+    "scanner": "deterministic-policy-v3",
+    "runtimeExecuted": false
+  },
+  "qualityAudit": null,
+  "securityAudit": null,
+  "accessibilityAudit": null,
+  "correctionAttempts": 0,
+  "disposition": {
+    "status": "PROVISIONAL_GATE_PASSED",
+    "failedQualityGate": false,
+    "note": "Deterministic static scan and contract validation passed. Streamlined direct implementation mode (Sonar/Security/A11y LLM review stage bypassed for speed)."
+  },
+  "adobeSkillsRef": "32b0bb2c01157ad7c7e69575069a6b421f72beeb",
+  "runtimeChecks": {
+    "repository-lint": "PENDING_POST_COMMIT",
+    "unit-tests": "PENDING_POST_COMMIT",
+    "sonarqube-quality-gate": "PENDING_POST_COMMIT",
+    "sonarqube-vulnerabilities": "PENDING_POST_COMMIT",
+    "sonarqube-security-hotspots": "PENDING_POST_COMMIT",
+    "codeql-sast": "PENDING_POST_COMMIT",
+    "dependency-review": "PENDING_POST_COMMIT",
+    "secret-scan": "PENDING_POST_COMMIT",
+    "eds-browser-validation": "PENDING_POST_COMMIT",
+    "accessibility": "PENDING_POST_COMMIT",
+    "seo-performance": "PENDING_POST_COMMIT"
+  }
+}
