@@ -1,0 +1,935 @@
+{
+  "schemaVersion": "eds-coding-audit/v3",
+  "runId": "eds-code-1788723352923",
+  "generatedAt": "2026-09-06T19:42:32.106Z",
+  "epic": {
+    "id": "EPIC-001",
+    "title": "Page implementation: https://www.disneycampus.com",
+    "scopeUrl": "https://www.disneycampus.com",
+    "branch": "migration-epic-001",
+    "baseBranch": "main",
+    "stories": [
+      {
+        "id": "EPIC-001-STORY-002",
+        "title": "Develop video-led introductory block for Disney Imagination Campus homepage",
+        "ticketType": "block-development",
+        "scopeUrl": "https://www.disneycampus.com",
+        "outcome": "A reusable video-led introductory block renders the captured heading, playback guidance, video affordance, and two calls to action for the Disney Imagination Campus homepage.",
+        "type": "functional",
+        "evidence": {
+          "pageUrl": "https://www.disneycampus.com",
+          "sectionTitle": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+          "sectionId": "section-02-video-hero",
+          "positionContext": {
+            "anchor": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+            "after": "Header contact and navigation",
+            "before": "Program categories",
+            "landmark": "main"
+          },
+          "layoutHints": {
+            "discoveryLayoutType": "Not captured in discovery report",
+            "discoveryBlockMatch": "Not captured in discovery report"
+          },
+          "detectedCounts": {
+            "sectionInteractiveCount": 2,
+            "sectionTextElementCount": 3,
+            "sectionMediaByType": {
+              "video": 1
+            },
+            "interactiveCount": 2,
+            "textElementCount": 3,
+            "videoCount": 1
+          },
+          "technicalSignals": {
+            "hasHeaderLandmark": true,
+            "hasFooterLandmark": true,
+            "headingSample": [
+              "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+              "PERFORMING ARTS",
+              "ARTS &#x26; HUMANITIES",
+              "SCIENCE &#x26; TECHNOLOGY",
+              "LEADERSHIP &#x26; INNOVATION",
+              "STUDENT TRAVEL PROGRAMS &#x26; FIELD TRIPS",
+              "WHERE STUDENTS LOVE LEARNING",
+              "WEST COAST CAMPUS",
+              "EAST COAST CAMPUS",
+              "THE DISNEY DIFFERENCE"
+            ]
+          },
+          "uncaptured": [
+            "Exact typography, font sizing, font weight, and line height were not captured.",
+            "Exact color values were not captured.",
+            "Exact hover, motion, and animation behavior were not captured.",
+            "Exact pixel spacing and coordinates were not captured.",
+            "Video source, thumbnail, transcript, and duration were not captured."
+          ],
+          "captureSources": [
+            "discovery-report",
+            "live-html-scan"
+          ],
+          "codingAgentNotes": [
+            "Use positionContext anchors (after/before titles) rather than numeric section indexes.",
+            "Treat uncaptured fields as configurable; do not hardcode assumptions."
+          ],
+          "enrichmentSource": "discovery-evidence"
+        },
+        "acceptanceCriteria": [
+          "The block renders the captured text content exactly: Video, Press Enter or Space to play or pause the video., and DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED.",
+          "The block includes one configurable video media area and does not hardcode unavailable video source, poster, duration, transcript, spacing, typography, color, hover, or animation values.",
+          "The block renders exactly two primary interactive controls using the captured labels PLAY FULL VIDEO and LEARN MORE.",
+          "The content sequence follows the captured flow of video affordance, playback helper text, heading, and calls to action.",
+          "The call-to-action destinations are configurable because destination URLs were not included in the supplied evidence."
+        ],
+        "userStory": {
+          "asA": "prospective educator or student travel planner",
+          "iWant": "a video-led introduction to Disney Imagination Campus with clear calls to action",
+          "soThat": "I can quickly understand the page theme and choose whether to watch the full video or learn more"
+        },
+        "description": "Build a reusable, authorable introductory content block for the homepage area titled DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED. The captured content includes a video area, playback helper text, the page theme heading, and two interactive calls to action: PLAY FULL VIDEO and LEARN MORE. Detailed typography, color values, pixel spacing, hover behavior, video source, poster image, transcript, and duration were not captured and must remain configurable rather than hardcoded.",
+        "accessibilityCriteria": [
+          "The video interaction supports keyboard operation using Enter or Space, matching the captured playback instruction.",
+          "Both calls to action expose clear accessible names matching their visible labels: PLAY FULL VIDEO and LEARN MORE."
+        ],
+        "enrichmentSource": "llm",
+        "businessRules": []
+      },
+      {
+        "id": "EPIC-001-STORY-003",
+        "title": "Develop EDS block for Program categories",
+        "ticketType": "block-development",
+        "scopeUrl": "https://www.disneycampus.com",
+        "outcome": "Reusable Program categories block implemented for the homepage with the captured four-item category set.",
+        "type": "functional",
+        "evidence": {
+          "pageUrl": "https://www.disneycampus.com",
+          "sectionTitle": "Program categories",
+          "sectionId": "section-03-program-category-links",
+          "positionContext": {
+            "anchor": "Program categories",
+            "after": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+            "before": "STUDENT TRAVEL PROGRAMS & FIELD TRIPS",
+            "landmark": "main"
+          },
+          "layoutHints": {
+            "discoveryLayoutType": "Not captured in discovery report",
+            "discoveryBlockMatch": "Not captured in discovery report"
+          },
+          "detectedCounts": {
+            "sectionInteractiveCount": 4,
+            "sectionTextElementCount": 4,
+            "sectionMediaByType": {}
+          },
+          "technicalSignals": {
+            "hasHeaderLandmark": true,
+            "hasFooterLandmark": true,
+            "headingSample": [
+              "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+              "PERFORMING ARTS",
+              "ARTS &#x26; HUMANITIES",
+              "SCIENCE &#x26; TECHNOLOGY",
+              "LEADERSHIP &#x26; INNOVATION",
+              "STUDENT TRAVEL PROGRAMS &#x26; FIELD TRIPS",
+              "WHERE STUDENTS LOVE LEARNING",
+              "WEST COAST CAMPUS",
+              "EAST COAST CAMPUS",
+              "THE DISNEY DIFFERENCE"
+            ]
+          },
+          "uncaptured": [
+            "Details missing from evidence must remain uncaptured and not assumed."
+          ],
+          "captureSources": [
+            "discovery-report",
+            "live-html-scan"
+          ],
+          "codingAgentNotes": [
+            "Use positionContext anchors (after/before titles) rather than numeric section indexes.",
+            "Treat uncaptured fields as configurable; do not hardcode assumptions."
+          ],
+          "enrichmentSource": "discovery-evidence"
+        },
+        "acceptanceCriteria": [
+          "Render exactly four category items using the captured labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION.",
+          "Expose each captured category item as an interactive link-like item with its destination configurable because captured link targets were not provided.",
+          "Preserve the captured content order of the four category labels.",
+          "Do not introduce additional category labels, media, buttons, descriptive copy, or external data behavior not present in the provided evidence."
+        ],
+        "userStory": {
+          "asA": "homepage visitor exploring Disney Imagination Campus offerings",
+          "iWant": "to see the four program categories presented together as clear interactive choices",
+          "soThat": "I can quickly identify the type of student travel program I want to explore"
+        },
+        "description": "Build a reusable EDS block for the Program categories area on the Disney Imagination Campus homepage. The block renders four captured interactive category labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION. Destination URLs were not captured, so link targets must remain configurable rather than hardcoded.",
+        "accessibilityCriteria": [
+          "Each category item must be keyboard reachable and activate through standard keyboard interaction.",
+          "Each interactive item must expose an accessible name matching its visible category label, including correct handling of ampersands in ARTS & HUMANITIES and SCIENCE & TECHNOLOGY."
+        ],
+        "enrichmentSource": "llm",
+        "businessRules": []
+      },
+      {
+        "id": "EPIC-001-STORY-001",
+        "title": "Develop header contact and primary navigation block",
+        "ticketType": "block-development",
+        "scopeUrl": "https://www.disneycampus.com",
+        "outcome": "A reusable header contact and navigation block is available for the homepage and supports the captured shared header content without hardcoded uncaptured visual values or link destinations.",
+        "type": "functional",
+        "evidence": {
+          "pageUrl": "https://www.disneycampus.com",
+          "sectionTitle": "Header contact and navigation",
+          "sectionId": "section-01-header",
+          "positionContext": {
+            "anchor": "Header contact and navigation",
+            "after": "page-start",
+            "before": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+            "landmark": "header"
+          },
+          "layoutHints": {
+            "discoveryLayoutType": "Not captured in discovery report",
+            "discoveryBlockMatch": "Not captured in discovery report"
+          },
+          "detectedCounts": {
+            "sectionInteractiveCount": 6,
+            "sectionTextElementCount": 8,
+            "sectionMediaByType": {},
+            "interactiveCount": 6,
+            "textElementCount": 8,
+            "apiEndpointCount": 0,
+            "mediaByType": {}
+          },
+          "technicalSignals": {
+            "hasHeaderLandmark": true,
+            "hasFooterLandmark": true,
+            "headingSample": [
+              "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+              "PERFORMING ARTS",
+              "ARTS &#x26; HUMANITIES",
+              "SCIENCE &#x26; TECHNOLOGY",
+              "LEADERSHIP &#x26; INNOVATION",
+              "STUDENT TRAVEL PROGRAMS &#x26; FIELD TRIPS",
+              "WHERE STUDENTS LOVE LEARNING",
+              "WEST COAST CAMPUS",
+              "EAST COAST CAMPUS",
+              "THE DISNEY DIFFERENCE"
+            ]
+          },
+          "uncaptured": [
+            "Exact typography, font size, weight, and line height were not captured.",
+            "Exact color tokens and values were not captured.",
+            "Exact hover, motion, and animation behavior were not captured.",
+            "Exact pixel spacing and coordinates were not captured.",
+            "Destination URLs for most visible links were not included in the capture data."
+          ],
+          "captureSources": [
+            "discovery-report",
+            "live-html-scan"
+          ],
+          "codingAgentNotes": [
+            "Use positionContext anchors (after/before titles) rather than numeric section indexes.",
+            "Treat uncaptured fields as configurable; do not hardcode assumptions."
+          ],
+          "enrichmentSource": "discovery-evidence"
+        },
+        "acceptanceCriteria": [
+          "The header renders the captured contact content exactly as observed: Questions?, Call (321) 939 7560, and Contact Us.",
+          "The primary navigation renders the captured labels exactly as observed: ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, and CONNECT WITH US.",
+          "The block supports configurable link destinations for Contact Us and each primary navigation item because most destination URLs were not captured.",
+          "The block supports the observed Disney Imagination Campus logo/link and search control from rendered evidence without requiring uncaptured styling or behavior assumptions.",
+          "The implementation does not hardcode uncaptured typography, spacing, colors, hover states, motion, or link destinations."
+        ],
+        "userStory": {
+          "asA": "site visitor",
+          "iWant": "a consistent header with contact details and primary navigation",
+          "soThat": "I can quickly reach key Disney Imagination Campus areas and contact options from the homepage"
+        },
+        "description": "Create a reusable header block for the Disney Imagination Campus homepage. The block must present the observed contact prompt and phone number, the Contact Us entry, the Disney Imagination Campus logo/link where available from rendered evidence, a search control where available from rendered evidence, and the primary navigation labels ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, and CONNECT WITH US. The header is a shared component pattern observed on the homepage and the connect-with-us page, with a header landmark present in the captured homepage data. Exact typography, spacing, colors, hover behavior, and destination URLs were not captured and must remain configurable.",
+        "accessibilityCriteria": [
+          "The header is exposed as a page header landmark and all interactive header items are reachable by keyboard in a logical order.",
+          "All interactive controls and links have accessible names matching or clearly representing their visible labels, including Contact Us and the primary navigation labels."
+        ],
+        "enrichmentSource": "llm",
+        "businessRules": []
+      }
+    ],
+    "storiesRemaining": [
+      {
+        "id": "EPIC-001-STORY-002",
+        "title": "Develop video-led introductory block for Disney Imagination Campus homepage",
+        "ticketType": "block-development",
+        "scopeUrl": "https://www.disneycampus.com",
+        "outcome": "A reusable video-led introductory block renders the captured heading, playback guidance, video affordance, and two calls to action for the Disney Imagination Campus homepage.",
+        "type": "functional",
+        "evidence": {
+          "pageUrl": "https://www.disneycampus.com",
+          "sectionTitle": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+          "sectionId": "section-02-video-hero",
+          "positionContext": {
+            "anchor": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+            "after": "Header contact and navigation",
+            "before": "Program categories",
+            "landmark": "main"
+          },
+          "layoutHints": {
+            "discoveryLayoutType": "Not captured in discovery report",
+            "discoveryBlockMatch": "Not captured in discovery report"
+          },
+          "detectedCounts": {
+            "sectionInteractiveCount": 2,
+            "sectionTextElementCount": 3,
+            "sectionMediaByType": {
+              "video": 1
+            },
+            "interactiveCount": 2,
+            "textElementCount": 3,
+            "videoCount": 1
+          },
+          "technicalSignals": {
+            "hasHeaderLandmark": true,
+            "hasFooterLandmark": true,
+            "headingSample": [
+              "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+              "PERFORMING ARTS",
+              "ARTS &#x26; HUMANITIES",
+              "SCIENCE &#x26; TECHNOLOGY",
+              "LEADERSHIP &#x26; INNOVATION",
+              "STUDENT TRAVEL PROGRAMS &#x26; FIELD TRIPS",
+              "WHERE STUDENTS LOVE LEARNING",
+              "WEST COAST CAMPUS",
+              "EAST COAST CAMPUS",
+              "THE DISNEY DIFFERENCE"
+            ]
+          },
+          "uncaptured": [
+            "Exact typography, font sizing, font weight, and line height were not captured.",
+            "Exact color values were not captured.",
+            "Exact hover, motion, and animation behavior were not captured.",
+            "Exact pixel spacing and coordinates were not captured.",
+            "Video source, thumbnail, transcript, and duration were not captured."
+          ],
+          "captureSources": [
+            "discovery-report",
+            "live-html-scan"
+          ],
+          "codingAgentNotes": [
+            "Use positionContext anchors (after/before titles) rather than numeric section indexes.",
+            "Treat uncaptured fields as configurable; do not hardcode assumptions."
+          ],
+          "enrichmentSource": "discovery-evidence"
+        },
+        "acceptanceCriteria": [
+          "The block renders the captured text content exactly: Video, Press Enter or Space to play or pause the video., and DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED.",
+          "The block includes one configurable video media area and does not hardcode unavailable video source, poster, duration, transcript, spacing, typography, color, hover, or animation values.",
+          "The block renders exactly two primary interactive controls using the captured labels PLAY FULL VIDEO and LEARN MORE.",
+          "The content sequence follows the captured flow of video affordance, playback helper text, heading, and calls to action.",
+          "The call-to-action destinations are configurable because destination URLs were not included in the supplied evidence."
+        ],
+        "userStory": {
+          "asA": "prospective educator or student travel planner",
+          "iWant": "a video-led introduction to Disney Imagination Campus with clear calls to action",
+          "soThat": "I can quickly understand the page theme and choose whether to watch the full video or learn more"
+        },
+        "description": "Build a reusable, authorable introductory content block for the homepage area titled DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED. The captured content includes a video area, playback helper text, the page theme heading, and two interactive calls to action: PLAY FULL VIDEO and LEARN MORE. Detailed typography, color values, pixel spacing, hover behavior, video source, poster image, transcript, and duration were not captured and must remain configurable rather than hardcoded.",
+        "accessibilityCriteria": [
+          "The video interaction supports keyboard operation using Enter or Space, matching the captured playback instruction.",
+          "Both calls to action expose clear accessible names matching their visible labels: PLAY FULL VIDEO and LEARN MORE."
+        ],
+        "enrichmentSource": "llm",
+        "businessRules": []
+      },
+      {
+        "id": "EPIC-001-STORY-003",
+        "title": "Develop EDS block for Program categories",
+        "ticketType": "block-development",
+        "scopeUrl": "https://www.disneycampus.com",
+        "outcome": "Reusable Program categories block implemented for the homepage with the captured four-item category set.",
+        "type": "functional",
+        "evidence": {
+          "pageUrl": "https://www.disneycampus.com",
+          "sectionTitle": "Program categories",
+          "sectionId": "section-03-program-category-links",
+          "positionContext": {
+            "anchor": "Program categories",
+            "after": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+            "before": "STUDENT TRAVEL PROGRAMS & FIELD TRIPS",
+            "landmark": "main"
+          },
+          "layoutHints": {
+            "discoveryLayoutType": "Not captured in discovery report",
+            "discoveryBlockMatch": "Not captured in discovery report"
+          },
+          "detectedCounts": {
+            "sectionInteractiveCount": 4,
+            "sectionTextElementCount": 4,
+            "sectionMediaByType": {}
+          },
+          "technicalSignals": {
+            "hasHeaderLandmark": true,
+            "hasFooterLandmark": true,
+            "headingSample": [
+              "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+              "PERFORMING ARTS",
+              "ARTS &#x26; HUMANITIES",
+              "SCIENCE &#x26; TECHNOLOGY",
+              "LEADERSHIP &#x26; INNOVATION",
+              "STUDENT TRAVEL PROGRAMS &#x26; FIELD TRIPS",
+              "WHERE STUDENTS LOVE LEARNING",
+              "WEST COAST CAMPUS",
+              "EAST COAST CAMPUS",
+              "THE DISNEY DIFFERENCE"
+            ]
+          },
+          "uncaptured": [
+            "Details missing from evidence must remain uncaptured and not assumed."
+          ],
+          "captureSources": [
+            "discovery-report",
+            "live-html-scan"
+          ],
+          "codingAgentNotes": [
+            "Use positionContext anchors (after/before titles) rather than numeric section indexes.",
+            "Treat uncaptured fields as configurable; do not hardcode assumptions."
+          ],
+          "enrichmentSource": "discovery-evidence"
+        },
+        "acceptanceCriteria": [
+          "Render exactly four category items using the captured labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION.",
+          "Expose each captured category item as an interactive link-like item with its destination configurable because captured link targets were not provided.",
+          "Preserve the captured content order of the four category labels.",
+          "Do not introduce additional category labels, media, buttons, descriptive copy, or external data behavior not present in the provided evidence."
+        ],
+        "userStory": {
+          "asA": "homepage visitor exploring Disney Imagination Campus offerings",
+          "iWant": "to see the four program categories presented together as clear interactive choices",
+          "soThat": "I can quickly identify the type of student travel program I want to explore"
+        },
+        "description": "Build a reusable EDS block for the Program categories area on the Disney Imagination Campus homepage. The block renders four captured interactive category labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION. Destination URLs were not captured, so link targets must remain configurable rather than hardcoded.",
+        "accessibilityCriteria": [
+          "Each category item must be keyboard reachable and activate through standard keyboard interaction.",
+          "Each interactive item must expose an accessible name matching its visible category label, including correct handling of ampersands in ARTS & HUMANITIES and SCIENCE & TECHNOLOGY."
+        ],
+        "enrichmentSource": "llm",
+        "businessRules": []
+      },
+      {
+        "id": "EPIC-001-STORY-001",
+        "title": "Develop header contact and primary navigation block",
+        "ticketType": "block-development",
+        "scopeUrl": "https://www.disneycampus.com",
+        "outcome": "A reusable header contact and navigation block is available for the homepage and supports the captured shared header content without hardcoded uncaptured visual values or link destinations.",
+        "type": "functional",
+        "evidence": {
+          "pageUrl": "https://www.disneycampus.com",
+          "sectionTitle": "Header contact and navigation",
+          "sectionId": "section-01-header",
+          "positionContext": {
+            "anchor": "Header contact and navigation",
+            "after": "page-start",
+            "before": "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+            "landmark": "header"
+          },
+          "layoutHints": {
+            "discoveryLayoutType": "Not captured in discovery report",
+            "discoveryBlockMatch": "Not captured in discovery report"
+          },
+          "detectedCounts": {
+            "sectionInteractiveCount": 6,
+            "sectionTextElementCount": 8,
+            "sectionMediaByType": {},
+            "interactiveCount": 6,
+            "textElementCount": 8,
+            "apiEndpointCount": 0,
+            "mediaByType": {}
+          },
+          "technicalSignals": {
+            "hasHeaderLandmark": true,
+            "hasFooterLandmark": true,
+            "headingSample": [
+              "DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED",
+              "PERFORMING ARTS",
+              "ARTS &#x26; HUMANITIES",
+              "SCIENCE &#x26; TECHNOLOGY",
+              "LEADERSHIP &#x26; INNOVATION",
+              "STUDENT TRAVEL PROGRAMS &#x26; FIELD TRIPS",
+              "WHERE STUDENTS LOVE LEARNING",
+              "WEST COAST CAMPUS",
+              "EAST COAST CAMPUS",
+              "THE DISNEY DIFFERENCE"
+            ]
+          },
+          "uncaptured": [
+            "Exact typography, font size, weight, and line height were not captured.",
+            "Exact color tokens and values were not captured.",
+            "Exact hover, motion, and animation behavior were not captured.",
+            "Exact pixel spacing and coordinates were not captured.",
+            "Destination URLs for most visible links were not included in the capture data."
+          ],
+          "captureSources": [
+            "discovery-report",
+            "live-html-scan"
+          ],
+          "codingAgentNotes": [
+            "Use positionContext anchors (after/before titles) rather than numeric section indexes.",
+            "Treat uncaptured fields as configurable; do not hardcode assumptions."
+          ],
+          "enrichmentSource": "discovery-evidence"
+        },
+        "acceptanceCriteria": [
+          "The header renders the captured contact content exactly as observed: Questions?, Call (321) 939 7560, and Contact Us.",
+          "The primary navigation renders the captured labels exactly as observed: ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, and CONNECT WITH US.",
+          "The block supports configurable link destinations for Contact Us and each primary navigation item because most destination URLs were not captured.",
+          "The block supports the observed Disney Imagination Campus logo/link and search control from rendered evidence without requiring uncaptured styling or behavior assumptions.",
+          "The implementation does not hardcode uncaptured typography, spacing, colors, hover states, motion, or link destinations."
+        ],
+        "userStory": {
+          "asA": "site visitor",
+          "iWant": "a consistent header with contact details and primary navigation",
+          "soThat": "I can quickly reach key Disney Imagination Campus areas and contact options from the homepage"
+        },
+        "description": "Create a reusable header block for the Disney Imagination Campus homepage. The block must present the observed contact prompt and phone number, the Contact Us entry, the Disney Imagination Campus logo/link where available from rendered evidence, a search control where available from rendered evidence, and the primary navigation labels ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, and CONNECT WITH US. The header is a shared component pattern observed on the homepage and the connect-with-us page, with a header landmark present in the captured homepage data. Exact typography, spacing, colors, hover behavior, and destination URLs were not captured and must remain configurable.",
+        "accessibilityCriteria": [
+          "The header is exposed as a page header landmark and all interactive header items are reachable by keyboard in a logical order.",
+          "All interactive controls and links have accessible names matching or clearly representing their visible labels, including Contact Us and the primary navigation labels."
+        ],
+        "enrichmentSource": "llm",
+        "businessRules": []
+      }
+    ],
+    "completedStories": [
+      "EPIC-001-STORY-002",
+      "EPIC-001-STORY-003",
+      "EPIC-001-STORY-001"
+    ],
+    "revisionCount": 0,
+    "revisionFeedback": null,
+    "reviewerNotes": null,
+    "status": "PENDING",
+    "results": [
+      {
+        "storyId": "EPIC-001-STORY-002",
+        "epicId": "EPIC-001",
+        "blockName": "blocks-herovideo",
+        "status": "COMPLETED",
+        "commitSha": "cce64132b0e037d7375d8e0bc7bcb9ecc8452c7f",
+        "completedAt": "2026-09-06T19:37:51.034Z",
+        "error": null
+      },
+      {
+        "storyId": "EPIC-001-STORY-003",
+        "epicId": "EPIC-001",
+        "blockName": "cards-overlay",
+        "status": "COMPLETED",
+        "commitSha": "44d8f024469fef8d6f1d20edf71f01c6fe2b9bec",
+        "completedAt": "2026-09-06T19:39:56.256Z",
+        "error": null
+      },
+      {
+        "storyId": "EPIC-001-STORY-001",
+        "epicId": "EPIC-001",
+        "blockName": "header",
+        "status": "COMPLETED",
+        "commitSha": "068f98c45f6026151b29b499ef14e897b8fa3951",
+        "completedAt": "2026-09-06T19:42:31.484Z",
+        "error": null
+      }
+    ],
+    "headSha": "068f98c45f6026151b29b499ef14e897b8fa3951",
+    "repositoryChanges": true,
+    "changedFiles": [],
+    "commitCount": 3,
+    "failureCount": 0,
+    "expectedHeadSha": "068f98c45f6026151b29b499ef14e897b8fa3951",
+    "draft": true
+  },
+  "repositorySnapshot": {
+    "repo": "ShubhadipChakrabarti/aem-boilerplate",
+    "baseRef": "migration-epic-001",
+    "inspectedHeadSha": "44d8f024469fef8d6f1d20edf71f01c6fe2b9bec",
+    "deliveryHeadSha": "068f98c45f6026151b29b499ef14e897b8fa3951"
+  },
+  "inputContract": {
+    "version": "eds-coding-input/v3",
+    "issues": []
+  },
+  "adobeSkills": {
+    "repository": "https://github.com/adobe/skills",
+    "requestedRef": "main",
+    "resolvedRef": "32b0bb2c01157ad7c7e69575069a6b421f72beeb",
+    "manifest": [
+      {
+        "path": "content-driven-development/SKILL.md",
+        "bytes": 14625,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "analyze-and-plan/SKILL.md",
+        "bytes": 6121,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "analyze-and-plan/references/task-types.md",
+        "bytes": 2560,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "content-modeling/SKILL.md",
+        "bytes": 9420,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "content-modeling/references/canonical-models.md",
+        "bytes": 15062,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "content-modeling/references/advanced-scenarios.md",
+        "bytes": 11765,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "authoring-analysis/SKILL.md",
+        "bytes": 12778,
+        "version": "1.0.1",
+        "loaded": true
+      },
+      {
+        "path": "scrape-webpage/SKILL.md",
+        "bytes": 5214,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "identify-page-structure/SKILL.md",
+        "bytes": 6719,
+        "version": "1.0.0",
+        "loaded": true
+      },
+      {
+        "path": "block-inventory/SKILL.md",
+        "bytes": 9055,
+        "version": "1.0.1",
+        "loaded": true
+      },
+      {
+        "path": "content-driven-development/references/html-structure.md",
+        "bytes": 14826,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "building-blocks/SKILL.md",
+        "bytes": 9241,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "building-blocks/references/js-guidelines.md",
+        "bytes": 9604,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "building-blocks/references/css-guidelines.md",
+        "bytes": 8018,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "block-collection-and-party/SKILL.md",
+        "bytes": 19379,
+        "version": "1.2.1",
+        "loaded": true
+      },
+      {
+        "path": "testing-blocks/SKILL.md",
+        "bytes": 9794,
+        "version": "2.0.1",
+        "loaded": true
+      },
+      {
+        "path": "testing-blocks/references/testing-philosophy.md",
+        "bytes": 2201,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "testing-blocks/references/unit-testing.md",
+        "bytes": 7873,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "testing-blocks/references/troubleshooting.md",
+        "bytes": 8763,
+        "version": null,
+        "loaded": true
+      },
+      {
+        "path": "code-review/SKILL.md",
+        "bytes": 41406,
+        "version": "2.0.0",
+        "loaded": true
+      },
+      {
+        "path": "code-review/references/review-checklist.md",
+        "bytes": 11022,
+        "version": null,
+        "loaded": true
+      }
+    ],
+    "failures": [],
+    "ready": true,
+    "hasFailures": false
+  },
+  "counts": {
+    "COMPLETED": 3
+  },
+  "results": [
+    {
+      "storyId": "EPIC-001-STORY-002",
+      "epicId": "EPIC-001",
+      "blockName": "blocks-herovideo",
+      "status": "COMPLETED",
+      "commitSha": "cce64132b0e037d7375d8e0bc7bcb9ecc8452c7f",
+      "completedAt": "2026-09-06T19:37:51.034Z",
+      "error": null
+    },
+    {
+      "storyId": "EPIC-001-STORY-003",
+      "epicId": "EPIC-001",
+      "blockName": "cards-overlay",
+      "status": "COMPLETED",
+      "commitSha": "44d8f024469fef8d6f1d20edf71f01c6fe2b9bec",
+      "completedAt": "2026-09-06T19:39:56.256Z",
+      "error": null
+    },
+    {
+      "storyId": "EPIC-001-STORY-001",
+      "epicId": "EPIC-001",
+      "blockName": "header",
+      "status": "COMPLETED",
+      "commitSha": "068f98c45f6026151b29b499ef14e897b8fa3951",
+      "completedAt": "2026-09-06T19:42:31.484Z",
+      "error": null
+    }
+  ],
+  "implementationAnalyses": [
+    {
+      "runId": "eds-code-1788723352923",
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-002",
+      "recordedAt": "2026-09-06T19:37:15.484Z",
+      "implementationMode": "CREATE_NEW_BLOCK",
+      "canonicalBlockName": "blocks-herovideo",
+      "canonicalScopeName": "blocks-herovideo",
+      "scopeType": "BLOCK",
+      "repositoryHeadSha": "d75bfd2cf0d91284b1e26c65e15cdf46820d6a4b",
+      "conciseReason": "The Content Agent document (finalAuthoringContract) contains a grounded 'Hero Video' block (componentId: component-001, canonicalBlockName: hero-video, selector: div.herovideo) sourced directly from https://www.disneycampus.com/. The live page confirms the block renders as div.herovideo with class 'block', height 438.75px at y:64 (immediately below the 64px header), full viewport width 780px. The authored table has a single data row with four cells: [video asset], [heading: DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED], [primary CTA link: PLAY FULL VIDEO], [secondary CTA link: LEARN MORE]. Section metadata for the containing section provides subtitles, poster, and transcript as configurable assets — these are NOT block cells but section-metadata rows and must be handled via the section-metadata block, not hardcoded. The block does not exist in the repository (inventory shows: cards, columns, footer, fragment, header, hero, widget — no herovideo). The canonical block name from the live site stylesheet is 'herovideo' (https://www.disneycampus.com/blocks/herovideo/herovideo.css is loaded), matching the div.herovideo selector. The story acceptance criteria require: exact text content rendered (Video label, playback helper text, heading, two CTAs), one configurable video media area, no hardcoded unavailable values, keyboard operation for video (Enter/Space), and accessible names on both CTAs. The block JS must: (1) read the four authored cells — video link/asset, heading, primary CTA, secondary CTA; (2) build a <video> element with keyboard play/pause via keydown Enter/Space; (3) expose aria-label on both CTA anchors matching their visible text; (4) render a visible 'Video' label and the playback helper text 'Press Enter or Space to play or pause the video.' as authored. The section-metadata (subtitles, poster, transcript) is already handled by the EDS section-metadata block and will be available as data attributes or section properties — the herovideo block JS should read poster and subtitles from the section's dataset if present, keeping them configurable. Typography (InspireTWDCBlack, font-weight:900, font-size:24px for CTAs; heading styles) and colors (white text on video overlay) are observed from computed styles but must not be hardcoded as magic values — they must use CSS custom properties scoped to the block. The PLAY FULL VIDEO link has aria-label 'PLAY FULL VIDEO about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED' and href '#fullscreen-cta' in the live page; LEARN MORE has aria-label 'LEARN MORE about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED' and href '/about'. These destinations are configurable per acceptance criteria. The block CSS must be mobile-first, use CSS custom properties for all visual tokens, and not hardcode pixel spacing or color values that were marked uncaptured.",
+      "requirementTraceability": [
+        {
+          "requirementId": "EPIC-001-STORY-002-R1",
+          "description": "The block renders the captured text content exactly: Video, Press Enter or Space to play or pause the video., and DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R2",
+          "description": "The block includes one configurable video media area and does not hardcode unavailable video source, poster, duration, transcript, spacing, typography, color, hover, or animation values.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R3",
+          "description": "The block renders exactly two primary interactive controls using the captured labels PLAY FULL VIDEO and LEARN MORE.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R4",
+          "description": "The content sequence follows the captured flow of video affordance, playback helper text, heading, and calls to action.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R5",
+          "description": "The call-to-action destinations are configurable because destination URLs were not included in the supplied evidence.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R6",
+          "description": "The video interaction supports keyboard operation using Enter or Space, matching the captured playback instruction.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-002-R7",
+          "description": "Both calls to action expose clear accessible names matching their visible labels: PLAY FULL VIDEO and LEARN MORE.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        }
+      ],
+      "visualSummary": {
+        "blockDimensions": "780px wide × 438.75px tall at 780px viewport (desktop-equivalent capture). Positioned at y:64 immediately below the 64px header, full viewport width.",
+        "blockPosition": "position:relative on div.herovideo. The containing section (div.section.full-width.video-container.herovideo-container.cards-container) is position:relative, height:2722.75px (includes the cards overlay below), margin-bottom:40px.",
+        "textElements": "Three captured text nodes: (1) 'Video' — a label/caption for the video element; (2) 'Press Enter or Space to play or pause the video.' — playback helper/instruction text; (3) 'DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED' — the main heading. Heading observed as h2 in style guide with font-family InspireTWDCBlack, font-size 28px, font-weight 900, line-height 44.8px, letter-spacing 3px at 780px viewport.",
+        "ctaElements": "Two anchor elements: PLAY FULL VIDEO (rect x:130, y:273, w:206, h:29; font-family InspireTWDCBlack,InspireTWDC,Arial,sans-serif; font-size:24px; font-weight:900; line-height:32px; color:rgb(255,255,255); background:transparent; aria-label includes 'about DISNEY IMAGINATION CAMPUS - STUDENT TRAVEL REIMAGINED') and LEARN MORE (rect x:452, y:273, w:158, h:29; same typography; href:/about). Both are display:inline at capture time — likely styled as inline-flex buttons in the block CSS.",
+        "videoElement": "Video asset path: /assets/media_1d23079eb9b89c419b9e761a06135ae666a271db9.mp4. Poster: https://www.disneycampus.com/media_12724f42ba32b1d7f11fb547bbbb6eaa79bb26742.png (from section-metadata). Subtitles VTT: https://www.disneycampus.com/urn:aaid:aem:233817df-7731-45ed-b0b8-4e8f40ef37ca/original/as/videocaption.vtt (from section-metadata). Transcript: configurable URL (from section-metadata). Video source, poster, subtitles, and transcript are all configurable — not hardcoded.",
+        "colorObservations": "CTA text color: rgb(255,255,255) (white). Body background: rgb(255,255,255). Video overlay likely dark/semi-transparent. Exact overlay color not captured — must use CSS custom property.",
+        "fontObservations": "Body: InspireTWDC, InspireTWDC-fallback, arial, sans-serif. CTAs: InspireTWDCBlack, InspireTWDC, Arial, sans-serif at font-weight:900. Heading: InspireTWDCBlack, Arial, sans-serif at font-weight:900. These font families are loaded via the live site's fonts.css but are NOT in the repository's fonts.css (which only has roboto/roboto-condensed). Font families must be referenced as CSS custom properties in the block, not hardcoded, since the project fonts.css does not include InspireTWDC.",
+        "spacingObservations": "Exact pixel spacing not captured per planning evidence. CTA y-position 273 relative to section start at y:64 suggests approximately 209px from top of block. Horizontal positions x:130 and x:452 at 780px viewport. These are observed but not authoritative — spacing must use CSS custom properties or relative units.",
+        "responsiveBehavior": "Only desktop (780px) capture available. Mobile capture not requested. Block CSS must be mobile-first with a 900px breakpoint per repository convention (styles/styles.css uses width >= 900px)."
+      },
+      "normalization": {
+        "status": "MODEL_JSON_NORMALIZED",
+        "issue": null,
+        "modelOutputAccepted": true
+      },
+      "adobeSkillsRef": "32b0bb2c01157ad7c7e69575069a6b421f72beeb"
+    },
+    {
+      "runId": "eds-code-1788723352923",
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-003",
+      "recordedAt": "2026-09-06T19:38:55.946Z",
+      "implementationMode": "UPDATE_EXISTING",
+      "canonicalBlockName": "cards-overlay",
+      "canonicalScopeName": "cards-overlay",
+      "scopeType": "BLOCK",
+      "repositoryHeadSha": "cce64132b0e037d7375d8e0bc7bcb9ecc8452c7f",
+      "conciseReason": "The Content Agent document (finalAuthoringContract) authoritatively maps the Program categories section to a 'Cards (overlay)' block — canonicalBlockName 'cards', authoredLabel 'Cards (overlay)', selector 'div.cards.overlay'. The authored table structure is a two-column collection: each row contains [image cell, label cell, link cell] but the nested-object placeholders in the contract rows indicate the image and link cells were captured from the live site. The planning story requires exactly four category items (PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, LEADERSHIP & INNOVATION) rendered as interactive link-like items with configurable destinations. The repository already contains blocks/cards/cards.js and blocks/cards/cards.css (boilerplate implementation). The live site evidence confirms the rendered block carries classes 'cards overlay block size-4 clickable overlay-animation' on a <div>, with an inner <ul> rendered as a CSS grid (grid-template-columns: 780px; grid-template-rows: 546px 546px 546px 546px at mobile, 20px gap). The sourceText from the Content Agent confirms two rows were captured with links to https://main--disneycampus--twdc-minnie.aem.live/programs/performing-arts and /programs/arts-humanities — these are internal AEM preview URLs, not the final destination URLs, confirming the planning requirement that link targets must remain configurable. The 'overlay' variant is the discriminating class that distinguishes this from the generic cards block. The existing boilerplate cards.js/cards.css do not implement the overlay variant at all — they implement a generic image+body card grid. Therefore the correct scope is to ADD the overlay variant CSS and JS decoration logic to the existing cards block files, not create a new block. This is the smallest safe repository scope: modify blocks/cards/cards.js to handle the overlay variant (text-only cards with link wrapping, no image required per the category-links use case) and add blocks/cards/cards.css overlay variant rules. The four category labels contain HTML entities (&#x26; for &) which must be rendered correctly and exposed as accessible names matching the visible text including literal ampersands. No images, descriptions, or additional media are present in the captured evidence for this specific overlay/category-links variant — the acceptance criteria explicitly forbid introducing media not present in evidence. The block table structure from the Content Agent has rows with three cells each (image placeholder, label, link placeholder); the JS decorator must handle the case where the image cell is empty or absent for the overlay variant, wrapping the entire card in an anchor derived from the link cell.",
+      "requirementTraceability": [
+        {
+          "requirementId": "EPIC-001-STORY-003-R1",
+          "description": "Render exactly four category items using the captured labels: PERFORMING ARTS, ARTS & HUMANITIES, SCIENCE & TECHNOLOGY, and LEADERSHIP & INNOVATION.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-003-R2",
+          "description": "Expose each captured category item as an interactive link-like item with its destination configurable because captured link targets were not provided.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-003-R3",
+          "description": "Preserve the captured content order of the four category labels.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-003-R4",
+          "description": "Do not introduce additional category labels, media, buttons, descriptive copy, or external data behavior not present in the provided evidence.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-003-R5",
+          "description": "Each category item must be keyboard reachable and activate through standard keyboard interaction.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-003-R6",
+          "description": "Each interactive item must expose an accessible name matching its visible category label, including correct handling of ampersands in ARTS & HUMANITIES and SCIENCE & TECHNOLOGY.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        }
+      ],
+      "visualSummary": {
+        "blockLocation": "Overlaid on the hero video section, positioned at y:543 within the section that spans y:64 to y:2787 (section height 2722px). The cards overlay block itself is 780px wide × 2244px tall at the 780px viewport.",
+        "renderedStructure": "div.cards.overlay.block.size-4.clickable.overlay-animation > div.cards-wrapper > ul[display:grid]. The ul has grid-template-columns:780px and grid-template-rows:546px 546px 546px 546px with gap:20px and margin-top:40px. Each of the four items occupies a full-width 546px-tall row at this viewport.",
+        "typography": "Category labels are h4 elements based on the style guide observation: font-family InspireTWDCMedium, InspireTWDC, Arial, sans-serif; font-size 24px; font-weight 500; line-height 32px; text-transform uppercase. The heading sample confirms the four labels appear in uppercase in the DOM.",
+        "interactivity": "The block carries 'clickable' and 'overlay-animation' modifier classes on the live site, indicating each card is a clickable interactive element. The entire card tile acts as a link target.",
+        "colors": "Background transparent on the block itself (background-color: rgba(0,0,0,0)). Cards likely have background images (the overlay variant name implies image backgrounds with text overlay) — but the Content Agent rows show nested-object image cells, and the acceptance criteria forbid introducing media not in evidence. The JS must handle image cells when present and absent.",
+        "spacing": "gap:20px between grid rows; margin-top:40px on the ul. No horizontal padding on the block wrapper at this viewport.",
+        "accessibility": "Four interactive items, each keyboard reachable. Accessible names must match visible labels including literal ampersands: 'PERFORMING ARTS', 'ARTS & HUMANITIES', 'SCIENCE & TECHNOLOGY', 'LEADERSHIP & INNOVATION'."
+      },
+      "normalization": {
+        "status": "MODEL_JSON_NORMALIZED",
+        "issue": null,
+        "modelOutputAccepted": true
+      },
+      "adobeSkillsRef": "32b0bb2c01157ad7c7e69575069a6b421f72beeb"
+    },
+    {
+      "runId": "eds-code-1788723352923",
+      "epicId": "EPIC-001",
+      "storyId": "EPIC-001-STORY-001",
+      "recordedAt": "2026-09-06T19:41:09.455Z",
+      "implementationMode": "UPDATE_EXISTING",
+      "canonicalBlockName": "header",
+      "canonicalScopeName": "header",
+      "scopeType": "BLOCK",
+      "repositoryHeadSha": "44d8f024469fef8d6f1d20edf71f01c6fe2b9bec",
+      "conciseReason": "The repository already contains blocks/header/header.js and blocks/header/header.css (boilerplate EDS header). The Content Agent document does NOT include a header block table — the header is a global shared pattern loaded via loadHeader() in scripts.js from a /nav fragment path. This is the canonical EDS header pattern: the block reads a /nav document fragment and decorates it into brand, sections, and tools nav areas. The planning story requires: (1) contact bar with 'Questions?', 'Call (321) 939 7560', and 'Contact Us' link; (2) primary nav labels ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, CONNECT WITH US; (3) logo/brand link; (4) search control; (5) configurable link destinations; (6) header landmark + keyboard accessibility. The live site evidence confirms: header-wrapper at y=0, height=64px, z-index=1000; nav#nav with display:flex, border-bottom:1px solid rgb(0,0,0), max-width:1140px, padding:0 12px; nav-wrapper with z-index:600, background-color:rgb(255,255,255); the header block text includes 'Skip to main content Questions? Call (321) 939 7560 Contact Us About Us … Curriculum & Tickets … Special Events … Plan Your Trip … Connect With Us' confirming all required content is present in the rendered header. The existing header.js loads a /nav fragment and maps children[0]=brand, children[1]=sections, children[2]=tools. The /nav document must be authored with: row 0 = brand (logo link), row 1 = nav sections list, row 2 = tools (contact bar + search). The implementation must extend header.js to handle the contact bar (Questions? + phone + Contact Us link) and search control within the tools area, and extend header.css to style these areas without hardcoding uncaptured color tokens, typography, or spacing values — using CSS custom properties instead. The nav-height CSS variable is already defined as 64px in styles.css matching the observed 64px header height. No new block is needed; the existing header block is modified to support the Disney Imagination Campus nav document structure. Content gap: the Content Agent document contains no header/nav block table — this is expected because the header is a global pattern loaded from a /nav fragment, not a page-body block. The /nav document authoring model is documented in the filePlan as a content model note for the Content Agent.",
+      "requirementTraceability": [
+        {
+          "requirementId": "EPIC-001-STORY-001-R1",
+          "description": "The header renders the captured contact content exactly as observed: Questions?, Call (321) 939 7560, and Contact Us.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R2",
+          "description": "The primary navigation renders the captured labels exactly as observed: ABOUT US, CURRICULUM & TICKETS, SPECIAL EVENTS, PLAN YOUR TRIP, and CONNECT WITH US.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R3",
+          "description": "The block supports configurable link destinations for Contact Us and each primary navigation item because most destination URLs were not captured.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R4",
+          "description": "The block supports the observed Disney Imagination Campus logo/link and search control from rendered evidence without requiring uncaptured styling or behavior assumptions.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R5",
+          "description": "The implementation does not hardcode uncaptured typography, spacing, colors, hover states, motion, or link destinations.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R6",
+          "description": "The header is exposed as a page header landmark and all interactive header items are reachable by keyboard in a logical order.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        },
+        {
+          "requirementId": "EPIC-001-STORY-001-R7",
+          "description": "All interactive controls and links have accessible names matching or clearly representing their visible labels, including Contact Us and the primary navigation labels.",
+          "status": "IMPLEMENTATION_REQUIRED"
+        }
+      ],
+      "visualSummary": {
+        "observedLayout": "header-wrapper: position relative, width 780px, height 64px, z-index 1000, background-color rgb(255,255,255). nav-wrapper: position static, width 780px, height 64px, z-index 600, background-color rgb(255,255,255), pseudo::after display:none (border line inactive at this viewport). nav#nav: display flex, flex-direction row, align-items center, border-bottom 1px solid rgb(0,0,0), max-width 1140px, padding 0 12px, height 64px. The nav contains hamburger + brand + tools at 780px viewport (mobile/tablet breakpoint). At desktop (≥900px) the boilerplate switches to flex justify-content:space-between with sections visible.",
+        "observedContent": "Rendered text in header region: 'Skip to main content Questions? Call (321) 939 7560 Contact Us About Us About Disney Imagination Campus Special Offers Curriculum & Tickets Theme Park Experience Student Tickets Arts & Humanities … Science & Technology … Leadership & Innovation … Special Events Plan Your Trip Connect With Us'. This confirms: contact bar (Questions?, phone, Contact Us) and five primary nav items each with sub-menus.",
+        "observedTypography": "body font-family: InspireTWDC, InspireTWDC-fallback, arial, sans-serif; font-size 16px; font-weight 400; line-height 25.6px. The boilerplate styles.css uses roboto/roboto-condensed — the Disney site uses InspireTWDC. Font family must NOT be hardcoded in header.css; it inherits from body via var(--body-font-family) which the Content Agent or style guide update will set to InspireTWDC.",
+        "observedColors": "nav-wrapper background: rgb(255,255,255). nav border-bottom: 1px solid rgb(0,0,0). Text color: rgb(0,0,0). These map to existing --background-color: white and --text-color: #131313 tokens. No header-specific color tokens are hardcoded.",
+        "uncapturedDetails": "Exact font sizes for contact bar text, exact padding/gap values within tools area, hover state colors for nav items and Contact Us link, search control visual form (icon vs input field), logo image dimensions and alt text, sub-menu dropdown animation/transition, mobile breakpoint behavior for contact bar — all uncaptured and must remain configurable via CSS custom properties or authored content.",
+        "responsiveBehavior": "At 780px viewport (observed): header height 64px, nav is flex row with hamburger visible. At ≥900px (boilerplate breakpoint): nav-wrapper position changes from fixed to relative, nav switches to flex justify-content:space-between, hamburger hidden, sections visible. The contact/tools area must be visible on desktop inline with brand and sections."
+      },
+      "normalization": {
+        "status": "MODEL_JSON_NORMALIZED",
+        "issue": null,
+        "modelOutputAccepted": true
+      },
+      "adobeSkillsRef": "32b0bb2c01157ad7c7e69575069a6b421f72beeb"
+    }
+  ],
+  "conflicts": [],
+  "validationRequests": [],
+  "qualityDisclosure": {
+    "browserComputedStyleResearchExecuted": true,
+    "deterministicPolicyScanExecuted": true,
+    "independentAiCodeQualityReviewExecuted": true,
+    "independentAiSecurityAndHotspotReviewExecuted": true,
+    "independentAiAccessibilityAndSeoReviewExecuted": true,
+    "repositoryLintExecuted": false,
+    "unitTestsExecuted": false,
+    "browserValidationExecuted": false,
+    "sonarQualityGateExecuted": false,
+    "sonarVulnerabilitiesExecuted": false,
+    "sonarSecurityHotspotsExecuted": false,
+    "codeqlExecuted": false,
+    "dependencyReviewExecuted": false,
+    "secretScanExecuted": false,
+    "hotspotFormalApproval": "PENDING_HUMAN_OR_SECURITY_REVIEWER",
+    "status": "PROVISIONAL_PENDING_EXTERNAL_TESTING"
+  },
+  "resume": {
+    "checkpoints": [],
+    "incompleteStoryIds": []
+  }
+}
